@@ -4,1533 +4,1150 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Star Wars Jedi: Fallen Order — Official Fan Site</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-/* ===================== RESET & BASE ===================== */
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root {
+  --gold:       #c9a84c;
+  --gold-light: #e8c96a;
+  --gold-dark:  #8a6a1e;
+  --red:        #b22222;
+  --blue-saber: #3ab4ff;
+  --bg:         #06080d;
+  --surface:    #0d1117;
+  --surface2:   #12181f;
+  --text:       #d8cfc0;
+  --text-muted: #7a8699;
+  --white:      #f5f0e8;
+  --border:     rgba(201,168,76,.18);
+  --ff-display: 'Cinzel', serif;
+  --ff-body:    'Rajdhani', sans-serif;
+  --ff-text:    'Open Sans', sans-serif;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #0a0a0f;
-  color: #e8e0d0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--ff-text);
+  font-size: 15px;
+  line-height: 1.7;
   overflow-x: hidden;
 }
-a { text-decoration: none; color: inherit; }
-img { max-width: 100%; display: block; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
 
-/* ===================== PAGES ===================== */
-.page { display: none; min-height: 100vh; }
-.page.active { display: block; }
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
 
-/* ===================== COLORS ===================== */
-:root {
-  --gold: #c9a84c;
-  --gold-light: #f0cc6e;
-  --dark: #0a0a0f;
-  --dark2: #111118;
-  --dark3: #1a1a26;
-  --blue: #4a9eff;
-  --blue-glow: rgba(74,158,255,0.3);
-  --saber: #00bfff;
-}
-
-/* ===================== BUTTONS ===================== */
-.btn-gold {
-  display: inline-block;
-  background: linear-gradient(135deg, #c9a84c, #f0cc6e, #c9a84c);
-  color: #0a0a0f;
-  font-weight: 700;
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 10px 24px;
-  border: none;
-  cursor: pointer;
-  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-  transition: filter 0.2s, transform 0.2s;
-}
-.btn-gold:hover { filter: brightness(1.2); transform: translateY(-2px); }
-
-.btn-outline {
-  display: inline-block;
-  background: transparent;
-  color: #e8e0d0;
-  font-weight: 600;
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 9px 22px;
-  border: 1px solid rgba(200,180,120,0.5);
-  cursor: pointer;
-  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-  transition: border-color 0.2s, color 0.2s, transform 0.2s;
-}
-.btn-outline:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-2px); }
-
-/* ===================== TOPBAR ===================== */
+/* ============================================================
+   TOPBAR
+   ============================================================ */
 #topbar {
-  background: #06060a;
-  border-bottom: 1px solid rgba(201,168,76,0.2);
-  padding: 6px 0;
+  background: #000;
   text-align: center;
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  color: #aaa;
-  position: relative;
-  z-index: 100;
+  padding: 8px 20px;
+  font-family: var(--ff-body);
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
 }
-#topbar a { color: #aaa; margin: 0 12px; transition: color 0.2s; }
-#topbar a:hover { color: var(--gold); }
-#topbar span { color: #333; }
+#topbar a { color: var(--gold); margin: 0 10px; transition: color .2s; }
+#topbar a:hover { color: var(--gold-light); }
+#topbar span { color: var(--border); }
 
-/* ===================== NAV ===================== */
+/* ============================================================
+   NAV
+   ============================================================ */
 #nav {
   position: sticky;
   top: 0;
-  z-index: 200;
-  background: rgba(6,6,10,0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(201,168,76,0.15);
+  z-index: 100;
   display: flex;
   align-items: center;
-  padding: 0 32px;
-  height: 64px;
   gap: 32px;
+  padding: 0 40px;
+  background: rgba(6,8,13,.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  height: 68px;
 }
-.nav-logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
-.nav-logo img { height: 36px; width: auto; object-fit: contain; }
-.nav-logo-line { width: 1px; height: 28px; background: rgba(201,168,76,0.4); }
-.nav-logo-text { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); line-height: 1.4; }
 
-.nav-links { list-style: none; display: flex; gap: 4px; flex: 1; }
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.nav-logo img {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+}
+.nav-logo-line {
+  width: 1px;
+  height: 32px;
+  background: var(--border);
+}
+.nav-logo-text {
+  font-family: var(--ff-display);
+  font-size: 9px;
+  letter-spacing: .14em;
+  color: var(--gold);
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 4px;
+  flex: 1;
+}
 .nav-item { position: relative; }
 .nav-link {
-  display: flex; align-items: center; gap: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
   padding: 8px 14px;
-  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: #ccc;
-  transition: color 0.2s;
+  font-family: var(--ff-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color .2s;
   white-space: nowrap;
 }
-.nav-link svg { width: 10px; height: 10px; flex-shrink: 0; }
-.nav-link:hover, .nav-item:hover .nav-link { color: var(--gold-light); }
+.nav-link svg { width: 9px; height: 9px; transition: transform .2s; }
+.nav-item:hover .nav-link { color: var(--gold); }
+.nav-item:hover .nav-link svg { transform: rotate(180deg); }
 
 .nav-dropdown {
-  position: absolute; top: 100%; left: 0;
-  background: rgba(6,6,10,0.98);
-  border: 1px solid rgba(201,168,76,0.2);
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  background: rgba(13,17,23,.98);
+  border: 1px solid var(--border);
   min-width: 180px;
-  opacity: 0; visibility: hidden; transform: translateY(-6px);
-  transition: all 0.2s;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity .2s, transform .2s;
+  z-index: 200;
 }
-.nav-item:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.nav-item:hover .nav-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
 .nav-dropdown a {
-  display: block; padding: 10px 16px;
-  font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
-  color: #bbb; border-bottom: 1px solid rgba(255,255,255,0.05);
-  transition: color 0.2s, background 0.2s;
+  display: block;
+  padding: 10px 18px;
+  font-family: var(--ff-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  transition: color .2s, background .2s;
 }
-.nav-dropdown a:hover { color: var(--gold-light); background: rgba(201,168,76,0.08); }
-.nav-cta { margin-left: auto; flex-shrink: 0; }
+.nav-dropdown a:last-child { border-bottom: none; }
+.nav-dropdown a:hover { color: var(--gold); background: rgba(201,168,76,.06); }
 
-/* ===================== BANNER ===================== */
+.nav-cta { margin-left: auto; }
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn-gold,
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 24px;
+  font-family: var(--ff-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  transition: all .22s;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+}
+.btn-gold {
+  background: var(--gold);
+  color: #000;
+}
+.btn-gold:hover {
+  background: var(--gold-light);
+  box-shadow: 0 0 20px rgba(201,168,76,.5);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+.btn-outline:hover {
+  background: rgba(201,168,76,.12);
+  box-shadow: 0 0 16px rgba(201,168,76,.3);
+}
+
+/* ============================================================
+   BANNER
+   ============================================================ */
 #banner {
-  background: linear-gradient(90deg, #0a0a0f 0%, #1a1400 50%, #0a0a0f 100%);
-  border-bottom: 1px solid rgba(201,168,76,0.2);
-  display: flex; align-items: center; justify-content: center; gap: 20px;
-  padding: 10px 32px;
-  font-size: 0.78rem; letter-spacing: 0.06em;
-  color: #ccc;
+  background: linear-gradient(90deg, var(--gold-dark), #4a2d00 50%, var(--gold-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 10px 40px;
+  font-family: var(--ff-body);
+  font-size: 13px;
+  letter-spacing: .05em;
+  color: var(--white);
+  text-align: center;
 }
-#banner em { color: var(--gold-light); font-style: normal; }
+#banner em { color: var(--gold-light); font-style: normal; font-weight: 600; }
+#banner .btn-gold { padding: 6px 18px; font-size: 11px; }
 
-/* ===================== SABER DIVIDER ===================== */
-.saber-divider {
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, var(--saber) 30%, #fff 50%, var(--saber) 70%, transparent 100%);
-  box-shadow: 0 0 12px var(--saber), 0 0 30px rgba(0,191,255,0.3);
-  margin: 0;
-}
-
-/* ===================== HERO ===================== */
+/* ============================================================
+   HERO
+   ============================================================ */
 #hero {
   position: relative;
-  min-height: 90vh;
-  display: flex; align-items: center;
-  background:
-    linear-gradient(to right, rgba(10,10,15,0.95) 45%, rgba(10,10,15,0.3) 100%),
-    url('https://roma770.github.io/Jedi-Fallen-odred/1.jpg') center/cover no-repeat;
-  padding: 80px 80px 80px 80px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
   overflow: hidden;
+  background: var(--bg);
+}
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: .45;
+  transition: opacity 1s;
+}
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(6,8,13,.95) 40%, rgba(6,8,13,.3) 100%);
+  z-index: 1;
 }
 #hero::after {
   content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 70% 50%, rgba(74,158,255,0.08) 0%, transparent 70%);
-  pointer-events: none;
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 220px;
+  background: linear-gradient(to top, var(--bg), transparent);
+  z-index: 1;
 }
-.hero-content { position: relative; z-index: 2; max-width: 580px; }
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  padding: 80px 80px 100px;
+}
 .hero-eyebrow {
-  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 20px; opacity: 0.8;
+  font-family: var(--ff-body);
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+  opacity: .85;
 }
 .hero-title {
-  font-size: clamp(2.8rem, 6vw, 5.5rem);
-  font-weight: 900; line-height: 1.0;
-  text-transform: uppercase; letter-spacing: 0.03em;
-  color: #fff;
-  text-shadow: 0 0 40px rgba(74,158,255,0.4), 0 2px 0 rgba(0,0,0,0.8);
-  margin-bottom: 8px;
+  font-family: var(--ff-display);
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 900;
+  line-height: 1.0;
+  color: var(--white);
+  text-shadow: 0 0 60px rgba(201,168,76,.2);
+  margin-bottom: 12px;
 }
 .hero-title span {
-  color: var(--gold-light);
-  text-shadow: 0 0 30px rgba(201,168,76,0.5);
+  color: var(--gold);
+  display: block;
+  font-size: clamp(32px, 4.5vw, 64px);
+  margin-top: 4px;
 }
 .hero-sub {
-  font-size: 1.05rem; color: #bbb; line-height: 1.6;
-  margin: 20px 0 32px; max-width: 440px;
+  font-family: var(--ff-body);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text);
+  max-width: 520px;
+  margin: 22px 0 36px;
+  line-height: 1.6;
 }
 .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 
-/* ===================== BECOME JEDI ===================== */
+/* Parallax stars */
+.stars {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle var(--d, 3s) var(--delay, 0s) infinite alternate;
+}
+@keyframes twinkle { from { opacity: .1; } to { opacity: .8; } }
+
+/* ============================================================
+   SABER DIVIDER
+   ============================================================ */
+.saber-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue-saber) 20%, var(--gold) 50%, var(--blue-saber) 80%, transparent);
+  opacity: .35;
+  margin: 0;
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   SECTION LABELS
+   ============================================================ */
+.section-eyebrow {
+  font-family: var(--ff-body);
+  font-size: 11px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+  opacity: .8;
+}
+.section-title {
+  font-family: var(--ff-display);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 48px;
+  line-height: 1.1;
+}
+
+/* ============================================================
+   BECOME A JEDI
+   ============================================================ */
 #become {
   position: relative;
-  min-height: 60vh;
-  display: flex; align-items: center;
-  background:
-    linear-gradient(to left, rgba(10,10,15,0.9) 40%, rgba(10,10,15,0.3) 100%),
-    url('https://roma770.github.io/Jedi-Fallen-odred/2.jpg') center/cover no-repeat;
-  padding: 80px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
-.become-content { margin-left: auto; max-width: 500px; text-align: right; }
+.become-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  opacity: .28;
+}
+#become::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(6,8,13,.97) 45%, rgba(6,8,13,.2) 100%);
+  z-index: 1;
+}
+.become-content {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  padding: 80px 80px;
+}
 .become-content h2 {
-  font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900;
-  text-transform: uppercase; line-height: 1.0;
-  color: #fff; margin-bottom: 16px;
+  font-family: var(--ff-display);
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 900;
+  line-height: 1.0;
+  color: var(--white);
+  margin-bottom: 24px;
 }
-.become-content p { color: #bbb; font-size: 1rem; line-height: 1.6; margin-bottom: 24px; }
+.become-content p {
+  font-family: var(--ff-body);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 32px;
+  line-height: 1.65;
+}
 
-/* ===================== LIGHTSABER SECTION ===================== */
+/* ============================================================
+   LIGHTSABER SECTION
+   ============================================================ */
 #lightsaber-wrap { position: relative; }
 #lightsaber {
   position: relative;
-  min-height: 60vh;
-  display: flex; align-items: center;
-  background:
-    linear-gradient(to right, rgba(10,10,15,0.95) 50%, rgba(10,10,15,0.1) 100%),
-    url('https://roma770.github.io/Jedi-Fallen-odred/3.jpg') center/cover no-repeat;
-  padding: 80px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
   overflow: hidden;
 }
-.lightsaber-content { max-width: 500px; position: relative; z-index: 2; }
+.lightsaber-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: .18;
+}
+#lightsaber::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(6,8,13,.96) 50%, rgba(6,8,13,.5) 100%);
+  z-index: 1;
+}
+.lightsaber-content {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  padding: 80px 80px;
+}
 .lightsaber-content h2 {
-  font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900;
-  text-transform: uppercase; line-height: 1.0;
-  color: #fff; margin-bottom: 16px;
+  font-family: var(--ff-display);
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 24px;
 }
-.lightsaber-content h2 span { color: var(--saber); text-shadow: 0 0 20px var(--saber); }
-.lightsaber-content p { color: #bbb; font-size: 1rem; line-height: 1.6; margin-bottom: 24px; }
-.btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.lightsaber-content h2 span { color: var(--gold); }
+.lightsaber-content p {
+  font-family: var(--ff-body);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 32px;
+  line-height: 1.65;
+}
+.lightsaber-content .btns { display: flex; gap: 14px; flex-wrap: wrap; }
 .lightsaber-right-img {
-  position: absolute; right: 0; bottom: 0;
-  height: 110%; width: auto; object-fit: cover;
-  opacity: 0.7;
-  mask-image: linear-gradient(to left, rgba(0,0,0,0.8) 60%, transparent 100%);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  max-width: 55%;
+  object-fit: contain;
+  object-position: right bottom;
+  opacity: .75;
+  z-index: 2;
+  pointer-events: none;
 }
-.platform-logos {
-  display: flex; gap: 20px; align-items: center;
-  padding: 16px 80px;
-  background: rgba(6,6,10,0.8);
-  border-top: 1px solid rgba(201,168,76,0.1);
-}
-.platform-logos img { height: 28px; width: auto; opacity: 0.6; filter: grayscale(1); transition: opacity 0.2s; }
-.platform-logos img:hover { opacity: 1; filter: none; }
 
-/* ===================== CARDS ===================== */
-#cards { padding: 80px; background: var(--dark2); }
-.section-eyebrow {
-  font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 8px;
+.platform-logos {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  padding: 20px 80px;
+  background: rgba(13,17,23,.85);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
-.section-title {
-  font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900;
-  text-transform: uppercase; color: #fff; margin-bottom: 40px;
+.platform-logos img {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  opacity: .7;
+  filter: brightness(0) invert(1);
+  transition: opacity .2s;
 }
-.cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.platform-logos img:hover { opacity: 1; }
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+#cards {
+  padding: 100px 80px;
+  background: var(--surface);
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
 .card {
-  position: relative; overflow: hidden;
-  border: 1px solid rgba(201,168,76,0.15);
-  transition: border-color 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color .3s, transform .3s;
 }
-.card:hover { border-color: rgba(201,168,76,0.5); transform: translateY(-4px); }
-.card > img { width: 100%; height: 280px; object-fit: cover; display: block; }
+.card:hover { border-color: var(--gold); transform: translateY(-4px); }
+.card > img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  transition: transform .5s;
+}
+.card:hover > img { transform: scale(1.04); }
 .card-gradient {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 70%;
-  background: linear-gradient(transparent, rgba(6,6,10,0.97));
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 70%;
+  background: linear-gradient(to top, rgba(6,8,13,.95), transparent);
 }
 .card-body {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 24px;
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 28px 28px 28px;
+  z-index: 2;
 }
-.card-body h3 { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
-.card-body p { font-size: 0.85rem; color: #aaa; margin-bottom: 16px; line-height: 1.5; }
+.card-body h3 {
+  font-family: var(--ff-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.card-body p {
+  font-family: var(--ff-body);
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
 .card-btns { display: flex; gap: 10px; }
+.card-btns .btn-gold,
+.card-btns .btn-outline { padding: 8px 16px; font-size: 11px; }
 
-/* ===================== DETAILS / TABS ===================== */
-#details { background: var(--dark3); padding: 80px; }
-.details-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-.tabs-nav { display: flex; gap: 0; margin-bottom: 28px; border-bottom: 1px solid rgba(201,168,76,0.2); }
-.tab-btn {
-  background: none; border: none; color: #888;
-  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 10px 18px; cursor: pointer;
-  border-bottom: 2px solid transparent; margin-bottom: -1px;
-  transition: color 0.2s, border-color 0.2s;
+/* ============================================================
+   DETAILS / TABS + GALLERY
+   ============================================================ */
+#details {
+  padding: 100px 80px;
+  background: var(--bg);
 }
-.tab-btn.active, .tab-btn:hover { color: var(--gold-light); border-color: var(--gold); }
+.details-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.tabs-nav {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 36px;
+  gap: 0;
+}
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 12px 22px;
+  font-family: var(--ff-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color .2s, border-color .2s;
+}
+.tab-btn.active, .tab-btn:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
-.tab-panel h3 { font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 12px; }
-.tab-panel p { font-size: 0.9rem; color: #aaa; line-height: 1.7; margin-bottom: 20px; }
+.tab-panel h3 {
+  font-family: var(--ff-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.tab-panel p {
+  font-family: var(--ff-body);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
 .info-table { width: 100%; border-collapse: collapse; }
 .info-table td {
-  padding: 10px 12px; font-size: 0.8rem;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  color: #aaa;
+  padding: 12px 16px;
+  font-family: var(--ff-body);
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
 }
-.info-table td:first-child { color: var(--gold); font-weight: 600; width: 45%; }
+.info-table td:first-child {
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-size: 11px;
+  width: 45%;
+}
+.info-table td:last-child { color: var(--white); font-weight: 500; }
 
 .gallery-panel {}
-.gallery-img { width: 100%; height: 300px; object-fit: cover; border: 1px solid rgba(201,168,76,0.2); }
-.gallery-thumbs { display: flex; gap: 8px; margin-top: 8px; }
+.gallery-img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  transition: opacity .3s;
+}
+.gallery-thumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
 .gallery-thumbs img {
-  width: 80px; height: 52px; object-fit: cover;
-  border: 2px solid transparent; cursor: pointer; opacity: 0.6; transition: all 0.2s;
-}
-.gallery-thumbs img.active, .gallery-thumbs img:hover { border-color: var(--gold); opacity: 1; }
-
-/* ===================== NEWS ===================== */
-#news { padding: 80px; background: var(--dark2); }
-.news-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-.news-card {
-  background: var(--dark3);
-  border: 1px solid rgba(201,168,76,0.1);
-  overflow: hidden;
-  transition: border-color 0.3s, transform 0.3s;
+  flex: 1;
+  height: 80px;
+  object-fit: cover;
+  border: 2px solid transparent;
   cursor: pointer;
+  transition: border-color .2s, opacity .2s;
+  opacity: .55;
 }
-.news-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-4px); }
-.news-card img { width: 100%; height: 180px; object-fit: cover; }
-.news-card-body { padding: 20px; }
-.news-date { font-size: 0.68rem; color: var(--gold); letter-spacing: 0.12em; margin-bottom: 8px; }
-.news-headline { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4; }
-.news-excerpt { font-size: 0.82rem; color: #888; line-height: 1.6; }
+.gallery-thumbs img.active,
+.gallery-thumbs img:hover { border-color: var(--gold); opacity: 1; }
 
-/* ===================== PRODUCTS ===================== */
-#products { padding: 80px; background: var(--dark); }
+/* ============================================================
+   NEWS
+   ============================================================ */
+#news {
+  padding: 100px 80px;
+  background: var(--surface);
+}
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.news-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: border-color .3s, transform .3s;
+}
+.news-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+.news-card > img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform .4s;
+}
+.news-card:hover > img { transform: scale(1.04); }
+.news-card-body { padding: 22px 22px 26px; }
+.news-date {
+  font-family: var(--ff-body);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+  opacity: .8;
+}
+.news-headline {
+  font-family: var(--ff-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.news-excerpt {
+  font-family: var(--ff-body);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   PRODUCTS / COLLECTION
+   ============================================================ */
+#products {
+  padding: 100px 80px;
+  background: var(--bg);
+}
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 180px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
   gap: 8px;
 }
 .product-cell {
-  overflow: hidden; border: 1px solid rgba(201,168,76,0.08);
-  transition: border-color 0.3s;
+  overflow: hidden;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  transition: border-color .3s;
 }
-.product-cell:hover { border-color: rgba(201,168,76,0.35); }
-.product-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-.product-cell:hover img { transform: scale(1.07); }
+.product-cell:hover { border-color: var(--gold); }
+.product-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s, opacity .3s;
+  opacity: .8;
+}
+.product-cell:hover img { transform: scale(1.06); opacity: 1; }
 
-/* ===================== FOOTER ===================== */
+/* ============================================================
+   FOOTER
+   ============================================================ */
 footer {
-  background: #06060a;
-  border-top: 1px solid rgba(201,168,76,0.2);
-  padding: 40px 80px;
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 24px;
+  padding: 60px 80px 40px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
 }
-.footer-left { display: flex; align-items: center; gap: 16px; }
-.footer-left img { height: 40px; width: auto; opacity: 0.7; }
-.footer-copy { font-size: 0.72rem; color: #666; line-height: 1.6; }
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.footer-left img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  opacity: .7;
+}
+.footer-copy {
+  font-family: var(--ff-body);
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
 .footer-copy a { color: var(--gold); }
-.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
-.footer-links a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #666; transition: color 0.2s; }
+.footer-copy a:hover { color: var(--gold-light); }
+.footer-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  font-family: var(--ff-body);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color .2s;
+}
 .footer-links a:hover { color: var(--gold); }
 
-/* ===================== REVEAL ANIMATION ===================== */
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
-.reveal.visible { opacity: 1; transform: none; }
+/* ============================================================
+   MOBILE MENU TOGGLE
+   ============================================================ */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: auto;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--gold);
+  transition: transform .25s, opacity .25s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ===================== INNER PAGES ===================== */
-.inner-page {
-  min-height: 100vh;
-  padding-top: 0;
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  #nav { padding: 0 24px; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: rgba(6,8,13,.98); padding: 16px 0; border-bottom: 1px solid var(--border); }
+  .nav-links.open { display: flex; }
+  .nav-item { position: static; }
+  .nav-dropdown { position: static; opacity: 1; pointer-events: auto; transform: none; border: none; background: rgba(255,255,255,.04); }
+  .hamburger { display: flex; }
+  .nav-cta { display: none; }
+  .hero-content { padding: 60px 28px 80px; }
+  .become-content,
+  .lightsaber-content { padding: 60px 28px; }
+  .lightsaber-right-img { opacity: .25; max-width: 100%; }
+  #cards, #details, #news, #products { padding: 60px 24px; }
+  .details-inner { grid-template-columns: 1fr; gap: 40px; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+  footer { padding: 40px 24px; flex-direction: column; text-align: center; }
+  .footer-left { flex-direction: column; }
+  .footer-links { justify-content: center; }
+  .platform-logos { padding: 16px 24px; }
 }
-.inner-hero {
-  position: relative;
-  min-height: 50vh;
-  display: flex; align-items: flex-end;
-  padding: 60px 80px;
-  overflow: hidden;
+@media (max-width: 540px) {
+  .hero-title { font-size: 36px; }
+  .products-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 120px; }
+  .cards-grid { grid-template-columns: 1fr; }
 }
-.inner-hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(10,10,15,1) 0%, rgba(10,10,15,0.5) 60%, rgba(10,10,15,0.2) 100%);
-  z-index: 1;
-}
-.inner-hero-bg {
-  position: absolute; inset: 0;
-  background-size: cover; background-position: center;
-  z-index: 0;
-}
-.inner-hero-content { position: relative; z-index: 2; }
-.inner-hero-eyebrow {
-  font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 10px;
-}
-.inner-hero-title {
-  font-size: clamp(2.4rem, 5vw, 4.5rem);
-  font-weight: 900; text-transform: uppercase;
-  color: #fff; line-height: 1.0; margin-bottom: 14px;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.8);
-}
-.inner-hero-sub { font-size: 1rem; color: #bbb; max-width: 600px; line-height: 1.6; }
-.back-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3);
-  color: var(--gold); font-size: 0.72rem; letter-spacing: 0.15em;
-  text-transform: uppercase; padding: 8px 18px;
-  cursor: pointer; margin: 20px 80px;
-  transition: background 0.2s;
-}
-.back-btn:hover { background: rgba(201,168,76,0.2); }
-.back-btn svg { width: 14px; height: 14px; }
-
-.inner-content { padding: 60px 80px; }
-.inner-content h2 {
-  font-size: 2rem; font-weight: 800; text-transform: uppercase;
-  color: var(--gold-light); margin-bottom: 20px;
-}
-.inner-content p { font-size: 0.95rem; color: #bbb; line-height: 1.8; margin-bottom: 20px; max-width: 800px; }
-.inner-content .highlight-box {
-  background: rgba(201,168,76,0.05);
-  border-left: 3px solid var(--gold);
-  padding: 20px 24px; margin: 30px 0;
-  font-size: 0.9rem; color: #ccc; line-height: 1.7;
-}
-.inner-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin: 40px 0; }
-.inner-card {
-  background: var(--dark3);
-  border: 1px solid rgba(201,168,76,0.12);
-  padding: 28px; transition: border-color 0.3s;
-}
-.inner-card:hover { border-color: rgba(201,168,76,0.4); }
-.inner-card .icon { font-size: 2rem; margin-bottom: 14px; }
-.inner-card h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
-.inner-card p { font-size: 0.84rem; color: #888; line-height: 1.6; }
-.stats-row { display: flex; gap: 40px; margin: 40px 0; flex-wrap: wrap; }
-.stat-item { text-align: center; }
-.stat-num { font-size: 3rem; font-weight: 900; color: var(--gold-light); line-height: 1; }
-.stat-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: #666; margin-top: 4px; }
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin: 40px 0; }
-.two-col img { width: 100%; height: 300px; object-fit: cover; border: 1px solid rgba(201,168,76,0.2); }
-.video-embed {
-  position: relative; width: 100%; padding-top: 56.25%;
-  margin: 30px 0; background: #000;
-  border: 1px solid rgba(201,168,76,0.2);
-}
-.video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
-.video-placeholder {
-  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-  background: radial-gradient(ellipse at center, #1a1a2e 0%, #06060a 100%);
-  cursor: pointer; flex-direction: column; gap: 16px;
-  transition: background 0.2s;
-}
-.video-placeholder:hover { background: radial-gradient(ellipse at center, #1e1e38 0%, #0a0a0f 100%); }
-.play-btn {
-  width: 72px; height: 72px;
-  background: rgba(201,168,76,0.15);
-  border: 2px solid var(--gold);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.2s;
-}
-.play-btn:hover { background: rgba(201,168,76,0.3); }
-.play-btn svg { width: 28px; height: 28px; fill: var(--gold-light); margin-left: 4px; }
-.video-label { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
-.timeline { margin: 40px 0; }
-.timeline-item {
-  display: flex; gap: 24px; padding-bottom: 32px;
-  border-left: 2px solid rgba(201,168,76,0.2);
-  margin-left: 12px; padding-left: 24px;
-  position: relative;
-}
-.timeline-item::before {
-  content: '';
-  position: absolute; left: -7px; top: 4px;
-  width: 12px; height: 12px; border-radius: 50%;
-  background: var(--gold); box-shadow: 0 0 10px rgba(201,168,76,0.5);
-}
-.timeline-date { font-size: 0.72rem; letter-spacing: 0.1em; color: var(--gold); min-width: 90px; padding-top: 2px; }
-.timeline-text h4 { color: #fff; font-size: 0.95rem; margin-bottom: 6px; }
-.timeline-text p { color: #888; font-size: 0.84rem; line-height: 1.6; }
-.buy-options { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin: 40px 0; }
-.buy-card {
-  background: var(--dark3);
-  border: 1px solid rgba(201,168,76,0.15);
-  padding: 32px;
-  text-align: center;
-  position: relative; overflow: hidden;
-}
-.buy-card.featured { border-color: var(--gold); }
-.buy-card.featured::before {
-  content: 'BEST VALUE';
-  position: absolute; top: 14px; right: -20px;
-  background: var(--gold); color: #000;
-  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em;
-  padding: 4px 36px; transform: rotate(30deg);
-}
-.buy-card h3 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 8px; text-transform: uppercase; }
-.buy-price { font-size: 2.5rem; font-weight: 900; color: var(--gold-light); margin: 16px 0; }
-.buy-price sup { font-size: 1rem; vertical-align: top; margin-top: 8px; }
-.buy-features { list-style: none; margin: 16px 0 24px; text-align: left; }
-.buy-features li { font-size: 0.82rem; color: #888; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
-.buy-features li::before { content: '✓ '; color: var(--gold); }
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
-.form-group input, .form-group textarea {
-  width: 100%; background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(201,168,76,0.2); color: #e8e0d0;
-  padding: 10px 14px; font-size: 0.9rem; outline: none;
-  transition: border-color 0.2s; font-family: inherit;
-}
-.form-group input:focus, .form-group textarea:focus { border-color: var(--gold); }
-.form-group textarea { min-height: 120px; resize: vertical; }
-.planets-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin: 40px 0; }
-.planet-card {
-  background: var(--dark3); border: 1px solid rgba(201,168,76,0.1);
-  overflow: hidden; transition: border-color 0.3s;
-}
-.planet-card:hover { border-color: rgba(201,168,76,0.35); }
-.planet-card img { width: 100%; height: 180px; object-fit: cover; }
-.planet-card-body { padding: 20px; }
-.planet-card-body h3 { color: var(--gold-light); font-size: 1.1rem; margin-bottom: 8px; }
-.planet-card-body p { font-size: 0.84rem; color: #888; line-height: 1.6; }
-.character-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin: 40px 0; }
-.character-card {
-  background: var(--dark3); border: 1px solid rgba(201,168,76,0.1);
-  padding: 28px; text-align: center; transition: border-color 0.3s;
-}
-.character-card:hover { border-color: rgba(201,168,76,0.35); }
-.character-avatar { font-size: 3rem; margin-bottom: 12px; }
-.character-card h3 { color: #fff; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
-.character-card .role { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 10px; }
-.character-card p { font-size: 0.8rem; color: #888; line-height: 1.6; }
-.editions-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin: 40px 0; }
-.edition-card {
-  background: var(--dark3); border: 1px solid rgba(201,168,76,0.12);
-  overflow: hidden;
-}
-.edition-card img { width: 100%; height: 220px; object-fit: cover; }
-.edition-card-body { padding: 24px; }
-.edition-card-body h3 { color: var(--gold-light); font-size: 1.05rem; margin-bottom: 8px; font-weight: 700; }
-.edition-card-body ul { list-style: none; margin-bottom: 20px; }
-.edition-card-body ul li { font-size: 0.82rem; color: #888; padding: 4px 0; }
-.edition-card-body ul li::before { content: '• '; color: var(--gold); }
-.patch-list { margin: 30px 0; }
-.patch-item {
-  border: 1px solid rgba(201,168,76,0.1);
-  padding: 20px 24px; margin-bottom: 12px;
-  background: var(--dark3);
-}
-.patch-ver { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 6px; }
-.patch-name { font-size: 0.95rem; color: #fff; font-weight: 600; margin-bottom: 10px; }
-.patch-changes { list-style: none; }
-.patch-changes li { font-size: 0.82rem; color: #888; padding: 3px 0; }
-.patch-changes li::before { content: '→ '; color: var(--saber); }
-.community-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin: 30px 0; }
-.community-card {
-  background: var(--dark3); border: 1px solid rgba(201,168,76,0.1);
-  padding: 24px; text-align: center; transition: border-color 0.3s;
-}
-.community-card:hover { border-color: rgba(201,168,76,0.35); }
-.community-card .icon { font-size: 2.4rem; margin-bottom: 12px; }
-.community-card h3 { color: #fff; font-size: 0.9rem; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.08em; }
-.community-card p { font-size: 0.8rem; color: #888; }
-.community-card a { color: var(--gold); font-size: 0.78rem; margin-top: 10px; display: block; }
-.press-card {
-  background: var(--dark3); border: 1px solid rgba(201,168,76,0.12);
-  padding: 28px; margin-bottom: 16px;
-  display: flex; gap: 24px;
-}
-.press-logo { font-size: 2rem; min-width: 50px; }
-.press-info h3 { color: var(--gold-light); font-size: 1rem; margin-bottom: 4px; }
-.press-info .score { font-size: 1.8rem; font-weight: 900; color: #fff; }
-.press-info p { font-size: 0.82rem; color: #888; margin-top: 8px; line-height: 1.6; font-style: italic; }
-.privacy-section { margin-bottom: 36px; }
-.privacy-section h2 { font-size: 1.3rem; color: var(--gold-light); margin-bottom: 12px; }
-.privacy-section p, .privacy-section li { font-size: 0.9rem; color: #aaa; line-height: 1.8; }
-.privacy-section ul { padding-left: 20px; margin-top: 8px; }
-.cookie-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-.cookie-table th, .cookie-table td { padding: 12px 16px; text-align: left; border: 1px solid rgba(201,168,76,0.1); font-size: 0.84rem; }
-.cookie-table th { background: rgba(201,168,76,0.08); color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.72rem; }
-.cookie-table td { color: #aaa; }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin: 40px 0; }
-.contact-info h3 { color: var(--gold-light); font-size: 1.1rem; margin-bottom: 20px; }
-.contact-method { display: flex; gap: 14px; margin-bottom: 18px; }
-.contact-icon { font-size: 1.4rem; min-width: 36px; }
-.contact-text strong { display: block; color: #fff; font-size: 0.84rem; margin-bottom: 2px; }
-.contact-text span { font-size: 0.82rem; color: #888; }
 </style>
 </head>
 <body>
 
-<!-- =================== MAIN PAGE =================== -->
-<div class="page active" id="page-main">
-  <div id="topbar">
-    <a href="#" onclick="nav('support')">Support</a><span>|</span>
-    <a href="#" onclick="nav('forums')">Forums</a><span>|</span>
-    <a href="#" onclick="nav('support')">EA Help</a>
+<!-- ===================== TOPBAR ===================== -->
+<div id="topbar">
+  <a href="#">Support</a><span>|</span>
+  <a href="#">Forums</a><span>|</span>
+  <a href="#">EA Help</a>
+</div>
+
+<!-- ===================== NAV ===================== -->
+<nav id="nav">
+  <div class="nav-logo">
+    <img src="img/01-jedi-fallen-order.jpg" alt="Star Wars Jedi: Fallen Order Logo" onerror="this.style.display='none'">
+    <div class="nav-logo-line"></div>
+    <div class="nav-logo-text">Official<br>Fan Site</div>
   </div>
 
-  <nav id="nav">
-    <div class="nav-logo" onclick="nav('main')" style="cursor:pointer">
-      <img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo">
-      <div class="nav-logo-line"></div>
-      <div class="nav-logo-text">Official<br>Fan Site</div>
-    </div>
-    <ul class="nav-links">
-      <li class="nav-item">
-        <a href="#" class="nav-link">Jedi: Fallen Order
-          <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
-        </a>
-        <div class="nav-dropdown">
-          <a href="#" onclick="nav('story')">Story</a>
-          <a href="#" onclick="nav('gameplay')">Gameplay</a>
-          <a href="#" onclick="nav('editions')">Editions</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">News
-          <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
-        </a>
-        <div class="nav-dropdown">
-          <a href="#" onclick="nav('news-page')">Latest Updates</a>
-          <a href="#" onclick="nav('patch-notes')">Patch Notes</a>
-          <a href="#" onclick="nav('community')">Community</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">About
-          <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
-        </a>
-        <div class="nav-dropdown">
-          <a href="#" onclick="nav('respawn')">Respawn Entertainment</a>
-          <a href="#" onclick="nav('universe')">The Universe</a>
-          <a href="#" onclick="nav('press')">Press Kit</a>
-        </div>
-      </li>
-    </ul>
-    <div class="nav-cta">
-      <a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a>
-    </div>
-  </nav>
+  <ul class="nav-links" id="navLinks">
+    <li class="nav-item">
+      <a href="#" class="nav-link">Jedi: Fallen Order
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="#">Story</a>
+        <a href="#">Gameplay</a>
+        <a href="#">Editions</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link">News
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="#">Latest Updates</a>
+        <a href="#">Patch Notes</a>
+        <a href="#">Community</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link">About
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="#">Respawn Entertainment</a>
+        <a href="#">The Universe</a>
+        <a href="#">Press Kit</a>
+      </div>
+    </li>
+  </ul>
 
-  <div id="banner">
-    <span>Holiday Deal — <em>Two copies for the price of one!</em></span>
-    <a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="nav-cta">
+    <a href="#" class="btn-gold">Buy Now</a>
   </div>
+</nav>
 
-  <section id="hero">
-    <div class="hero-content reveal">
-      <div class="hero-eyebrow">Electronic Arts · Respawn Entertainment</div>
-      <h1 class="hero-title">Star Wars<br><span>Jedi: Fallen Order</span></h1>
-      <p class="hero-sub">The finest Star Wars game ever made. Survive. Train. Rebuild the Order.</p>
-      <div class="hero-btns">
-        <a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a>
-        <a href="#" class="btn-outline" onclick="nav('trailer')">Watch Trailer</a>
+<!-- ===================== BANNER ===================== -->
+<div id="banner">
+  <div class="banner-text">Holiday Deal — <em>Two copies for the price of one!</em></div>
+  <a href="#" class="btn-gold">Buy Now</a>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<section id="hero">
+  <div class="stars" id="stars"></div>
+  <img class="hero-bg-img" src="img/1.jpg" alt="Hero background" onerror="this.src='img/2.jpg'">
+  <div class="hero-content reveal">
+    <div class="hero-eyebrow">Electronic Arts · Respawn Entertainment</div>
+    <h1 class="hero-title">Star Wars<span>Jedi: Fallen Order</span></h1>
+    <p class="hero-sub">The finest Star Wars game ever made. Survive. Train. Rebuild the Order.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-gold">Buy Now</a>
+      <a href="#" class="btn-outline">Watch Trailer</a>
+    </div>
+  </div>
+</section>
+
+<div class="saber-divider"></div>
+
+<!-- ===================== BECOME A JEDI ===================== -->
+<section id="become">
+  <img class="become-bg-img" src="img/3.jpg" alt="Jedi background" onerror="this.style.opacity='0'">
+  <div class="become-content reveal">
+    <h2>Become<br>a Jedi</h2>
+    <p>Survive the dark times and rebuild what was lost. You are one of the last — and every choice matters.</p>
+    <a href="#" class="btn-outline">Learn More</a>
+  </div>
+</section>
+
+<div class="saber-divider"></div>
+
+<!-- ===================== LIGHTSABER ===================== -->
+<div id="lightsaber-wrap">
+  <section id="lightsaber">
+    <img class="lightsaber-bg-img" src="img/4.jpg" alt="Lightsaber background" onerror="this.style.opacity='0'">
+    <div class="lightsaber-content reveal">
+      <h2>Master the<br><span>Lightsaber</span></h2>
+      <p>Fight, block, dodge, and overcome every enemy in your path. Wield the Force itself alongside a Jedi's most iconic weapon.</p>
+      <div class="btns">
+        <a href="#" class="btn-gold">Buy Game</a>
+        <a href="#" class="btn-outline">View Screenshots</a>
       </div>
     </div>
+    <img class="lightsaber-right-img" src="img/6.jpg" alt="Cal Kestis" onerror="this.style.display='none'">
   </section>
-
-  <div class="saber-divider"></div>
-
-  <section id="become">
-    <div class="become-content reveal">
-      <h2>Become<br>a Jedi</h2>
-      <p>Survive the dark times and rebuild what was lost. You are one of the last — and every choice matters.</p>
-      <a href="#" class="btn-outline" onclick="nav('story')">Learn More</a>
-    </div>
-  </section>
-
-  <div class="saber-divider"></div>
-
-  <div id="lightsaber-wrap">
-    <section id="lightsaber">
-      <div class="lightsaber-content reveal">
-        <h2>Master the<br><span>Lightsaber</span></h2>
-        <p>Fight, block, dodge, and overcome every enemy in your path. Wield the Force itself alongside a Jedi's most iconic weapon.</p>
-        <div class="btns">
-          <a href="#" class="btn-gold" onclick="nav('buy')">Buy Game</a>
-          <a href="#" class="btn-outline" onclick="nav('gallery')">View Screenshots</a>
-        </div>
-      </div>
-      <img class="lightsaber-right-img" src="https://roma770.github.io/Jedi-Fallen-odred/6.jpg" alt="Cal Kestis">
-    </section>
-    <div class="platform-logos">
-      <img src="https://roma770.github.io/Jedi-Fallen-odred/box4-logo1.png" alt="PlayStation">
-      <img src="https://roma770.github.io/Jedi-Fallen-odred/box4-logo1.png" alt="Xbox">
-      <img src="https://roma770.github.io/Jedi-Fallen-odred/box4-logo3.png" alt="PC">
-    </div>
-  </div>
-
-  <div class="saber-divider"></div>
-
-  <section id="cards">
-    <div class="section-eyebrow">Explore the experience</div>
-    <div class="section-title">A Galaxy in Chaos</div>
-    <div class="cards-grid">
-      <div class="card reveal">
-        <img src="https://roma770.github.io/Jedi-Fallen-odred/7.avif" alt="A Galaxy in Ruins">
-        <div class="card-gradient"></div>
-        <div class="card-body">
-          <h3>A Galaxy in Ruins</h3>
-          <p>Pick up Cal Kestis's story five years after the fall of the Jedi Order.</p>
-          <div class="card-btns">
-            <a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a>
-            <a href="#" class="btn-outline" onclick="nav('story')">Read Story</a>
-          </div>
-        </div>
-      </div>
-      <div class="card reveal">
-        <img src="https://roma770.github.io/Jedi-Fallen-odred/8.jpg" alt="Behind the Scenes">
-        <div class="card-gradient"></div>
-        <div class="card-body">
-          <h3>Behind the Scenes</h3>
-          <p>Go behind the curtain with the documentary on the making of the game.</p>
-          <div class="card-btns">
-            <a href="#" class="btn-gold" onclick="nav('trailer')">Watch Now</a>
-            <a href="#" class="btn-outline" onclick="nav('gallery')">More Videos</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="details">
-    <div class="details-inner">
-      <div class="reveal">
-        <div class="tabs-nav">
-          <button class="tab-btn active" data-tab="0">Buy Game</button>
-          <button class="tab-btn" data-tab="1">Buy DLC</button>
-          <button class="tab-btn" data-tab="2">Origin Access</button>
-        </div>
-        <div class="tab-panel active">
-          <h3>Feel the Force</h3>
-          <p>Master every nuance of lightsaber combat — strikes, blocks, and dodges — and overcome enemies far stronger than you. Wield a Jedi's weapon and the Force itself to survive every trial ahead.</p>
-          <table class="info-table">
-            <tr><td>Genre</td><td>Souls-like / Action-Adventure</td></tr>
-            <tr><td>Universe</td><td>Star Wars</td></tr>
-          </table>
-        </div>
-        <div class="tab-panel">
-          <h3>A New Story</h3>
-          <p>You are one of the last surviving Jedi, and survival is the only option. Finish your training before the Empire's Inquisitors discover your plan to rebuild the Jedi Order.</p>
-          <table class="info-table">
-            <tr><td>Creator of the universe</td><td>George Lucas</td></tr>
-            <tr><td>Publisher</td><td>Electronic Arts</td></tr>
-          </table>
-        </div>
-        <div class="tab-panel">
-          <h3>The Galaxy Awaits</h3>
-          <p>Explore ancient forests, wind-scarred cliffs, and jungles full of secrets. Here, you decide where to go and when.</p>
-          <table class="info-table">
-            <tr><td>Developer</td><td>Respawn Entertainment</td></tr>
-            <tr><td>Game director</td><td>Stig Asmussen</td></tr>
-          </table>
-        </div>
-      </div>
-      <div class="gallery-panel reveal">
-        <img id="gallery-main" class="gallery-img" src="https://roma770.github.io/Jedi-Fallen-odred/9.jpg" alt="Gallery">
-        <div class="gallery-thumbs">
-          <img src="https://roma770.github.io/Jedi-Fallen-odred/9.jpg" alt="Screenshot 1" class="active">
-          <img src="https://roma770.github.io/Jedi-Fallen-odred/10.jpg" alt="Screenshot 2">
-          <img src="https://roma770.github.io/Jedi-Fallen-odred/11.webp" alt="Screenshot 3">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="saber-divider"></div>
-
-  <section id="news">
-    <div class="section-eyebrow">Latest Updates</div>
-    <div class="section-title">Main News</div>
-    <div class="news-grid">
-      <div class="news-card reveal" onclick="nav('news-page')">
-        <img src="https://roma770.github.io/Jedi-Fallen-odred/12.jpg" alt="Release Day">
-        <div class="news-card-body">
-          <div class="news-date">15.11.2019</div>
-          <div class="news-headline">Release Day</div>
-          <div class="news-excerpt">The long-awaited Star Wars game has finally launched. Another misstep, or the franchise's first true triumph in years?</div>
-        </div>
-      </div>
-      <div class="news-card reveal" onclick="nav('news-page')">
-        <img src="https://roma770.github.io/Jedi-Fallen-odred/13.webp" alt="First Story-Driven Title">
-        <div class="news-card-body">
-          <div class="news-date">29.10.2019</div>
-          <div class="news-headline">The First Story-Driven Title in a Decade</div>
-          <div class="news-excerpt">Jedi: Fallen Order is the first single-player, story-driven Star Wars game released in more than ten years.</div>
-        </div>
-      </div>
-      <div class="news-card reveal" onclick="nav('news-page')">
-        <img src="https://roma770.github.io/Jedi-Fallen-odred/14.webp" alt="First Announcement">
-        <div class="news-card-body">
-          <div class="news-date">9.06.2018</div>
-          <div class="news-headline">First Announcement</div>
-          <div class="news-excerpt">EA and Respawn Entertainment officially announced the first new narrative Star Wars game since the Old Republic era.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="products">
-    <div class="section-eyebrow">Merchandise & Media</div>
-    <div class="section-title">The Collection</div>
-    <div class="products-grid">
-      <div class="product-cell reveal"><img src="https://roma770.github.io/Jedi-Fallen-odred/15.png" alt="Product"></div>
-      <div class="product-cell reveal" style="grid-column:span 2;grid-row:span 2;"><img src="https://roma770.github.io/Jedi-Fallen-odred/16.avif" alt="Product" style="height:100%;"></div>
-      <div class="product-cell reveal"><img src="https://roma770.github.io/Jedi-Fallen-odred/17.jpg" alt="Product"></div>
-      <div class="product-cell reveal"><img src="https://roma770.github.io/Jedi-Fallen-odred/20.jpg" alt="Product"></div>
-      <div class="product-cell reveal"><img src="https://roma770.github.io/Jedi-Fallen-odred/18.jpg" alt="Product"></div>
-      <div class="product-cell reveal"><img src="https://roma770.github.io/Jedi-Fallen-odred/19.avif" alt="Product"></div>
-      <div class="product-cell reveal"><img src="https://roma770.github.io/Jedi-Fallen-odred/9.jpg" alt="Product"></div>
-      <div class="product-cell reveal"><img src="https://roma770.github.io/Jedi-Fallen-odred/10.jpg" alt="Product"></div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-left">
-      <img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo">
-      <div class="footer-copy">
-        Site created by <a href="https://roma770.github.io/">Roman</a><br>
-        Star Wars is a trademark of Lucasfilm Ltd. — Fan site, not official.
-      </div>
-    </div>
-    <div class="footer-links">
-      <a href="#" onclick="nav('privacy')">Privacy Policy</a>
-      <a href="#" onclick="nav('cookies')">Cookie Policy</a>
-      <a href="#" onclick="nav('contacts')">Contacts</a>
-    </div>
-  </footer>
-</div>
-
-<!-- =================== STORY PAGE =================== -->
-<div class="page" id="page-story">
-  <div id="topbar"><a href="#" onclick="nav('support')">Support</a><span>|</span><a href="#" onclick="nav('forums')">Forums</a><span>|</span><a href="#" onclick="nav('support')">EA Help</a></div>
-  <nav id="nav" style="position:sticky;top:0;z-index:200;background:rgba(6,6,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;padding:0 32px;height:64px;gap:32px;">
-    <div class="nav-logo" onclick="nav('main')" style="cursor:pointer"><img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="height:36px;"><div class="nav-logo-line"></div><div class="nav-logo-text">Official<br>Fan Site</div></div>
-    <div style="margin-left:auto;"><a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a></div>
-  </nav>
-  <div class="inner-page">
-    <div class="inner-hero">
-      <div class="inner-hero-bg" style="background-image:url('https://roma770.github.io/Jedi-Fallen-odred/7.avif')"></div>
-      <div class="inner-hero-content">
-        <div class="inner-hero-eyebrow">Star Wars Jedi</div>
-        <h1 class="inner-hero-title">The Story of<br>Cal Kestis</h1>
-        <p class="inner-hero-sub">Order 66 has fallen. The Jedi are hunted. But one Padawan survived — and his journey will change the galaxy forever.</p>
-      </div>
-    </div>
-    <button class="back-btn" onclick="nav('main')">
-      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>
-      Back to Home
-    </button>
-    <div class="inner-content">
-      <h2>A Survivor's Path</h2>
-      <p>Set five years after the events of Star Wars: Revenge of the Sith, Jedi: Fallen Order follows Cal Kestis — a young Padawan who survived Order 66 by hiding his Force abilities and working as a scrapper on the planet Bracca.</p>
-      <p>When his powers are accidentally revealed, Cal becomes the target of the Empire's Inquisitors, elite Force-sensitive hunters tasked with eliminating the last of the Jedi. Forced to run, Cal teams up with former Jedi Knight Cere Junda and pilot Greez Dritus aboard the ship Stinger Mantis.</p>
-      <div class="highlight-box">
-        "I'm no Jedi — not yet. But I will be." — Cal Kestis
-      </div>
-      <div class="two-col">
-        <div>
-          <h2>The Mission</h2>
-          <p>Cal's goal: find a Holocron — an ancient Jedi artifact containing a list of every Force-sensitive child in the galaxy. In the right hands, it could be the key to rebuilding the Jedi Order. In the wrong hands, it would hand the Empire the power to eliminate any future threat forever.</p>
-          <p>The journey takes Cal across stunning alien worlds — from the industrial ruins of Bracca to the ancient forests of Kashyyyk, the windswept cliffs of Zeffo, the depths of Dathomir, and beyond.</p>
-        </div>
-        <img src="https://roma770.github.io/Jedi-Fallen-odred/8.jpg" alt="Cal and Cere">
-      </div>
-      <h2>Key Characters</h2>
-      <div class="character-grid">
-        <div class="character-card">
-          <div class="character-avatar">⚔️</div>
-          <h3>Cal Kestis</h3>
-          <div class="role">Protagonist · Jedi Padawan</div>
-          <p>A survivor of Order 66, Cal must master the Force while evading the Empire and confronting his traumatic past.</p>
-        </div>
-        <div class="character-card">
-          <div class="character-avatar">🌑</div>
-          <h3>Cere Junda</h3>
-          <div class="role">Ally · Former Jedi Knight</div>
-          <p>A fallen Jedi who cut herself off from the Force after being captured. She guides Cal as he rediscovers his path.</p>
-        </div>
-        <div class="character-card">
-          <div class="character-avatar">🔴</div>
-          <h3>Second Sister</h3>
-          <div class="role">Antagonist · Inquisitor</div>
-          <p>The Empire's deadliest hunter. Relentless and cunning — and connected to the past in ways Cal never expected.</p>
-        </div>
-        <div class="character-card">
-          <div class="character-avatar">🤖</div>
-          <h3>BD-1</h3>
-          <div class="role">Companion · Droid</div>
-          <p>An excitable little explorer droid who holds secrets left by a fallen Jedi master — and becomes Cal's closest friend.</p>
-        </div>
-        <div class="character-card">
-          <div class="character-avatar">🚀</div>
-          <h3>Greez Dritus</h3>
-          <div class="role">Ally · Pilot</div>
-          <p>The gruff but loveable pilot of the Stinger Mantis. Reluctantly dragged into danger, he proves his worth when it counts.</p>
-        </div>
-        <div class="character-card">
-          <div class="character-avatar">🌳</div>
-          <h3>Merrin</h3>
-          <div class="role">Ally · Nightsister</div>
-          <p>Last survivor of the Nightsisters of Dathomir, she joins Cal's cause after learning the truth about her people's fate.</p>
-        </div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-date">19 BBY</div>
-          <div class="timeline-text"><h4>Order 66</h4><p>Emperor Palpatine's command to clone troopers to eliminate all Jedi. Cal's master, Jaro Tapal, sacrifices himself to save him.</p></div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">14 BBY</div>
-          <div class="timeline-text"><h4>Bracca</h4><p>Cal works as a scrapper, hiding his identity. A moment of heroism exposes his Force abilities and changes everything.</p></div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">14 BBY</div>
-          <div class="timeline-text"><h4>The Hunt</h4><p>Cal joins the Stinger Mantis crew and begins the search for the Jedi Holocron across multiple planets.</p></div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">14 BBY</div>
-          <div class="timeline-text"><h4>The Reckoning</h4><p>Cal confronts his past, completes his training, and must make a choice that will define the future of the Jedi forever.</p></div>
-        </div>
-      </div>
-    </div>
+  <div class="platform-logos">
+    <img src="https://roma770.github.io/Jedi-Fallen-odred/box4-logo1.png" alt="PlayStation" onerror="this.style.display='none'">
+    <img src="https://roma770.github.io/Jedi-Fallen-odred/box4-logo1.png" alt="Xbox" onerror="this.style.display='none'">
+    <img src="https://roma770.github.io/Jedi-Fallen-odred/box4-logo3.png" alt="PC" onerror="this.style.display='none'">
   </div>
 </div>
 
-<!-- =================== GAMEPLAY PAGE =================== -->
-<div class="page" id="page-gameplay">
-  <div id="topbar"><a href="#" onclick="nav('support')">Support</a><span>|</span><a href="#" onclick="nav('forums')">Forums</a><span>|</span><a href="#" onclick="nav('support')">EA Help</a></div>
-  <nav style="position:sticky;top:0;z-index:200;background:rgba(6,6,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;padding:0 32px;height:64px;gap:32px;">
-    <div class="nav-logo" onclick="nav('main')" style="cursor:pointer"><img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="height:36px;"><div class="nav-logo-line"></div><div class="nav-logo-text">Official<br>Fan Site</div></div>
-    <div style="margin-left:auto;"><a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a></div>
-  </nav>
-  <div class="inner-page">
-    <div class="inner-hero">
-      <div class="inner-hero-bg" style="background-image:url('https://roma770.github.io/Jedi-Fallen-odred/6.jpg')"></div>
-      <div class="inner-hero-content">
-        <div class="inner-hero-eyebrow">Gameplay</div>
-        <h1 class="inner-hero-title">Master the<br><span style="color:var(--saber)">Force</span></h1>
-        <p class="inner-hero-sub">A challenging, rewarding combat system. Deep exploration. A galaxy of interconnected worlds to uncover.</p>
-      </div>
-    </div>
-    <button class="back-btn" onclick="nav('main')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>Back to Home</button>
-    <div class="inner-content">
-      <div class="stats-row">
-        <div class="stat-item"><div class="stat-num">5+</div><div class="stat-label">Planets to Explore</div></div>
-        <div class="stat-item"><div class="stat-num">40+</div><div class="stat-label">Hours of Content</div></div>
-        <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Difficulty Modes</div></div>
-        <div class="stat-item"><div class="stat-num">100+</div><div class="stat-label">Secrets to Discover</div></div>
-      </div>
-      <div class="inner-grid">
-        <div class="inner-card"><div class="icon">⚔️</div><h3>Lightsaber Combat</h3><p>A precise, skill-based combat system inspired by challenging action games. Block, parry, and riposte with perfect timing, or Force Push enemies off cliffs. No button mashing — mastery is earned.</p></div>
-        <div class="inner-card"><div class="icon">🌀</div><h3>Force Powers</h3><p>Slow time, push, pull, and unleash the Force in creative ways. Unlock new abilities as you progress through the story and revisit earlier areas with newly learned skills.</p></div>
-        <div class="inner-card"><div class="icon">🗺️</div><h3>Metroidvania Exploration</h3><p>Each planet is an interconnected map full of optional paths, hidden collectibles, and secrets. New Force abilities and tools unlock previously inaccessible routes, rewarding thorough exploration.</p></div>
-        <div class="inner-card"><div class="icon">🧩</div><h3>Environmental Puzzles</h3><p>Use the Force and BD-1's tools to solve puzzles woven into the environment. Ancient Zeffo tombs hide challenges that test your creativity and lateral thinking.</p></div>
-        <div class="inner-card"><div class="icon">🎨</div><h3>Customization</h3><p>Personalize Cal's lightsaber, outfit, and BD-1's appearance with cosmetics discovered through exploration. Hundreds of combinations make your Jedi uniquely yours.</p></div>
-        <div class="inner-card"><div class="icon">🏆</div><h3>Skill Tree</h3><p>Spend skill points earned in combat to unlock new moves, Force abilities, and passive upgrades. Build Cal's fighting style your way — aggressive attacker or patient defender.</p></div>
-      </div>
-      <h2>The Planets</h2>
-      <div class="planets-grid">
-        <div class="planet-card"><img src="https://roma770.github.io/Jedi-Fallen-odred/9.jpg" alt="Bracca"><div class="planet-card-body"><h3>Bracca</h3><p>A ship-breaking planet turned graveyard of the Clone Wars. Industrial, dangerous, and full of secrets buried within the wreckage of a fallen Republic.</p></div></div>
-        <div class="planet-card"><img src="https://roma770.github.io/Jedi-Fallen-odred/10.jpg" alt="Bogano"><div class="planet-card-body"><h3>Bogano</h3><p>A remote world where an ancient Jedi vault waits to be unlocked. Home to the curious boglings and the beginning of Cal's true mission.</p></div></div>
-        <div class="planet-card"><img src="https://roma770.github.io/Jedi-Fallen-odred/11.webp" alt="Zeffo"><div class="planet-card-body"><h3>Zeffo</h3><p>Wind-swept cliffs and ancient tombs hold the secrets of a long-dead civilization with a deep connection to the Force and the Jedi Order.</p></div></div>
-        <div class="planet-card"><img src="https://roma770.github.io/Jedi-Fallen-odred/7.avif" alt="Dathomir"><div class="planet-card-body"><h3>Dathomir</h3><p>A blood-red world steeped in dark side energy. The Nightsisters once ruled here — and their magic still lingers among the ruins.</p></div></div>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="saber-divider"></div>
 
-<!-- =================== EDITIONS PAGE =================== -->
-<div class="page" id="page-editions">
-  <div id="topbar"><a href="#" onclick="nav('support')">Support</a><span>|</span><a href="#" onclick="nav('forums')">Forums</a><span>|</span><a href="#" onclick="nav('support')">EA Help</a></div>
-  <nav style="position:sticky;top:0;z-index:200;background:rgba(6,6,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;padding:0 32px;height:64px;gap:32px;">
-    <div class="nav-logo" onclick="nav('main')" style="cursor:pointer"><img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="height:36px;"><div class="nav-logo-line"></div><div class="nav-logo-text">Official<br>Fan Site</div></div>
-    <div style="margin-left:auto;"><a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a></div>
-  </nav>
-  <div class="inner-page">
-    <div class="inner-hero">
-      <div class="inner-hero-bg" style="background-image:url('https://roma770.github.io/Jedi-Fallen-odred/12.jpg')"></div>
-      <div class="inner-hero-content">
-        <div class="inner-hero-eyebrow">Game Editions</div>
-        <h1 class="inner-hero-title">Choose Your<br>Edition</h1>
-        <p class="inner-hero-sub">Available on PlayStation, Xbox, and PC. Find the edition that's right for you.</p>
+<!-- ===================== CARDS ===================== -->
+<section id="cards">
+  <div class="section-eyebrow">Explore the Experience</div>
+  <div class="section-title">A Galaxy in Chaos</div>
+  <div class="cards-grid">
+    <div class="card reveal">
+      <img src="img/7.avif" alt="A Galaxy in Ruins" onerror="this.src='img/7.jpg'">
+      <div class="card-gradient"></div>
+      <div class="card-body">
+        <h3>A Galaxy in Ruins</h3>
+        <p>Pick up Cal Kestis's story five years after the fall of the Jedi Order.</p>
+        <div class="card-btns">
+          <a href="#" class="btn-gold">Buy Now</a>
+          <a href="#" class="btn-outline">Read Story</a>
+        </div>
       </div>
     </div>
-    <button class="back-btn" onclick="nav('main')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>Back to Home</button>
-    <div class="inner-content">
-      <div class="editions-grid">
-        <div class="edition-card">
-          <img src="https://roma770.github.io/Jedi-Fallen-odred/15.png" alt="Standard Edition">
-          <div class="edition-card-body">
-            <h3>Standard Edition</h3>
-            <ul><li>Full base game</li><li>All story content</li><li>All planets and areas</li></ul>
-            <a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a>
-          </div>
-        </div>
-        <div class="edition-card">
-          <img src="https://roma770.github.io/Jedi-Fallen-odred/16.avif" alt="Deluxe Edition">
-          <div class="edition-card-body">
-            <h3>Deluxe Edition</h3>
-            <ul><li>Full base game</li><li>Director's Cut content</li><li>Exclusive Orangutan BD-1 skin</li><li>Exclusive Crimson BD-1 skin</li><li>Digital art book</li></ul>
-            <a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a>
-          </div>
-        </div>
-        <div class="edition-card">
-          <img src="https://roma770.github.io/Jedi-Fallen-odred/17.jpg" alt="Collector's Edition">
-          <div class="edition-card-body">
-            <h3>Collector's Edition</h3>
-            <ul><li>Full Deluxe Edition</li><li>Cal Kestis statue (40cm)</li><li>Steelbook case</li><li>Art prints set</li><li>Exclusive lightsaber hilt replica</li></ul>
-            <a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a>
-          </div>
+    <div class="card reveal">
+      <img src="img/8.jpg" alt="Behind the Scenes">
+      <div class="card-gradient"></div>
+      <div class="card-body">
+        <h3>Behind the Scenes</h3>
+        <p>Go behind the curtain with the documentary on the making of the game.</p>
+        <div class="card-btns">
+          <a href="#" class="btn-gold">Watch Now</a>
+          <a href="#" class="btn-outline">More Videos</a>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- =================== BUY PAGE =================== -->
-<div class="page" id="page-buy">
-  <div id="topbar"><a href="#" onclick="nav('support')">Support</a><span>|</span><a href="#" onclick="nav('forums')">Forums</a><span>|</span><a href="#" onclick="nav('support')">EA Help</a></div>
-  <nav style="position:sticky;top:0;z-index:200;background:rgba(6,6,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;padding:0 32px;height:64px;gap:32px;">
-    <div class="nav-logo" onclick="nav('main')" style="cursor:pointer"><img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="height:36px;"><div class="nav-logo-line"></div><div class="nav-logo-text">Official<br>Fan Site</div></div>
-    <div style="margin-left:auto;"><a href="#" class="btn-gold" onclick="nav('main')">← Home</a></div>
-  </nav>
-  <div class="inner-page">
-    <div class="inner-hero">
-      <div class="inner-hero-bg" style="background-image:url('https://roma770.github.io/Jedi-Fallen-odred/6.jpg')"></div>
-      <div class="inner-hero-content">
-        <div class="inner-hero-eyebrow">Get the Game</div>
-        <h1 class="inner-hero-title">Buy<br>Fallen Order</h1>
-        <p class="inner-hero-sub">The award-winning Star Wars adventure. Available now on all platforms.</p>
+<!-- ===================== DETAILS / TABS ===================== -->
+<section id="details">
+  <div class="details-inner">
+    <div class="reveal">
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-tab="0">Buy Game</button>
+        <button class="tab-btn" data-tab="1">Buy DLC</button>
+        <button class="tab-btn" data-tab="2">Origin Access</button>
       </div>
-    </div>
-    <button class="back-btn" onclick="nav('main')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>Back to Home</button>
-    <div class="inner-content">
-      <div class="buy-options">
-        <div class="buy-card">
-          <h3>Standard</h3>
-          <div class="buy-price"><sup>$</sup>29.99</div>
-          <ul class="buy-features">
-            <li>Full game (PC / Console)</li>
-            <li>All story content</li>
-            <li>All 5 planets</li>
-            <li>New Game+ mode</li>
-          </ul>
-          <a href="https://www.ea.com/games/starwars/jedi-fallen-order" target="_blank" class="btn-gold" style="width:100%;text-align:center;display:block;">Buy on EA</a>
-        </div>
-        <div class="buy-card featured">
-          <h3>Deluxe</h3>
-          <div class="buy-price"><sup>$</sup>39.99</div>
-          <ul class="buy-features">
-            <li>Full game</li>
-            <li>Exclusive BD-1 skins</li>
-            <li>Orangutan & Bee skins</li>
-            <li>Digital art book</li>
-            <li>Director's cut content</li>
-          </ul>
-          <a href="https://www.ea.com/games/starwars/jedi-fallen-order" target="_blank" class="btn-gold" style="width:100%;text-align:center;display:block;">Buy on EA</a>
-        </div>
-        <div class="buy-card">
-          <h3>EA Play</h3>
-          <div class="buy-price"><sup>$</sup>4.99<span style="font-size:1rem;color:#888;">/mo</span></div>
-          <ul class="buy-features">
-            <li>Access to 100+ games</li>
-            <li>Includes Fallen Order</li>
-            <li>10-hour trials of new titles</li>
-            <li>Members-only discounts</li>
-          </ul>
-          <a href="https://www.ea.com/ea-play" target="_blank" class="btn-outline" style="width:100%;text-align:center;display:block;">Try EA Play</a>
-        </div>
-      </div>
-      <p style="color:#555;font-size:0.78rem;text-align:center;">*Prices are approximate. Actual prices may vary by platform and region. This is a fan site — click to visit EA's official store.</p>
-    </div>
-  </div>
-</div>
 
-<!-- =================== TRAILER PAGE =================== -->
-<div class="page" id="page-trailer">
-  <div id="topbar"><a href="#" onclick="nav('support')">Support</a><span>|</span><a href="#" onclick="nav('forums')">Forums</a><span>|</span><a href="#" onclick="nav('support')">EA Help</a></div>
-  <nav style="position:sticky;top:0;z-index:200;background:rgba(6,6,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;padding:0 32px;height:64px;gap:32px;">
-    <div class="nav-logo" onclick="nav('main')" style="cursor:pointer"><img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="height:36px;"><div class="nav-logo-line"></div><div class="nav-logo-text">Official<br>Fan Site</div></div>
-    <div style="margin-left:auto;"><a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a></div>
-  </nav>
-  <div class="inner-page">
-    <div class="inner-hero">
-      <div class="inner-hero-bg" style="background-image:url('https://roma770.github.io/Jedi-Fallen-odred/8.jpg')"></div>
-      <div class="inner-hero-content">
-        <div class="inner-hero-eyebrow">Media</div>
-        <h1 class="inner-hero-title">Trailers &<br>Videos</h1>
-        <p class="inner-hero-sub">Watch the official trailers, gameplay reveals, and behind-the-scenes content for Star Wars Jedi: Fallen Order.</p>
-      </div>
-    </div>
-    <button class="back-btn" onclick="nav('main')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>Back to Home</button>
-    <div class="inner-content">
-      <h2>Official Reveal Trailer</h2>
-      <div class="video-embed">
-        <iframe src="https://www.youtube.com/embed/tRhLtDqQkFg" allowfullscreen title="Star Wars Jedi Fallen Order Reveal Trailer"></iframe>
-      </div>
-      <h2>Gameplay Trailer</h2>
-      <div class="video-embed">
-        <iframe src="https://www.youtube.com/embed/nADZxwKMoG8" allowfullscreen title="Star Wars Jedi Fallen Order Gameplay Trailer"></iframe>
-      </div>
-      <h2>Behind the Scenes</h2>
-      <p>Go behind the curtain to see how Respawn Entertainment crafted the most authentic Star Wars game in decades — from motion capture to lightsaber sound design.</p>
-      <div class="video-embed">
-        <iframe src="https://www.youtube.com/embed/4BsNeFGl7Xo" allowfullscreen title="Jedi Fallen Order Behind the Scenes"></iframe>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- =================== GALLERY PAGE =================== -->
-<div class="page" id="page-gallery">
-  <div id="topbar"><a href="#" onclick="nav('support')">Support</a><span>|</span><a href="#" onclick="nav('forums')">Forums</a><span>|</span><a href="#" onclick="nav('support')">EA Help</a></div>
-  <nav style="position:sticky;top:0;z-index:200;background:rgba(6,6,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;padding:0 32px;height:64px;gap:32px;">
-    <div class="nav-logo" onclick="nav('main')" style="cursor:pointer"><img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="height:36px;"><div class="nav-logo-line"></div><div class="nav-logo-text">Official<br>Fan Site</div></div>
-    <div style="margin-left:auto;"><a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a></div>
-  </nav>
-  <div class="inner-page">
-    <div style="padding:30px 80px 0;">
-      <button class="back-btn" onclick="nav('main')" style="margin:0 0 20px;"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>Back to Home</button>
-    </div>
-    <div class="inner-content" style="padding-top:20px;">
-      <div class="section-eyebrow">Media</div>
-      <div class="section-title" style="margin-bottom:30px;">Screenshots</div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-        <img src="https://roma770.github.io/Jedi-Fallen-odred/9.jpg" alt="Screenshot" style="width:100%;height:220px;object-fit:cover;border:1px solid rgba(201,168,76,0.15);cursor:pointer;" onclick="openLightbox(this.src)">
-        <img src="https://roma770.github.io/Jedi-Fallen-odred/10.jpg" alt="Screenshot" style="width:100%;height:220px;object-fit:cover;border:1px solid rgba(201,168,76,0.15);cursor:pointer;" onclick="openLightbox(this.src)">
-        <img src="https://roma770.github.io/Jedi-Fallen-odred/11.webp" alt="Screenshot" style="width:100%;height:220px;object-fit:cover;border:1px solid rgba(201,168,76,0.15);cursor:pointer;" onclick="openLightbox(this.src)">
-        <img src="https://roma770.github.io/Jedi-Fallen-odred/7.avif" alt="Screenshot" style="width:100%;height:220px;object-fit:cover;border:1px solid rgba(201,168,76,0.15);cursor:pointer;" onclick="openLightbox(this.src)">
-        <img src="https://roma770.github.io/Jedi-Fallen-odred/8.jpg" alt="Screenshot" style="width:100%;height:220px;object-fit:cover;border:1px solid rgba(201,168,76,0.15);cursor:pointer;" onclick="openLightbox(this.src)">
-        <img src="https://roma770.github.io/Jedi-Fallen-odred/6.jpg" alt="Screenshot" style="width:100%;height:220px;object-fit:cover;border:1px solid rgba(201,168,76,0.15);cursor:pointer;" onclick="openLightbox(this.src)">
-        <img src="https://roma770.github.io/Jedi-Fallen-odred/12.jpg" alt="Screenshot" style="width:100%;height:220px;object-fit:cover;border:1px solid rgba(201,168,76,0.15);cursor:pointer;" onclick="openLightbox(this.src)">
-        <img src="https://roma770.github.io/Jedi-Fallen-odred/13.webp" alt="Screenshot" style="width:100%;height:220px;object-fit:cover;border:1px solid rgba(201,168,76,0.15);cursor:pointer;" onclick="openLightbox(this.src)">
-        <img src="https://roma770.github.io/Jedi-Fallen-odred/14.webp" alt="Screenshot" style="width:100%;height:220px;object-fit:cover;border:1px solid rgba(201,168,76,0.15);cursor:pointer;" onclick="openLightbox(this.src)">
-      </div>
-    </div>
-  </div>
-  <!-- Lightbox -->
-  <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:9999;display:none;align-items:center;justify-content:center;" onclick="closeLightbox()">
-    <img id="lightbox-img" style="max-width:90vw;max-height:90vh;object-fit:contain;">
-    <button onclick="closeLightbox()" style="position:absolute;top:20px;right:30px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;">✕</button>
-  </div>
-</div>
-
-<!-- =================== NEWS PAGE =================== -->
-<div class="page" id="page-news-page">
-  <div id="topbar"><a href="#" onclick="nav('support')">Support</a><span>|</span><a href="#" onclick="nav('forums')">Forums</a><span>|</span><a href="#" onclick="nav('support')">EA Help</a></div>
-  <nav style="position:sticky;top:0;z-index:200;background:rgba(6,6,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;padding:0 32px;height:64px;gap:32px;">
-    <div class="nav-logo" onclick="nav('main')" style="cursor:pointer"><img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="height:36px;"><div class="nav-logo-line"></div><div class="nav-logo-text">Official<br>Fan Site</div></div>
-    <div style="margin-left:auto;"><a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a></div>
-  </nav>
-  <div class="inner-page">
-    <div class="inner-hero">
-      <div class="inner-hero-bg" style="background-image:url('https://roma770.github.io/Jedi-Fallen-odred/12.jpg')"></div>
-      <div class="inner-hero-content">
-        <div class="inner-hero-eyebrow">Latest Updates</div>
-        <h1 class="inner-hero-title">News &<br>Articles</h1>
-      </div>
-    </div>
-    <button class="back-btn" onclick="nav('main')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>Back to Home</button>
-    <div class="inner-content">
-      <div style="max-width:860px;">
-        <div style="border:1px solid rgba(201,168,76,0.15);margin-bottom:24px;background:var(--dark3);">
-          <img src="https://roma770.github.io/Jedi-Fallen-odred/12.jpg" style="width:100%;height:280px;object-fit:cover;">
-          <div style="padding:28px;">
-            <div class="news-date">15.11.2019</div>
-            <div class="news-headline" style="font-size:1.4rem;margin-bottom:12px;">Release Day — A New Hope for Star Wars Gaming</div>
-            <p style="color:#aaa;line-height:1.8;font-size:0.92rem;">Star Wars Jedi: Fallen Order launched on November 15, 2019, to widespread critical acclaim. Developed by Respawn Entertainment — the studio behind Titanfall and Apex Legends — the game marked EA's first major single-player Star Wars title in over a decade. Critics and fans alike hailed it as a return to form for the franchise, citing its tight combat, compelling story, and rich world-building. The game sold over 10 million copies in its first year.</p>
-          </div>
-        </div>
-        <div style="border:1px solid rgba(201,168,76,0.15);margin-bottom:24px;background:var(--dark3);">
-          <img src="https://roma770.github.io/Jedi-Fallen-odred/13.webp" style="width:100%;height:280px;object-fit:cover;">
-          <div style="padding:28px;">
-            <div class="news-date">29.10.2019</div>
-            <div class="news-headline" style="font-size:1.4rem;margin-bottom:12px;">The First Story-Driven Title in a Decade</div>
-            <p style="color:#aaa;line-height:1.8;font-size:0.92rem;">Jedi: Fallen Order represented a seismic shift in EA's approach to Star Wars games. Following years of controversy over multiplayer-focused titles and microtransactions, Respawn's single-player, narrative-driven adventure was exactly what fans had been asking for. Set between Episode III and Episode IV, the game explores a critical gap in the Star Wars timeline and introduces an entirely original cast of characters.</p>
-          </div>
-        </div>
-        <div style="border:1px solid rgba(201,168,76,0.15);margin-bottom:24px;background:var(--dark3);">
-          <img src="https://roma770.github.io/Jedi-Fallen-odred/14.webp" style="width:100%;height:280px;object-fit:cover;">
-          <div style="padding:28px;">
-            <div class="news-date">9.06.2018</div>
-            <div class="news-headline" style="font-size:1.4rem;margin-bottom:12px;">First Announcement at EA Play 2018</div>
-            <p style="color:#aaa;line-height:1.8;font-size:0.92rem;">EA and Respawn Entertainment officially announced Star Wars Jedi: Fallen Order at EA Play in June 2018, confirming that a single-player, narrative-driven Star Wars game was in development. The announcement was met with enormous excitement from the community. Lead writer Aaron Contreras and game director Stig Asmussen teased an action-adventure title drawing inspiration from challenging combat games while staying deeply rooted in Star Wars lore.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- =================== PATCH NOTES PAGE =================== -->
-<div class="page" id="page-patch-notes">
-  <div id="topbar"><a href="#" onclick="nav('support')">Support</a><span>|</span><a href="#" onclick="nav('forums')">Forums</a><span>|</span><a href="#" onclick="nav('support')">EA Help</a></div>
-  <nav style="position:sticky;top:0;z-index:200;background:rgba(6,6,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;padding:0 32px;height:64px;gap:32px;">
-    <div class="nav-logo" onclick="nav('main')" style="cursor:pointer"><img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="height:36px;"><div class="nav-logo-line"></div><div class="nav-logo-text">Official<br>Fan Site</div></div>
-    <div style="margin-left:auto;"><a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a></div>
-  </nav>
-  <div class="inner-page">
-    <div style="padding:30px 80px 0;">
-      <button class="back-btn" onclick="nav('main')" style="margin:0 0 20px;"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>Back to Home</button>
-    </div>
-    <div class="inner-content" style="padding-top:10px;">
-      <div class="section-eyebrow">Updates</div>
-      <div class="section-title" style="margin-bottom:30px;">Patch Notes</div>
-      <div class="patch-list">
-        <div class="patch-item"><div class="patch-ver">v1.05 · March 2020</div><div class="patch-name">New Game+ & Performance Update</div><ul class="patch-changes"><li>Added New Game+ mode — start over with all abilities unlocked</li><li>Added Inquisitor Cal skin for New Game+</li><li>Improved frame rate on PS4 Pro and Xbox One X</li><li>Fixed rare progression-blocking bug on Zeffo</li><li>Improved enemy AI pathfinding in tight corridors</li></ul></div>
-        <div class="patch-item"><div class="patch-ver">v1.04 · January 2020</div><div class="patch-name">Stability & Bug Fix Patch</div><ul class="patch-changes"><li>Resolved crash on startup for certain GPU configurations (PC)</li><li>Fixed camera clipping through geometry in Dathomir caves</li><li>Improved collision detection near ledges</li><li>Fixed Stim Canister count resetting after fast travel</li><li>Audio desync fix for cutscenes on Xbox One</li></ul></div>
-        <div class="patch-item"><div class="patch-ver">v1.03 · December 2019</div><div class="patch-name">Post-Launch Content Update</div><ul class="patch-changes"><li>Added 3 new BD-1 skins and 2 new lightsaber materials</li><li>Improved load times on all platforms</li><li>Fixed Trilla boss fight soft-lock on Story difficulty</li><li>HDR calibration improvements for PS4 and Xbox</li></ul></div>
-        <div class="patch-item"><div class="patch-ver">v1.01 · November 2019</div><div class="patch-name">Day One Patch</div><ul class="patch-changes"><li>Performance optimizations across all platforms</li><li>Fixed multiple crash-to-desktop issues on PC</li><li>Adjusted Nightsister Zombie difficulty on Dathomir</li><li>Minor dialogue timing fixes</li></ul></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- =================== COMMUNITY PAGE =================== -->
-<div class="page" id="page-community">
-  <div id="topbar"><a href="#" onclick="nav('support')">Support</a><span>|</span><a href="#" onclick="nav('forums')">Forums</a><span>|</span><a href="#" onclick="nav('support')">EA Help</a></div>
-  <nav style="position:sticky;top:0;z-index:200;background:rgba(6,6,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;padding:0 32px;height:64px;gap:32px;">
-    <div class="nav-logo" onclick="nav('main')" style="cursor:pointer"><img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="height:36px;"><div class="nav-logo-line"></div><div class="nav-logo-text">Official<br>Fan Site</div></div>
-    <div style="margin-left:auto;"><a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a></div>
-  </nav>
-  <div class="inner-page">
-    <div style="padding:30px 80px 0;">
-      <button class="back-btn" onclick="nav('main')" style="margin:0 0 20px;"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>Back to Home</button>
-    </div>
-    <div class="inner-content" style="padding-top:10px;">
-      <div class="section-eyebrow">Join the Order</div>
-      <div class="section-title" style="margin-bottom:10px;">Community</div>
-      <p>Connect with millions of Jedi: Fallen Order fans around the world. Share tips, fan art, and theories.</p>
-      <div class="community-grid">
-        <div class="community-card"><div class="icon">💬</div><h3>Reddit</h3><p>Discussion, memes, and fan theories from the global Fallen Order community.</p><a href="https://www.reddit.com/r/FallenOrder/" target="_blank">r/FallenOrder →</a></div>
-        <div class="community-card"><div class="icon">🎮</div><h3>EA Forums</h3><p>Official community hub. Report bugs, share feedback, and connect with other players.</p><a href="https://answers.ea.com/t5/Star-Wars-Jedi-Fallen-Order/ct-p/star-wars-jedi-fallen-order-en" target="_blank">Visit Forums →</a></div>
-        <div class="community-card"><div class="icon">📺</div><h3>YouTube</h3><p>Watch speedruns, guides, lore dives, and fan-made content about Fallen Order.</p><a href="https://www.youtube.com/results?search_query=jedi+fallen+order" target="_blank">Watch Videos →</a></div>
-        <div class="community-card"><div class="icon">🐦</div><h3>Twitter / X</h3><p>Follow #JediFallenOrder for news, fan art, and community highlights.</p><a href="https://twitter.com/hashtag/JediFallenOrder" target="_blank">#JediFallenOrder →</a></div>
-        <div class="community-card"><div class="icon">🎨</div><h3>ArtStation</h3><p>Discover stunning fan art and concept art inspired by the world of Cal Kestis.</p><a href="https://www.artstation.com/search?q=jedi+fallen+order" target="_blank">Explore Art →</a></div>
-        <div class="community-card"><div class="icon">📖</div><h3>Wiki</h3><p>The comprehensive Fallen Order encyclopaedia — lore, collectibles, secrets, and more.</p><a href="https://starwars.fandom.com/wiki/Star_Wars_Jedi:_Fallen_Order" target="_blank">Read Wiki →</a></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- =================== RESPAWN PAGE =================== -->
-<div class="page" id="page-respawn">
-  <div id="topbar"><a href="#" onclick="nav('support')">Support</a><span>|</span><a href="#" onclick="nav('forums')">Forums</a><span>|</span><a href="#" onclick="nav('support')">EA Help</a></div>
-  <nav style="position:sticky;top:0;z-index:200;background:rgba(6,6,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;padding:0 32px;height:64px;gap:32px;">
-    <div class="nav-logo" onclick="nav('main')" style="cursor:pointer"><img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="height:36px;"><div class="nav-logo-line"></div><div class="nav-logo-text">Official<br>Fan Site</div></div>
-    <div style="margin-left:auto;"><a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a></div>
-  </nav>
-  <div class="inner-page">
-    <div class="inner-hero">
-      <div class="inner-hero-bg" style="background-image:url('https://roma770.github.io/Jedi-Fallen-odred/8.jpg')"></div>
-      <div class="inner-hero-content">
-        <div class="inner-hero-eyebrow">About the Developer</div>
-        <h1 class="inner-hero-title">Respawn<br>Entertainment</h1>
-        <p class="inner-hero-sub">The studio that brought you Titanfall, Apex Legends, and the finest Star Wars game ever made.</p>
-      </div>
-    </div>
-    <button class="back-btn" onclick="nav('main')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>Back to Home</button>
-    <div class="inner-content">
-      <div class="two-col">
-        <div>
-          <h2>About Respawn</h2>
-          <p>Founded in 2010 by Vince Zampella and Jason West — the original creators of Call of Duty — Respawn Entertainment has established itself as one of the most innovative studios in the industry. Based in Los Angeles, California, Respawn is known for creating games with a distinct feel for movement, momentum, and momentum-based combat.</p>
-          <p>After the breakthrough success of Titanfall and the phenomenon that became Apex Legends, Respawn took on the challenge of bringing a single-player, story-driven Star Wars experience to life — and delivered Jedi: Fallen Order, which sold over 10 million copies in its first year.</p>
-        </div>
-        <img src="https://roma770.github.io/Jedi-Fallen-odred/9.jpg" alt="Respawn Studio">
-      </div>
-      <div class="inner-grid">
-        <div class="inner-card"><div class="icon">🎮</div><h3>Titanfall (2014)</h3><p>Respawn's debut — a fast-paced multiplayer shooter that introduced wall-running, mechs, and momentum-based movement to a wide audience.</p></div>
-        <div class="inner-card"><div class="icon">🏆</div><h3>Apex Legends (2019)</h3><p>A genre-defining battle royale that accumulated over 70 million players in its first year and is still going strong today.</p></div>
-        <div class="inner-card"><div class="icon">⭐</div><h3>Jedi: Fallen Order (2019)</h3><p>The studio's first single-player narrative adventure — and possibly their most acclaimed game to date, beloved by critics and fans worldwide.</p></div>
-      </div>
-      <div class="highlight-box">
-        "We wanted to make a game that felt authentically Star Wars — not just skin-deep, but in every mechanic and every moment." — Stig Asmussen, Game Director
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- =================== UNIVERSE PAGE =================== -->
-<div class="page" id="page-universe">
-  <div id="topbar"><a href="#" onclick="nav('support')">Support</a><span>|</span><a href="#" onclick="nav('forums')">Forums</a><span>|</span><a href="#" onclick="nav('support')">EA Help</a></div>
-  <nav style="position:sticky;top:0;z-index:200;background:rgba(6,6,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;padding:0 32px;height:64px;gap:32px;">
-    <div class="nav-logo" onclick="nav('main')" style="cursor:pointer"><img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="height:36px;"><div class="nav-logo-line"></div><div class="nav-logo-text">Official<br>Fan Site</div></div>
-    <div style="margin-left:auto;"><a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a></div>
-  </nav>
-  <div class="inner-page">
-    <div class="inner-hero">
-      <div class="inner-hero-bg" style="background-image:url('https://roma770.github.io/Jedi-Fallen-odred/7.avif')"></div>
-      <div class="inner-hero-content">
-        <div class="inner-hero-eyebrow">Lore & Canon</div>
-        <h1 class="inner-hero-title">The Star Wars<br>Universe</h1>
-        <p class="inner-hero-sub">How Jedi: Fallen Order fits into the larger Star Wars galaxy — and why it matters.</p>
-      </div>
-    </div>
-    <button class="back-btn" onclick="nav('main')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>Back to Home</button>
-    <div class="inner-content">
-      <h2>Canon Placement</h2>
-      <p>Jedi: Fallen Order is set in 14 BBY (Before the Battle of Yavin) — five years after the events of Star Wars: Episode III – Revenge of the Sith, and seventeen years before Episode IV – A New Hope. This places it squarely in the Imperial Era, one of the darkest periods in the galaxy's history.</p>
-      <div class="highlight-box">The Dark Times. The period between Episodes III and IV, when the Emperor's grip on the galaxy tightened and the last Jedi went into hiding — or were hunted down.</div>
-      <div class="inner-grid">
-        <div class="inner-card"><div class="icon">🌌</div><h3>The Galactic Empire</h3><p>Emperor Palpatine rules with an iron fist. Clone troopers have been replaced by Stormtroopers. Dissent is crushed. The Jedi are extinct — or so the Empire believes.</p></div>
-        <div class="inner-card"><div class="icon">🔴</div><h3>The Inquisitors</h3><p>Dark side warriors tasked with hunting down surviving Jedi. Former Padawans and Knights broken by the Empire and turned against their own kind — a chilling concept that first appeared in comics.</p></div>
-        <div class="inner-card"><div class="icon">🌿</div><h3>The Wookiees</h3><p>On Kashyyyk, the Wookiees — Chewbacca's species — are enslaved by the Empire. Jedi: Fallen Order is one of the few stories to explore this important thread from the wider Star Wars canon.</p></div>
-      </div>
-      <h2>Connected Canon</h2>
-      <p>Fallen Order connects to a broader network of Star Wars stories. The Nightsisters of Dathomir were first explored in Star Wars: The Clone Wars. The Purge Troopers and Inquisitors appear in both comics and the Obi-Wan Kenobi Disney+ series. BD-1's discovery of the fallen Jedi Cordova ties into lore threads extending far beyond the game itself.</p>
-    </div>
-  </div>
-</div>
-
-<!-- =================== PRESS KIT PAGE =================== -->
-<div class="page" id="page-press">
-  <div id="topbar"><a href="#" onclick="nav('support')">Support</a><span>|</span><a href="#" onclick="nav('forums')">Forums</a><span>|</span><a href="#" onclick="nav('support')">EA Help</a></div>
-  <nav style="position:sticky;top:0;z-index:200;background:rgba(6,6,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;padding:0 32px;height:64px;gap:32px;">
-    <div class="nav-logo" onclick="nav('main')" style="cursor:pointer"><img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="height:36px;"><div class="nav-logo-line"></div><div class="nav-logo-text">Official<br>Fan Site</div></div>
-    <div style="margin-left:auto;"><a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a></div>
-  </nav>
-  <div class="inner-page">
-    <div style="padding:30px 80px 0;">
-      <button class="back-btn" onclick="nav('main')" style="margin:0 0 20px;"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>Back to Home</button>
-    </div>
-    <div class="inner-content" style="padding-top:10px;">
-      <div class="section-eyebrow">Critical Reception</div>
-      <div class="section-title" style="margin-bottom:10px;">Press Kit</div>
-      <div class="stats-row" style="margin-bottom:40px;">
-        <div class="stat-item"><div class="stat-num">85</div><div class="stat-label">Metacritic Score (PC)</div></div>
-        <div class="stat-item"><div class="stat-num">10M+</div><div class="stat-label">Copies Sold (Year 1)</div></div>
-        <div class="stat-item"><div class="stat-num">50+</div><div class="stat-label">Awards Nominated</div></div>
-        <div class="stat-item"><div class="stat-num">10</div><div class="stat-label">Game of the Year Wins</div></div>
-      </div>
-      <h2>Critical Praise</h2>
-      <div class="press-card"><div class="press-logo">🎯</div><div class="press-info"><h3>IGN</h3><div class="score">9/10</div><p>Jedi: Fallen Order is the Star Wars game fans have been waiting for. Tight combat, a compelling story, and a galaxy that feels truly alive combine to create Respawn's best work yet.</p></div></div>
-      <div class="press-card"><div class="press-logo">🏆</div><div class="press-info"><h3>Game Informer</h3><div class="score">9/10</div><p>This is the redemption arc EA's Star Wars licence needed. A genuine, heartfelt adventure that puts story and gameplay craft above all else.</p></div></div>
-      <div class="press-card"><div class="press-logo">⭐</div><div class="press-info"><h3>Eurogamer</h3><div class="score">Essential</div><p>Respawn has made the most of its beloved licence by creating a game that feels both authentically Star Wars and genuinely great in its own right.</p></div></div>
-      <div class="press-card"><div class="press-logo">🎮</div><div class="press-info"><h3>PC Gamer</h3><div class="score">85/100</div><p>A love letter to the Jedi and a challenge to players who want to earn every victory. Fallen Order is the rare licensed game that exceeds expectations.</p></div></div>
-    </div>
-  </div>
-</div>
-
-<!-- =================== SUPPORT / FORUMS PAGE =================== -->
-<div class="page" id="page-support">
-  <div id="topbar"><a href="#" onclick="nav('support')">Support</a><span>|</span><a href="#" onclick="nav('forums')">Forums</a><span>|</span><a href="#" onclick="nav('support')">EA Help</a></div>
-  <nav style="position:sticky;top:0;z-index:200;background:rgba(6,6,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;padding:0 32px;height:64px;gap:32px;">
-    <div class="nav-logo" onclick="nav('main')" style="cursor:pointer"><img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="height:36px;"><div class="nav-logo-line"></div><div class="nav-logo-text">Official<br>Fan Site</div></div>
-    <div style="margin-left:auto;"><a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a></div>
-  </nav>
-  <div class="inner-page">
-    <div style="padding:30px 80px 0;">
-      <button class="back-btn" onclick="nav('main')" style="margin:0 0 20px;"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>Back to Home</button>
-    </div>
-    <div class="inner-content" style="padding-top:10px;">
-      <div class="section-eyebrow">Help & Support</div>
-      <div class="section-title" style="margin-bottom:10px;">Support Center</div>
-      <p>Need help with the game? Here are the official support channels from EA and Respawn.</p>
-      <div class="inner-grid" style="margin-top:30px;">
-        <div class="inner-card"><div class="icon">🛠️</div><h3>EA Help</h3><p>Official EA support for technical issues, account problems, and refund requests.</p><a href="https://help.ea.com" target="_blank" class="btn-outline" style="margin-top:16px;display:inline-block;">Visit EA Help →</a></div>
-        <div class="inner-card"><div class="icon">💬</div><h3>Community Forums</h3><p>Ask the community for help, share solutions, and connect with fellow players.</p><a href="https://answers.ea.com/t5/Star-Wars-Jedi-Fallen-Order/ct-p/star-wars-jedi-fallen-order-en" target="_blank" class="btn-outline" style="margin-top:16px;display:inline-block;">Go to Forums →</a></div>
-        <div class="inner-card"><div class="icon">🐛</div><h3>Report a Bug</h3><p>Found an issue? Report it to Respawn directly through the official bug tracker.</p><a href="https://answers.ea.com/t5/Star-Wars-Jedi-Fallen-Order/ct-p/star-wars-jedi-fallen-order-en" target="_blank" class="btn-outline" style="margin-top:16px;display:inline-block;">Report Bug →</a></div>
-      </div>
-      <h2 style="margin-top:40px;">Common Issues</h2>
-      <div class="patch-list" style="margin-top:20px;">
-        <div class="patch-item" style="cursor:pointer;"><div class="patch-name">The game won't launch on PC</div><div class="news-excerpt" style="color:#888;font-size:0.84rem;margin-top:8px;">Try verifying game files through your platform client (Steam, EA App, or Epic). Ensure your GPU drivers are up to date. If using an NVIDIA card, check that DirectX 11 is enabled.</div></div>
-        <div class="patch-item" style="cursor:pointer;"><div class="patch-name">Progress not saving</div><div class="news-excerpt" style="color:#888;font-size:0.84rem;margin-top:8px;">Fallen Order autosaves at meditation points. Make sure you're resting at a meditation point before quitting. Cloud save sync issues can sometimes cause lost progress — check your platform's cloud save settings.</div></div>
-        <div class="patch-item" style="cursor:pointer;"><div class="patch-name">Cal is stuck and can't move</div><div class="news-excerpt" style="color:#888;font-size:0.84rem;margin-top:8px;">If Cal becomes stuck in geometry, open the menu and select "Return to Last Meditation Point." This respawns you safely without losing progress.</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- =================== FORUMS PAGE =================== -->
-<div class="page" id="page-forums">
-  <div id="topbar"><a href="#" onclick="nav('support')">Support</a><span>|</span><a href="#" onclick="nav('forums')">Forums</a><span>|</span><a href="#" onclick="nav('support')">EA Help</a></div>
-  <nav style="position:sticky;top:0;z-index:200;background:rgba(6,6,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;padding:0 32px;height:64px;gap:32px;">
-    <div class="nav-logo" onclick="nav('main')" style="cursor:pointer"><img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="height:36px;"><div class="nav-logo-line"></div><div class="nav-logo-text">Official<br>Fan Site</div></div>
-    <div style="margin-left:auto;"><a href="#" class="btn-gold" onclick="nav('buy')">Buy Now</a></div>
-  </nav>
-  <div class="inner-page">
-    <div style="padding:30px 80px 0;">
-      <button class="back-btn" onclick="nav('main')" style="margin:0 0 20px;"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>Back to Home</button>
-    </div>
-    <div class="inner-content" style="padding-top:10px;">
-      <div class="section-eyebrow">Community</div>
-      <div class="section-title" style="margin-bottom:10px;">Forums</div>
-      <p>Join the conversation with the community. This is a fan site — visit the links below for the official and community-run forums.</p>
-      <div class="community-grid" style="margin-top:30px;">
-        <div class="community-card"><div class="icon">📋</div><h3>EA Official Forums</h3><p>The official place for bug reports, feedback, and game discussion.</p><a href="https://answers.ea.com/t5/Star-Wars-Jedi-Fallen-Order/ct-p/star-wars-jedi-fallen-order-en" target="_blank">Join Forums →</a></div>
-        <div class="community-card"><div class="icon">🔴</div><h3>Reddit</h3><p>The most active Fallen Order community — tens of thousands of members.</p><a href="https://www.reddit.com/r/FallenOrder/" target="_blank">r/FallenOrder →</a></div>
-        <div class="community-card"><div class="icon">💬</div><h3>Discord</h3><p>Real-time chat with other fans. Find groups, share tips, and discuss lore.</p><a href="https://discord.gg/fallenorder" target="_blank">Join Discord →</a></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- =================== PRIVACY PAGE =================== -->
-<div class="page" id="page-privacy">
-  <div id="topbar"><a href="#" onclick="nav('support')">Support</a><span>|</span><a href="#" onclick="nav('forums')">Forums</a></div>
-  <nav style="position:sticky;top:0;z-index:200;background:rgba(6,6,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;padding:0 32px;height:64px;"><div class="nav-logo" onclick="nav('main')" style="cursor:pointer"><img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="height:36px;"><div class="nav-logo-line"></div><div class="nav-logo-text">Official<br>Fan Site</div></div></nav>
-  <div class="inner-page">
-    <div style="padding:30px 80px 0;"><button class="back-btn" onclick="nav('main')" style="margin:0 0 20px;"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>Back to Home</button></div>
-    <div class="inner-content" style="padding-top:10px;max-width:800px;">
-      <div class="section-title" style="margin-bottom:30px;">Privacy Policy</div>
-      <p style="color:#666;font-size:0.82rem;margin-bottom:30px;">Last updated: November 2019 · This is a non-official fan site.</p>
-      <div class="privacy-section"><h2>1. Information We Collect</h2><p>This fan site does not collect personal information. We do not have user accounts, registration, or payment systems. The site is static and does not track individual users.</p></div>
-      <div class="privacy-section"><h2>2. Cookies</h2><p>This site may use basic browser cookies for functionality. We do not use advertising cookies or third-party tracking cookies. See our <a href="#" onclick="nav('cookies')" style="color:var(--gold)">Cookie Policy</a> for details.</p></div>
-      <div class="privacy-section"><h2>3. Third-Party Links</h2><p>This site contains links to external websites including EA.com, YouTube, Reddit, and others. We are not responsible for the privacy practices of those sites. Please review their individual privacy policies.</p></div>
-      <div class="privacy-section"><h2>4. Intellectual Property</h2><p>Star Wars and all related characters, names, and elements are trademarks of Lucasfilm Ltd. This is an unofficial fan site created for educational and entertainment purposes. All game images and assets belong to their respective owners (EA, Respawn Entertainment, Lucasfilm).</p></div>
-      <div class="privacy-section"><h2>5. Contact</h2><p>For questions about this fan site, visit our <a href="#" onclick="nav('contacts')" style="color:var(--gold)">contacts page</a>.</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- =================== COOKIES PAGE =================== -->
-<div class="page" id="page-cookies">
-  <div id="topbar"><a href="#" onclick="nav('support')">Support</a><span>|</span><a href="#" onclick="nav('forums')">Forums</a></div>
-  <nav style="position:sticky;top:0;z-index:200;background:rgba(6,6,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;padding:0 32px;height:64px;"><div class="nav-logo" onclick="nav('main')" style="cursor:pointer"><img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="height:36px;"><div class="nav-logo-line"></div><div class="nav-logo-text">Official<br>Fan Site</div></div></nav>
-  <div class="inner-page">
-    <div style="padding:30px 80px 0;"><button class="back-btn" onclick="nav('main')" style="margin:0 0 20px;"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>Back to Home</button></div>
-    <div class="inner-content" style="padding-top:10px;max-width:800px;">
-      <div class="section-title" style="margin-bottom:30px;">Cookie Policy</div>
-      <p style="color:#aaa;margin-bottom:30px;">This page explains how this fan site uses cookies — small text files stored in your browser to improve your experience.</p>
-      <div class="privacy-section"><h2>What Are Cookies?</h2><p>Cookies are small data files placed on your computer or mobile device when you visit a website. They allow the site to remember your actions and preferences over time.</p></div>
-      <div class="privacy-section"><h2>Cookies We Use</h2>
-        <table class="cookie-table">
-          <thead><tr><th>Cookie Name</th><th>Type</th><th>Purpose</th><th>Duration</th></tr></thead>
-          <tbody>
-            <tr><td>session_pref</td><td>Functional</td><td>Remembers tab preferences on the game details section</td><td>Session</td></tr>
-            <tr><td>gallery_state</td><td>Functional</td><td>Saves which gallery image was last viewed</td><td>Session</td></tr>
-          </tbody>
+      <div class="tab-panel active">
+        <h3>Feel the Force</h3>
+        <p>Master every nuance of lightsaber combat — strikes, blocks, and dodges — and overcome enemies far stronger than you. Wield a Jedi's weapon and the Force itself to survive every trial ahead.</p>
+        <table class="info-table">
+          <tr><td>Genre</td><td>Souls-like / Action-Adventure</td></tr>
+          <tr><td>Universe</td><td>Star Wars</td></tr>
         </table>
       </div>
-      <div class="privacy-section"><h2>Third-Party Cookies</h2><p>YouTube video embeds on this site may set cookies when you play a video. These are governed by Google's privacy policy.</p></div>
-      <div class="privacy-section"><h2>Managing Cookies</h2><p>You can control and delete cookies through your browser settings. Note that disabling cookies may affect some functionality of this site.</p></div>
-    </div>
-  </div>
-</div>
 
-<!-- =================== CONTACTS PAGE =================== -->
-<div class="page" id="page-contacts">
-  <div id="topbar"><a href="#" onclick="nav('support')">Support</a><span>|</span><a href="#" onclick="nav('forums')">Forums</a></div>
-  <nav style="position:sticky;top:0;z-index:200;background:rgba(6,6,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;padding:0 32px;height:64px;"><div class="nav-logo" onclick="nav('main')" style="cursor:pointer"><img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="height:36px;"><div class="nav-logo-line"></div><div class="nav-logo-text">Official<br>Fan Site</div></div></nav>
-  <div class="inner-page">
-    <div style="padding:30px 80px 0;"><button class="back-btn" onclick="nav('main')" style="margin:0 0 20px;"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>Back to Home</button></div>
-    <div class="inner-content" style="padding-top:10px;">
-      <div class="section-title" style="margin-bottom:10px;">Contact Us</div>
-      <p>This is a fan site, not affiliated with EA or Respawn Entertainment. For official game support, please visit <a href="https://help.ea.com" target="_blank" style="color:var(--gold)">EA Help</a>.</p>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h3>Fan Site Contact</h3>
-          <div class="contact-method">
-            <div class="contact-icon">🌐</div>
-            <div class="contact-text"><strong>Website</strong><span><a href="https://roma770.github.io/" target="_blank" style="color:var(--gold)">roma770.github.io</a></span></div>
-          </div>
-          <div class="contact-method">
-            <div class="contact-icon">💻</div>
-            <div class="contact-text"><strong>GitHub</strong><span><a href="https://github.com/roma770" target="_blank" style="color:var(--gold)">github.com/roma770</a></span></div>
-          </div>
-          <div class="contact-method">
-            <div class="contact-icon">🎮</div>
-            <div class="contact-text"><strong>Official EA Support</strong><span><a href="https://help.ea.com" target="_blank" style="color:var(--gold)">help.ea.com</a></span></div>
-          </div>
-          <div class="contact-method">
-            <div class="contact-icon">🐦</div>
-            <div class="contact-text"><strong>Official Respawn Twitter</strong><span><a href="https://twitter.com/RespawnIntel" target="_blank" style="color:var(--gold)">@RespawnIntel</a></span></div>
-          </div>
-        </div>
-        <div>
-          <h3 style="color:var(--gold-light);font-size:1.1rem;margin-bottom:20px;">Send a Message</h3>
-          <div class="form-group"><label>Your Name</label><input type="text" placeholder="Han Solo"></div>
-          <div class="form-group"><label>Email</label><input type="email" placeholder="you@example.com"></div>
-          <div class="form-group"><label>Subject</label><input type="text" placeholder="Question about the site..."></div>
-          <div class="form-group"><label>Message</label><textarea placeholder="Your message here..."></textarea></div>
-          <button class="btn-gold" onclick="alert('Message sent! (This is a fan site demo)')">Send Message</button>
-        </div>
+      <div class="tab-panel">
+        <h3>A New Story</h3>
+        <p>You are one of the last surviving Jedi, and survival is the only option. Finish your training before the Empire's Inquisitors discover your plan to rebuild the Jedi Order.</p>
+        <table class="info-table">
+          <tr><td>Creator of the Universe</td><td>George Lucas</td></tr>
+          <tr><td>Publisher</td><td>Electronic Arts</td></tr>
+        </table>
+      </div>
+
+      <div class="tab-panel">
+        <h3>The Galaxy Awaits</h3>
+        <p>Explore ancient forests, wind-scarred cliffs, and jungles full of secrets. Here, you decide where to go and when.</p>
+        <table class="info-table">
+          <tr><td>Developer</td><td>Respawn Entertainment</td></tr>
+          <tr><td>Game Director</td><td>Stig Asmussen</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="gallery-panel reveal">
+      <img id="galleryMain" class="gallery-img" src="img/9.jpg" alt="Gallery screenshot">
+      <div class="gallery-thumbs">
+        <img src="img/9.jpg"    alt="Screenshot 1" class="active">
+        <img src="img/10.jpg"   alt="Screenshot 2">
+        <img src="img/11.webp"  alt="Screenshot 3">
       </div>
     </div>
   </div>
-</div>
+</section>
 
+<div class="saber-divider"></div>
+
+<!-- ===================== NEWS ===================== -->
+<section id="news">
+  <div class="section-eyebrow">Latest Updates</div>
+  <div class="section-title">Main News</div>
+  <div class="news-grid">
+    <div class="news-card reveal">
+      <img src="img/12.jpg" alt="Release Day">
+      <div class="news-card-body">
+        <div class="news-date">November 15, 2019</div>
+        <div class="news-headline">Release Day</div>
+        <div class="news-excerpt">The long-awaited Star Wars game has finally launched. Another misstep, or the franchise's first true triumph in years?</div>
+      </div>
+    </div>
+    <div class="news-card reveal">
+      <img src="img/13.webp" alt="First Story-Driven Title">
+      <div class="news-card-body">
+        <div class="news-date">October 29, 2019</div>
+        <div class="news-headline">The First Story-Driven Title in a Decade</div>
+        <div class="news-excerpt">Jedi: Fallen Order is the first single-player, story-driven Star Wars game released in more than ten years.</div>
+      </div>
+    </div>
+    <div class="news-card reveal">
+      <img src="img/14.webp" alt="First Announcement">
+      <div class="news-card-body">
+        <div class="news-date">June 9, 2018</div>
+        <div class="news-headline">First Announcement</div>
+        <div class="news-excerpt">EA and Respawn Entertainment officially announced the first new narrative Star Wars game since the Old Republic era.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRODUCTS ===================== -->
+<section id="products">
+  <div class="section-eyebrow">Merchandise &amp; Media</div>
+  <div class="section-title">The Collection</div>
+  <div class="products-grid">
+    <div class="product-cell reveal"><img src="img/15.png"   alt="Collector's Edition" onerror="this.style.display='none'"></div>
+    <div class="product-cell reveal" style="grid-column:span 2;grid-row:span 2;">
+      <img src="img/16.avif" alt="Featured Product" onerror="this.style.display='none'">
+    </div>
+    <div class="product-cell reveal"><img src="img/17.jpg"   alt="Product" onerror="this.style.display='none'"></div>
+    <div class="product-cell reveal"><img src="img/18.jpg"   alt="Product" onerror="this.style.display='none'"></div>
+    <div class="product-cell reveal"><img src="img/19.avif"  alt="Product" onerror="this.src='img/20.jpg'"></div>
+    <div class="product-cell reveal"><img src="img/20.jpg"   alt="Product" onerror="this.style.display='none'"></div>
+    <div class="product-cell reveal"><img src="img/21.webp"  alt="Product" onerror="this.style.display='none'"></div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="footer-left">
+    <img src="img/01-jedi-fallen-order.jpg" alt="Logo" onerror="this.style.display='none'">
+    <div class="footer-copy">
+      Site created by <a href="https://roma770.github.io/">Dmitry</a><br>
+      Star Wars is a trademark of Lucasfilm Ltd. — Fan site, not official.
+    </div>
+  </div>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Cookie Policy</a>
+    <a href="#">Contacts</a>
+  </div>
+</footer>
+
+<!-- ===================== SCRIPTS ===================== -->
 <script>
-// ===================== NAVIGATION =====================
-function nav(page) {
-  event && event.preventDefault && event.preventDefault();
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  const target = document.getElementById('page-' + page);
-  if (target) {
-    target.classList.add('active');
-    window.scrollTo(0, 0);
-    initReveal();
+/* ---- Stars ---- */
+(function(){
+  const container = document.getElementById('stars');
+  for(let i=0;i<80;i++){
+    const s = document.createElement('div');
+    s.className = 'star';
+    const sz = Math.random()*1.8+.5;
+    s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${(Math.random()*3+2).toFixed(1)}s;--delay:${(Math.random()*4).toFixed(1)}s`;
+    container.appendChild(s);
   }
-}
+})();
 
-// ===================== REVEAL ON SCROLL =====================
-function initReveal() {
-  const reveals = document.querySelectorAll('.page.active .reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => { el.classList.remove('visible'); observer.observe(el); });
-}
-
-// ===================== TABS =====================
-document.addEventListener('click', function(e) {
-  if (e.target.matches('.tab-btn')) {
-    const tab = parseInt(e.target.dataset.tab);
-    const container = e.target.closest('.details-inner') || e.target.closest('section');
-    container.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === tab));
-    container.querySelectorAll('.tab-panel').forEach((p, i) => p.classList.toggle('active', i === tab));
-  }
+/* ---- Hamburger ---- */
+const ham = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+ham.addEventListener('click', function(){
+  this.classList.toggle('open');
+  navLinks.classList.toggle('open');
 });
 
-// ===================== GALLERY THUMBS =====================
-document.addEventListener('click', function(e) {
-  if (e.target.matches('.gallery-thumbs img')) {
-    const main = document.getElementById('gallery-main');
-    if (main) main.src = e.target.src;
-    e.target.closest('.gallery-thumbs').querySelectorAll('img').forEach(img => img.classList.toggle('active', img === e.target));
-  }
+/* ---- Tabs ---- */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', function(){
+    const idx = +this.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    this.classList.add('active');
+    document.querySelectorAll('.tab-panel')[idx].classList.add('active');
+  });
 });
 
-// ===================== LIGHTBOX =====================
-function openLightbox(src) {
-  const lb = document.getElementById('lightbox');
-  const img = document.getElementById('lightbox-img');
-  if (lb && img) { img.src = src; lb.style.display = 'flex'; }
-}
-function closeLightbox() {
-  const lb = document.getElementById('lightbox');
-  if (lb) lb.style.display = 'none';
-}
+/* ---- Gallery ---- */
+const main = document.getElementById('galleryMain');
+document.querySelectorAll('.gallery-thumbs img').forEach(thumb => {
+  thumb.addEventListener('click', function(){
+    main.style.opacity = '0';
+    setTimeout(()=>{
+      main.src = this.src;
+      main.style.opacity = '1';
+    }, 200);
+    document.querySelectorAll('.gallery-thumbs img').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
 
-// ===================== INIT =====================
-window.addEventListener('load', initReveal);
+/* ---- Scroll reveal ---- */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
+}, { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
