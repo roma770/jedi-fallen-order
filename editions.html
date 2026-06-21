@@ -1,82 +1,129 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Game editions of Star Wars Jedi: Fallen Order — Standard and Deluxe.">
 <title>Editions — Star Wars Jedi: Fallen Order</title>
-<meta name="description" content="Издания игры Jedi: Fallen Order — Standard и Deluxe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="pages.css">
 </head>
-<body class="subpage">
+<body>
 
-<div class="sp-topbar">
-  <a href="support.html">Support</a><a href="forums.html">Forums</a><a href="ea-help.html">EA Help</a>
+<div id="topbar">
+  <a href="support.html">Support</a><span>|</span>
+  <a href="forums.html">Forums</a><span>|</span>
+  <a href="ea-help.html">EA Help</a>
 </div>
 
-<nav class="sp-nav">
-  <a class="sp-nav-logo" href="index.html">
-    <img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo">
-    <span class="sp-nav-logo-text">Official<br>Fan Site</span>
-  </a>
-  <ul class="sp-nav-links">
-    <li><a href="story.html">Story</a></li>
-    <li><a href="gameplay.html">Gameplay</a></li>
-    <li><a href="editions.html" class="active">Editions</a></li>
-    <li><a href="news.html">News</a></li>
-    <li><a href="about.html">About</a></li>
+<nav id="nav">
+  <div class="nav-logo">
+    <img src="img/01-jedi-fallen-order.jpg" alt="Star Wars Jedi: Fallen Order Logo" onerror="this.style.display='none'">
+    <div class="nav-logo-line"></div>
+    <div class="nav-logo-text">Official<br>Fan Site</div>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li class="nav-item active">
+      <a href="story.html" class="nav-link">Jedi: Fallen Order
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="story.html">Story</a>
+        <a href="gameplay.html">Gameplay</a>
+        <a href="editions.html">Editions</a>
+      </div>
+    </li>
+    <li class="nav-item ">
+      <a href="news.html" class="nav-link">News
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="news.html">Latest Updates</a>
+        <a href="patch-notes.html">Patch Notes</a>
+        <a href="community.html">Community</a>
+      </div>
+    </li>
+    <li class="nav-item ">
+      <a href="about.html" class="nav-link">About
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="about.html">Respawn Entertainment</a>
+        <a href="universe.html">The Universe</a>
+        <a href="presskit.html">Press Kit</a>
+      </div>
+    </li>
   </ul>
-  <a href="buy.html" class="btn-gold">Buy Now</a>
-</nav>
-<section class="sp-hero" style="background-image:linear-gradient(0deg,rgba(10,10,12,.4),rgba(10,10,12,.2)),url('https://roma770.github.io/Jedi-Fallen-odred/15.png');">
-  <div class="sp-hero-inner">
-    <div class="sp-eyebrow">Choose Your Path</div>
-    <h1>Editions</h1>
-    <p>Выберите издание, которое подходит именно вам.</p>
-  </div>
-</section>
-<div class="sp-content"><a href="index.html" class="sp-back">&larr; Back to Home</a>
-  <div class="sp-grid">
-    <div class="sp-card">
-      <img src="https://roma770.github.io/Jedi-Fallen-odred/15.png" alt="Standard Edition">
-      <div class="sp-card-body">
-        <h3>Standard Edition</h3>
-        <p>Полная игра Star Wars Jedi: Fallen Order на ПК и консолях.</p>
-      </div>
-    </div>
-    <div class="sp-card">
-      <img src="https://roma770.github.io/Jedi-Fallen-odred/17.jpg" alt="Deluxe Edition">
-      <div class="sp-card-body">
-        <h3>Deluxe Edition</h3>
-        <p>Игра + цифровой артбук, саундтрек и эксклюзивные косметические предметы.</p>
-      </div>
-    </div>
-  </div>
-
-  <h2>Сравнение изданий</h2>
-  <table class="sp-table">
-    <tr><th>Содержимое</th><th>Standard</th><th>Deluxe</th></tr>
-    <tr><td>Базовая игра</td><td>✔</td><td>✔</td></tr>
-    <tr><td>Цифровой артбук</td><td>—</td><td>✔</td></tr>
-    <tr><td>Оригинальный саундтрек</td><td>—</td><td>✔</td></tr>
-    <tr><td>Косметические предметы</td><td>—</td><td>✔</td></tr>
-  </table>
-  <div class="sp-cta-row">
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-cta">
     <a href="buy.html" class="btn-gold">Buy Now</a>
   </div>
+</nav>
+
+<header class="page-hero">
+  <div class="page-hero-inner reveal">
+    <div class="section-eyebrow">Choose Your Path</div>
+    <h1 class="page-title">Editions</h1>
+    <p class="page-sub">Pick the edition that's right for you.</p>
+    <a href="index.html" class="btn-outline">&larr; Back to Home</a>
   </div>
-<footer class="sp-footer">
-  <div class="sp-footer-left">
-    <img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo">
-    <div class="sp-footer-copy">
-      Site created by <a href="https://roma770.github.io/">Dmitry</a><br>
-      Star Wars is a trademark of Lucasfilm Ltd. — Fan site, not official.
+</header>
+
+<main class="page-content">
+
+  <div class="content-block reveal">
+    <div class="feature-grid">
+      <div class="feature-card">
+        <img src="img/15.png" alt="Standard Edition" onerror="this.src='img/7.jpg'">
+        <div class="feature-card-body">
+          <h3>Standard Edition</h3>
+          <p>The complete Star Wars Jedi: Fallen Order game on PC and consoles.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <img src="img/17.jpg" alt="Deluxe Edition" onerror="this.src='img/8.jpg'">
+        <div class="feature-card-body">
+          <h3>Deluxe Edition</h3>
+          <p>The game plus a digital art book, soundtrack, and exclusive cosmetic items.</p>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="sp-footer-links">
+  <div class="content-block reveal">
+    <h2>Edition Comparison</h2>
+    <table class="data-table">
+      <thead><tr><th>Contents</th><th>Standard</th><th>Deluxe</th></tr></thead>
+      <tr><td>Base Game</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td></tr>
+      <tr><td>Digital Art Book</td><td class="no">&mdash;</td><td class="yes">&#10003;</td></tr>
+      <tr><td>Original Soundtrack</td><td class="no">&mdash;</td><td class="yes">&#10003;</td></tr>
+      <tr><td>Cosmetic Items</td><td class="no">&mdash;</td><td class="yes">&#10003;</td></tr>
+    </table>
+    <div class="page-btns">
+      <a href="buy.html" class="btn-gold">Buy Now</a>
+    </div>
+  </div>
+  
+</main>
+
+<footer>
+  <div class="footer-left">
+    <img src="img/01-jedi-fallen-order.jpg" alt="Logo" onerror="this.style.display='none'">
+    <div class="footer-copy">
+      Site created by <a href="https://roma770.github.io/" target="_blank" rel="noopener">Dmitry</a><br>
+      Star Wars is a trademark of Lucasfilm Ltd. &mdash; Fan site, not official.
+    </div>
+  </div>
+  <div class="footer-links">
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="cookie-policy.html">Cookie Policy</a>
     <a href="contacts.html">Contacts</a>
   </div>
 </footer>
+
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,66 +1,109 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Press kit for the Jedi: Fallen Order fan site.">
 <title>About — Press Kit — Star Wars Jedi: Fallen Order</title>
-<meta name="description" content="Пресс-кит фан-сайта Jedi: Fallen Order.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="pages.css">
 </head>
-<body class="subpage">
+<body>
 
-<div class="sp-topbar">
-  <a href="support.html">Support</a><a href="forums.html">Forums</a><a href="ea-help.html">EA Help</a>
+<div id="topbar">
+  <a href="support.html">Support</a><span>|</span>
+  <a href="forums.html">Forums</a><span>|</span>
+  <a href="ea-help.html">EA Help</a>
 </div>
 
-<nav class="sp-nav">
-  <a class="sp-nav-logo" href="index.html">
-    <img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo">
-    <span class="sp-nav-logo-text">Official<br>Fan Site</span>
-  </a>
-  <ul class="sp-nav-links">
-    <li><a href="story.html">Story</a></li>
-    <li><a href="gameplay.html">Gameplay</a></li>
-    <li><a href="editions.html">Editions</a></li>
-    <li><a href="news.html">News</a></li>
-    <li><a href="about.html" class="active">About</a></li>
+<nav id="nav">
+  <div class="nav-logo">
+    <img src="img/01-jedi-fallen-order.jpg" alt="Star Wars Jedi: Fallen Order Logo" onerror="this.style.display='none'">
+    <div class="nav-logo-line"></div>
+    <div class="nav-logo-text">Official<br>Fan Site</div>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li class="nav-item ">
+      <a href="story.html" class="nav-link">Jedi: Fallen Order
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="story.html">Story</a>
+        <a href="gameplay.html">Gameplay</a>
+        <a href="editions.html">Editions</a>
+      </div>
+    </li>
+    <li class="nav-item ">
+      <a href="news.html" class="nav-link">News
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="news.html">Latest Updates</a>
+        <a href="patch-notes.html">Patch Notes</a>
+        <a href="community.html">Community</a>
+      </div>
+    </li>
+    <li class="nav-item active">
+      <a href="about.html" class="nav-link">About
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="about.html">Respawn Entertainment</a>
+        <a href="universe.html">The Universe</a>
+        <a href="presskit.html">Press Kit</a>
+      </div>
+    </li>
   </ul>
-  <a href="buy.html" class="btn-gold">Buy Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-cta">
+    <a href="buy.html" class="btn-gold">Buy Now</a>
+  </div>
 </nav>
-<section class="sp-hero" style="background-image:linear-gradient(0deg,rgba(10,10,12,.4),rgba(10,10,12,.2)),url('https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg');">
-  <div class="sp-hero-inner">
-    <div class="sp-eyebrow">About</div>
-    <h1>Press Kit</h1>
-    <p>Логотипы и материалы для прессы и контент-мейкеров.</p>
+
+<header class="page-hero">
+  <div class="page-hero-inner reveal">
+    <div class="section-eyebrow">About</div>
+    <h1 class="page-title">Press Kit</h1>
+    <p class="page-sub">Logos and materials for press and content creators.</p>
+    <a href="index.html" class="btn-outline">&larr; Back to Home</a>
   </div>
-</section>
-<div class="sp-content"><a href="index.html" class="sp-back">&larr; Back to Home</a>
-  <h2>Материалы</h2>
-  <p>Ниже — логотип сайта и базовая фактология для использования в обзорах, видео и публикациях,
-  посвящённых этому фан-проекту.</p>
-  <div class="sp-panel" style="text-align:center;">
-    <img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo" style="width:140px;border-radius:10px;">
+</header>
+
+<main class="page-content">
+
+  <div class="content-block reveal">
+    <h2>Materials</h2>
+    <p>Below is the site logo and basic factual information for use in reviews, videos, and articles about this fan project.</p>
+    <img src="img/01-jedi-fallen-order.jpg" alt="Logo" style="max-width:220px;margin:18px 0;" onerror="this.style.display='none'">
+    <table class="data-table">
+      <tr><td>Name</td><td>Star Wars Jedi: Fallen Order &mdash; Official Fan Site</td></tr>
+      <tr><td>Type</td><td>Unofficial fan site</td></tr>
+      <tr><td>Site Author</td><td>Dmitry</td></tr>
+      <tr><td>Game Rights Holder</td><td>Lucasfilm Ltd. / Electronic Arts / Respawn Entertainment</td></tr>
+    </table>
   </div>
-  <table class="sp-table">
-    <tr><th>Название</th><td>Star Wars Jedi: Fallen Order — Official Fan Site</td></tr>
-    <tr><th>Тип</th><td>Неофициальный фан-сайт</td></tr>
-    <tr><th>Автор сайта</th><td>Dmitry</td></tr>
-    <tr><th>Правообладатель игры</th><td>Lucasfilm Ltd. / Electronic Arts / Respawn Entertainment</td></tr>
-  </table>
-  </div>
-<footer class="sp-footer">
-  <div class="sp-footer-left">
-    <img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo">
-    <div class="sp-footer-copy">
-      Site created by <a href="https://roma770.github.io/">Dmitry</a><br>
-      Star Wars is a trademark of Lucasfilm Ltd. — Fan site, not official.
+  
+</main>
+
+<footer>
+  <div class="footer-left">
+    <img src="img/01-jedi-fallen-order.jpg" alt="Logo" onerror="this.style.display='none'">
+    <div class="footer-copy">
+      Site created by <a href="https://roma770.github.io/" target="_blank" rel="noopener">Dmitry</a><br>
+      Star Wars is a trademark of Lucasfilm Ltd. &mdash; Fan site, not official.
     </div>
   </div>
-  <div class="sp-footer-links">
+  <div class="footer-links">
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="cookie-policy.html">Cookie Policy</a>
     <a href="contacts.html">Contacts</a>
   </div>
 </footer>
+
+<script src="script.js"></script>
 </body>
 </html>

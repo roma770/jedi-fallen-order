@@ -1,87 +1,130 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="All the latest news about Star Wars Jedi: Fallen Order.">
 <title>News — Star Wars Jedi: Fallen Order</title>
-<meta name="description" content="Все новости Star Wars Jedi: Fallen Order.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="pages.css">
 </head>
-<body class="subpage">
+<body>
 
-<div class="sp-topbar">
-  <a href="support.html">Support</a><a href="forums.html">Forums</a><a href="ea-help.html">EA Help</a>
+<div id="topbar">
+  <a href="support.html">Support</a><span>|</span>
+  <a href="forums.html">Forums</a><span>|</span>
+  <a href="ea-help.html">EA Help</a>
 </div>
 
-<nav class="sp-nav">
-  <a class="sp-nav-logo" href="index.html">
-    <img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo">
-    <span class="sp-nav-logo-text">Official<br>Fan Site</span>
-  </a>
-  <ul class="sp-nav-links">
-    <li><a href="story.html">Story</a></li>
-    <li><a href="gameplay.html">Gameplay</a></li>
-    <li><a href="editions.html">Editions</a></li>
-    <li><a href="news.html" class="active">News</a></li>
-    <li><a href="about.html">About</a></li>
+<nav id="nav">
+  <div class="nav-logo">
+    <img src="img/01-jedi-fallen-order.jpg" alt="Star Wars Jedi: Fallen Order Logo" onerror="this.style.display='none'">
+    <div class="nav-logo-line"></div>
+    <div class="nav-logo-text">Official<br>Fan Site</div>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li class="nav-item ">
+      <a href="story.html" class="nav-link">Jedi: Fallen Order
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="story.html">Story</a>
+        <a href="gameplay.html">Gameplay</a>
+        <a href="editions.html">Editions</a>
+      </div>
+    </li>
+    <li class="nav-item active">
+      <a href="news.html" class="nav-link">News
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="news.html">Latest Updates</a>
+        <a href="patch-notes.html">Patch Notes</a>
+        <a href="community.html">Community</a>
+      </div>
+    </li>
+    <li class="nav-item ">
+      <a href="about.html" class="nav-link">About
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="about.html">Respawn Entertainment</a>
+        <a href="universe.html">The Universe</a>
+        <a href="presskit.html">Press Kit</a>
+      </div>
+    </li>
   </ul>
-  <a href="buy.html" class="btn-gold">Buy Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-cta">
+    <a href="buy.html" class="btn-gold">Buy Now</a>
+  </div>
 </nav>
-<section class="sp-hero" style="background-image:linear-gradient(0deg,rgba(10,10,12,.4),rgba(10,10,12,.2)),url('https://roma770.github.io/Jedi-Fallen-odred/12.jpg');">
-  <div class="sp-hero-inner">
-    <div class="sp-eyebrow">Latest Updates</div>
-    <h1>Main News</h1>
-    <p>Главные новости и хроника проекта.</p>
+
+<header class="page-hero">
+  <div class="page-hero-inner reveal">
+    <div class="section-eyebrow">Latest Updates</div>
+    <h1 class="page-title">Main News</h1>
+    <p class="page-sub">The biggest headlines and milestones for the project.</p>
+    <a href="index.html" class="btn-outline">&larr; Back to Home</a>
   </div>
-</section>
-<div class="sp-content"><a href="index.html" class="sp-back">&larr; Back to Home</a>
-  <div class="sp-grid">
-    <div class="sp-card">
-      <img src="https://roma770.github.io/Jedi-Fallen-odred/12.jpg" alt="Release Day">
-      <div class="sp-card-body">
-        <div class="sp-card-date">15.11.2019</div>
-        <h3>Release Day</h3>
-        <p>Долгожданная игра по вселенной Star Wars наконец вышла. Очередной провал — или первый
-        настоящий триумф франшизы за многие годы?</p>
+</header>
+
+<main class="page-content">
+
+  <div class="content-block reveal" style="max-width:100%;">
+    <div class="news-grid">
+      <div class="news-card">
+        <img src="img/12.jpg" alt="Release Day">
+        <div class="news-card-body">
+          <div class="news-date">15.11.2019</div>
+          <div class="news-headline">Release Day</div>
+          <p class="news-excerpt">The long-awaited Star Wars game has finally launched. Another misstep, or the franchise's first true triumph in years?</p>
+        </div>
+      </div>
+      <div class="news-card">
+        <img src="img/13.webp" alt="First Story-Driven Title">
+        <div class="news-card-body">
+          <div class="news-date">29.10.2019</div>
+          <div class="news-headline">The First Story-Driven Title in a Decade</div>
+          <p class="news-excerpt">Jedi: Fallen Order is the first single-player, story-driven Star Wars game released in more than ten years.</p>
+        </div>
+      </div>
+      <div class="news-card">
+        <img src="img/14.webp" alt="First Announcement">
+        <div class="news-card-body">
+          <div class="news-date">9.06.2018</div>
+          <div class="news-headline">First Announcement</div>
+          <p class="news-excerpt">EA and Respawn Entertainment officially announced the first new narrative Star Wars game since the Old Republic era.</p>
+        </div>
       </div>
     </div>
-    <div class="sp-card">
-      <img src="https://roma770.github.io/Jedi-Fallen-odred/13.webp" alt="First Story-Driven Title">
-      <div class="sp-card-body">
-        <div class="sp-card-date">29.10.2019</div>
-        <h3>The First Story-Driven Title in a Decade</h3>
-        <p>Jedi: Fallen Order — первая однопользовательская сюжетная игра по Star Wars за более чем
-        десять лет.</p>
-      </div>
-    </div>
-    <div class="sp-card">
-      <img src="https://roma770.github.io/Jedi-Fallen-odred/14.webp" alt="First Announcement">
-      <div class="sp-card-body">
-        <div class="sp-card-date">9.06.2018</div>
-        <h3>First Announcement</h3>
-        <p>EA и Respawn Entertainment официально анонсировали новую сюжетную игру по Star Wars со
-        времён эпохи Old Republic.</p>
-      </div>
+    <div class="page-btns" style="margin-top:40px;">
+      <a href="patch-notes.html" class="btn-gold">Patch Notes</a>
+      <a href="community.html" class="btn-outline">Community</a>
     </div>
   </div>
-  <div class="sp-cta-row">
-    <a href="patch-notes.html" class="btn-outline">Patch Notes</a>
-    <a href="community.html" class="btn-outline">Community</a>
-  </div>
-  </div>
-<footer class="sp-footer">
-  <div class="sp-footer-left">
-    <img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo">
-    <div class="sp-footer-copy">
-      Site created by <a href="https://roma770.github.io/">Dmitry</a><br>
-      Star Wars is a trademark of Lucasfilm Ltd. — Fan site, not official.
+  
+</main>
+
+<footer>
+  <div class="footer-left">
+    <img src="img/01-jedi-fallen-order.jpg" alt="Logo" onerror="this.style.display='none'">
+    <div class="footer-copy">
+      Site created by <a href="https://roma770.github.io/" target="_blank" rel="noopener">Dmitry</a><br>
+      Star Wars is a trademark of Lucasfilm Ltd. &mdash; Fan site, not official.
     </div>
   </div>
-  <div class="sp-footer-links">
+  <div class="footer-links">
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="cookie-policy.html">Cookie Policy</a>
     <a href="contacts.html">Contacts</a>
   </div>
 </footer>
+
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,71 +1,115 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Where to buy Jedi: Fallen Order and which editions are available.">
 <title>Buy Now — Star Wars Jedi: Fallen Order</title>
-<meta name="description" content="Где приобрести Jedi: Fallen Order и какие издания доступны.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="pages.css">
 </head>
-<body class="subpage">
+<body>
 
-<div class="sp-topbar">
-  <a href="support.html">Support</a><a href="forums.html">Forums</a><a href="ea-help.html">EA Help</a>
+<div id="topbar">
+  <a href="support.html">Support</a><span>|</span>
+  <a href="forums.html">Forums</a><span>|</span>
+  <a href="ea-help.html">EA Help</a>
 </div>
 
-<nav class="sp-nav">
-  <a class="sp-nav-logo" href="index.html">
-    <img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo">
-    <span class="sp-nav-logo-text">Official<br>Fan Site</span>
-  </a>
-  <ul class="sp-nav-links">
-    <li><a href="story.html">Story</a></li>
-    <li><a href="gameplay.html">Gameplay</a></li>
-    <li><a href="editions.html">Editions</a></li>
-    <li><a href="news.html">News</a></li>
-    <li><a href="about.html">About</a></li>
+<nav id="nav">
+  <div class="nav-logo">
+    <img src="img/01-jedi-fallen-order.jpg" alt="Star Wars Jedi: Fallen Order Logo" onerror="this.style.display='none'">
+    <div class="nav-logo-line"></div>
+    <div class="nav-logo-text">Official<br>Fan Site</div>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li class="nav-item active">
+      <a href="story.html" class="nav-link">Jedi: Fallen Order
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="story.html">Story</a>
+        <a href="gameplay.html">Gameplay</a>
+        <a href="editions.html">Editions</a>
+      </div>
+    </li>
+    <li class="nav-item ">
+      <a href="news.html" class="nav-link">News
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="news.html">Latest Updates</a>
+        <a href="patch-notes.html">Patch Notes</a>
+        <a href="community.html">Community</a>
+      </div>
+    </li>
+    <li class="nav-item ">
+      <a href="about.html" class="nav-link">About
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="about.html">Respawn Entertainment</a>
+        <a href="universe.html">The Universe</a>
+        <a href="presskit.html">Press Kit</a>
+      </div>
+    </li>
   </ul>
-  <a href="buy.html" class="btn-gold">Buy Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-cta">
+    <a href="buy.html" class="btn-gold">Buy Now</a>
+  </div>
 </nav>
-<section class="sp-hero" style="background-image:linear-gradient(0deg,rgba(10,10,12,.4),rgba(10,10,12,.2)),url('https://roma770.github.io/Jedi-Fallen-odred/16.avif');">
-  <div class="sp-hero-inner">
-    <div class="sp-eyebrow">Holiday Deal</div>
-    <h1>Buy Now</h1>
-    <p>Два экземпляра по цене одного — только в праздничный период.</p>
-  </div>
-</section>
-<div class="sp-content"><a href="index.html" class="sp-back">&larr; Back to Home</a>
-  <h2>Где купить</h2>
-  <p>Игра доступна в цифровых магазинах EA App (Origin), Steam, Epic Games Store, PlayStation Store
-  и Microsoft Store, а также в виде физической копии для PС и консолей.</p>
 
-  <div class="sp-grid">
-    <div class="sp-card">
-      <div class="sp-card-body"><h3>Standard Edition</h3><p>Полная игра. Подробности — на странице <a href="editions.html" style="color:var(--gold-light)">Editions</a>.</p></div>
-    </div>
-    <div class="sp-card">
-      <div class="sp-card-body"><h3>Deluxe Edition</h3><p>Игра + цифровые бонусы: артбук, саундтрек, косметика.</p></div>
-    </div>
-    <div class="sp-card">
-      <div class="sp-card-body"><h3>EA Play / Origin Access</h3><p>Доступ к игре в составе подписки, включая пробный период.</p></div>
+<header class="page-hero">
+  <div class="page-hero-inner reveal">
+    <div class="section-eyebrow">Holiday Deal</div>
+    <h1 class="page-title">Buy Now</h1>
+    <p class="page-sub">Two copies for the price of one &mdash; for a limited time only.</p>
+    <a href="index.html" class="btn-outline">&larr; Back to Home</a>
+  </div>
+</header>
+
+<main class="page-content">
+
+  <div class="content-block reveal">
+    <h2>Where to Buy</h2>
+    <p>The game is available on EA App (Origin), Steam, Epic Games Store, PlayStation Store, and Microsoft Store, as well as in physical retail for PC and consoles.</p>
+  </div>
+  <div class="content-block reveal">
+    <h2>Standard Edition</h2>
+    <p>The complete game. See the <a class="inline-link" href="editions.html">Editions</a> page for details.</p>
+  </div>
+  <div class="content-block reveal">
+    <h2>Deluxe Edition</h2>
+    <p>The game plus digital bonuses: art book, soundtrack, and cosmetics.</p>
+  </div>
+  <div class="content-block reveal">
+    <h2>EA Play / Origin Access</h2>
+    <p>Access the game as part of a subscription, including a trial period.</p>
+    <div class="disclaimer-box">This is a fan site &mdash; actual purchases are made through the official EA, Steam, or console storefronts.</div>
+  </div>
+  
+</main>
+
+<footer>
+  <div class="footer-left">
+    <img src="img/01-jedi-fallen-order.jpg" alt="Logo" onerror="this.style.display='none'">
+    <div class="footer-copy">
+      Site created by <a href="https://roma770.github.io/" target="_blank" rel="noopener">Dmitry</a><br>
+      Star Wars is a trademark of Lucasfilm Ltd. &mdash; Fan site, not official.
     </div>
   </div>
-  <p style="margin-top:24px;color:var(--text-dim);font-size:13px;">Это фан-сайт: реальная покупка
-  оформляется в официальных магазинах EA, Steam или вашей консоли.</p>
-  </div>
-<footer class="sp-footer">
-  <div class="sp-footer-left">
-    <img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo">
-    <div class="sp-footer-copy">
-      Site created by <a href="https://roma770.github.io/">Dmitry</a><br>
-      Star Wars is a trademark of Lucasfilm Ltd. — Fan site, not official.
-    </div>
-  </div>
-  <div class="sp-footer-links">
+  <div class="footer-links">
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="cookie-policy.html">Cookie Policy</a>
     <a href="contacts.html">Contacts</a>
   </div>
 </footer>
+
+<script src="script.js"></script>
 </body>
 </html>

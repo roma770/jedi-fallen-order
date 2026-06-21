@@ -3,900 +3,72 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Star Wars Jedi: Fallen Order — unofficial fan site. Story, gameplay, editions, news and media for Cal Kestis's journey.">
 <title>Star Wars Jedi: Fallen Order — Official Fan Site</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-/* ============================================================
-   TOKENS
-   ============================================================ */
-:root {
-  --gold:       #c9a84c;
-  --gold-light: #e8c96a;
-  --gold-dark:  #8a6a1e;
-  --red:        #b22222;
-  --blue-saber: #3ab4ff;
-  --bg:         #06080d;
-  --surface:    #0d1117;
-  --surface2:   #12181f;
-  --text:       #d8cfc0;
-  --text-muted: #7a8699;
-  --white:      #f5f0e8;
-  --border:     rgba(201,168,76,.18);
-  --ff-display: 'Cinzel', serif;
-  --ff-body:    'Rajdhani', sans-serif;
-  --ff-text:    'Open Sans', sans-serif;
-}
-
-/* ============================================================
-   RESET & BASE
-   ============================================================ */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--ff-text);
-  font-size: 15px;
-  line-height: 1.7;
-  overflow-x: hidden;
-}
-img { display: block; max-width: 100%; }
-a { color: inherit; text-decoration: none; }
-
-/* ============================================================
-   SCROLLBAR
-   ============================================================ */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
-
-/* ============================================================
-   TOPBAR
-   ============================================================ */
-#topbar {
-  background: #000;
-  text-align: center;
-  padding: 8px 20px;
-  font-family: var(--ff-body);
-  font-size: 12px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  border-bottom: 1px solid var(--border);
-}
-#topbar a { color: var(--gold); margin: 0 10px; transition: color .2s; }
-#topbar a:hover { color: var(--gold-light); }
-#topbar span { color: var(--border); }
-
-/* ============================================================
-   NAV
-   ============================================================ */
-#nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  padding: 0 40px;
-  background: rgba(6,8,13,.92);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
-  height: 68px;
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-}
-.nav-logo img {
-  height: 42px;
-  width: auto;
-  object-fit: contain;
-}
-.nav-logo-line {
-  width: 1px;
-  height: 32px;
-  background: var(--border);
-}
-.nav-logo-text {
-  font-family: var(--ff-display);
-  font-size: 9px;
-  letter-spacing: .14em;
-  color: var(--gold);
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 4px;
-  flex: 1;
-}
-.nav-item { position: relative; }
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 8px 14px;
-  font-family: var(--ff-body);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  transition: color .2s;
-  white-space: nowrap;
-}
-.nav-link svg { width: 9px; height: 9px; transition: transform .2s; }
-.nav-item:hover .nav-link { color: var(--gold); }
-.nav-item:hover .nav-link svg { transform: rotate(180deg); }
-
-.nav-dropdown {
-  position: absolute;
-  top: calc(100% + 2px);
-  left: 0;
-  background: rgba(13,17,23,.98);
-  border: 1px solid var(--border);
-  min-width: 180px;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-6px);
-  transition: opacity .2s, transform .2s;
-  z-index: 200;
-}
-.nav-item:hover .nav-dropdown {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-.nav-dropdown a {
-  display: block;
-  padding: 10px 18px;
-  font-family: var(--ff-body);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  border-bottom: 1px solid var(--border);
-  transition: color .2s, background .2s;
-}
-.nav-dropdown a:last-child { border-bottom: none; }
-.nav-dropdown a:hover { color: var(--gold); background: rgba(201,168,76,.06); }
-
-.nav-cta { margin-left: auto; }
-
-/* ============================================================
-   BUTTONS
-   ============================================================ */
-.btn-gold,
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 10px 24px;
-  font-family: var(--ff-body);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  transition: all .22s;
-  cursor: pointer;
-  border: none;
-  white-space: nowrap;
-}
-.btn-gold {
-  background: var(--gold);
-  color: #000;
-}
-.btn-gold:hover {
-  background: var(--gold-light);
-  box-shadow: 0 0 20px rgba(201,168,76,.5);
-}
-.btn-outline {
-  background: transparent;
-  color: var(--gold);
-  border: 1px solid var(--gold);
-}
-.btn-outline:hover {
-  background: rgba(201,168,76,.12);
-  box-shadow: 0 0 16px rgba(201,168,76,.3);
-}
-
-/* ============================================================
-   BANNER
-   ============================================================ */
-#banner {
-  background: linear-gradient(90deg, var(--gold-dark), #4a2d00 50%, var(--gold-dark));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  padding: 10px 40px;
-  font-family: var(--ff-body);
-  font-size: 13px;
-  letter-spacing: .05em;
-  color: var(--white);
-  text-align: center;
-}
-#banner em { color: var(--gold-light); font-style: normal; font-weight: 600; }
-#banner .btn-gold { padding: 6px 18px; font-size: 11px; }
-
-/* ============================================================
-   HERO
-   ============================================================ */
-#hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  background: var(--bg);
-}
-.hero-bg-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  opacity: .45;
-  transition: opacity 1s;
-}
-#hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(100deg, rgba(6,8,13,.95) 40%, rgba(6,8,13,.3) 100%);
-  z-index: 1;
-}
-#hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 220px;
-  background: linear-gradient(to top, var(--bg), transparent);
-  z-index: 1;
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 720px;
-  padding: 80px 80px 100px;
-}
-.hero-eyebrow {
-  font-family: var(--ff-body);
-  font-size: 11px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 18px;
-  opacity: .85;
-}
-.hero-title {
-  font-family: var(--ff-display);
-  font-size: clamp(48px, 7vw, 96px);
-  font-weight: 900;
-  line-height: 1.0;
-  color: var(--white);
-  text-shadow: 0 0 60px rgba(201,168,76,.2);
-  margin-bottom: 12px;
-}
-.hero-title span {
-  color: var(--gold);
-  display: block;
-  font-size: clamp(32px, 4.5vw, 64px);
-  margin-top: 4px;
-}
-.hero-sub {
-  font-family: var(--ff-body);
-  font-size: 18px;
-  font-weight: 300;
-  color: var(--text);
-  max-width: 520px;
-  margin: 22px 0 36px;
-  line-height: 1.6;
-}
-.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-
-/* Parallax stars */
-.stars {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 0;
-  pointer-events: none;
-}
-.star {
-  position: absolute;
-  background: #fff;
-  border-radius: 50%;
-  animation: twinkle var(--d, 3s) var(--delay, 0s) infinite alternate;
-}
-@keyframes twinkle { from { opacity: .1; } to { opacity: .8; } }
-
-/* ============================================================
-   SABER DIVIDER
-   ============================================================ */
-.saber-divider {
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--blue-saber) 20%, var(--gold) 50%, var(--blue-saber) 80%, transparent);
-  opacity: .35;
-  margin: 0;
-}
-
-/* ============================================================
-   SCROLL REVEAL
-   ============================================================ */
-.reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity .7s ease, transform .7s ease;
-}
-.reveal.in { opacity: 1; transform: translateY(0); }
-
-/* ============================================================
-   SECTION LABELS
-   ============================================================ */
-.section-eyebrow {
-  font-family: var(--ff-body);
-  font-size: 11px;
-  letter-spacing: .24em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 10px;
-  opacity: .8;
-}
-.section-title {
-  font-family: var(--ff-display);
-  font-size: clamp(28px, 4vw, 52px);
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 48px;
-  line-height: 1.1;
-}
-
-/* ============================================================
-   BECOME A JEDI
-   ============================================================ */
-#become {
-  position: relative;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-.become-bg-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: right center;
-  opacity: .28;
-}
-#become::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(6,8,13,.97) 45%, rgba(6,8,13,.2) 100%);
-  z-index: 1;
-}
-.become-content {
-  position: relative;
-  z-index: 2;
-  max-width: 560px;
-  padding: 80px 80px;
-}
-.become-content h2 {
-  font-family: var(--ff-display);
-  font-size: clamp(36px, 5vw, 72px);
-  font-weight: 900;
-  line-height: 1.0;
-  color: var(--white);
-  margin-bottom: 24px;
-}
-.become-content p {
-  font-family: var(--ff-body);
-  font-size: 18px;
-  font-weight: 300;
-  color: var(--text);
-  margin-bottom: 32px;
-  line-height: 1.65;
-}
-
-/* ============================================================
-   LIGHTSABER SECTION
-   ============================================================ */
-#lightsaber-wrap { position: relative; }
-#lightsaber {
-  position: relative;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-.lightsaber-bg-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  opacity: .18;
-}
-#lightsaber::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(6,8,13,.96) 50%, rgba(6,8,13,.5) 100%);
-  z-index: 1;
-}
-.lightsaber-content {
-  position: relative;
-  z-index: 2;
-  max-width: 560px;
-  padding: 80px 80px;
-}
-.lightsaber-content h2 {
-  font-family: var(--ff-display);
-  font-size: clamp(36px, 5vw, 72px);
-  font-weight: 900;
-  line-height: 1.05;
-  color: var(--white);
-  margin-bottom: 24px;
-}
-.lightsaber-content h2 span { color: var(--gold); }
-.lightsaber-content p {
-  font-family: var(--ff-body);
-  font-size: 18px;
-  font-weight: 300;
-  color: var(--text);
-  margin-bottom: 32px;
-  line-height: 1.65;
-}
-.lightsaber-content .btns { display: flex; gap: 14px; flex-wrap: wrap; }
-.lightsaber-right-img {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  max-width: 55%;
-  object-fit: contain;
-  object-position: right bottom;
-  opacity: .75;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.platform-logos {
-  position: relative;
-  z-index: 3;
-  display: flex;
-  gap: 24px;
-  align-items: center;
-  padding: 20px 80px;
-  background: rgba(13,17,23,.85);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.platform-logos img {
-  height: 32px;
-  width: auto;
-  object-fit: contain;
-  opacity: .7;
-  filter: brightness(0) invert(1);
-  transition: opacity .2s;
-}
-.platform-logos img:hover { opacity: 1; }
-
-/* ============================================================
-   CARDS
-   ============================================================ */
-#cards {
-  padding: 100px 80px;
-  background: var(--surface);
-}
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
-}
-.card {
-  position: relative;
-  overflow: hidden;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  cursor: pointer;
-  transition: border-color .3s, transform .3s;
-}
-.card:hover { border-color: var(--gold); transform: translateY(-4px); }
-.card > img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  transition: transform .5s;
-}
-.card:hover > img { transform: scale(1.04); }
-.card-gradient {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 70%;
-  background: linear-gradient(to top, rgba(6,8,13,.95), transparent);
-}
-.card-body {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 28px 28px 28px;
-  z-index: 2;
-}
-.card-body h3 {
-  font-family: var(--ff-display);
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 8px;
-}
-.card-body p {
-  font-family: var(--ff-body);
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-bottom: 18px;
-  line-height: 1.5;
-}
-.card-btns { display: flex; gap: 10px; }
-.card-btns .btn-gold,
-.card-btns .btn-outline { padding: 8px 16px; font-size: 11px; }
-
-/* ============================================================
-   DETAILS / TABS + GALLERY
-   ============================================================ */
-#details {
-  padding: 100px 80px;
-  background: var(--bg);
-}
-.details-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: start;
-}
-
-.tabs-nav {
-  display: flex;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 36px;
-  gap: 0;
-}
-.tab-btn {
-  background: none;
-  border: none;
-  padding: 12px 22px;
-  font-family: var(--ff-body);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-  transition: color .2s, border-color .2s;
-}
-.tab-btn.active, .tab-btn:hover { color: var(--gold); border-bottom-color: var(--gold); }
-
-.tab-panel { display: none; }
-.tab-panel.active { display: block; }
-.tab-panel h3 {
-  font-family: var(--ff-display);
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 16px;
-}
-.tab-panel p {
-  font-family: var(--ff-body);
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--text);
-  margin-bottom: 28px;
-  line-height: 1.7;
-}
-.info-table { width: 100%; border-collapse: collapse; }
-.info-table td {
-  padding: 12px 16px;
-  font-family: var(--ff-body);
-  font-size: 14px;
-  border-bottom: 1px solid var(--border);
-}
-.info-table td:first-child {
-  color: var(--text-muted);
-  font-weight: 600;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  font-size: 11px;
-  width: 45%;
-}
-.info-table td:last-child { color: var(--white); font-weight: 500; }
-
-.gallery-panel {}
-.gallery-img {
-  width: 100%;
-  height: 340px;
-  object-fit: cover;
-  border: 1px solid var(--border);
-  transition: opacity .3s;
-}
-.gallery-thumbs {
-  display: flex;
-  gap: 8px;
-  margin-top: 10px;
-}
-.gallery-thumbs img {
-  flex: 1;
-  height: 80px;
-  object-fit: cover;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: border-color .2s, opacity .2s;
-  opacity: .55;
-}
-.gallery-thumbs img.active,
-.gallery-thumbs img:hover { border-color: var(--gold); opacity: 1; }
-
-/* ============================================================
-   NEWS
-   ============================================================ */
-#news {
-  padding: 100px 80px;
-  background: var(--surface);
-}
-.news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-}
-.news-card {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  overflow: hidden;
-  transition: border-color .3s, transform .3s;
-}
-.news-card:hover { border-color: var(--gold); transform: translateY(-4px); }
-.news-card > img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  transition: transform .4s;
-}
-.news-card:hover > img { transform: scale(1.04); }
-.news-card-body { padding: 22px 22px 26px; }
-.news-date {
-  font-family: var(--ff-body);
-  font-size: 11px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 8px;
-  opacity: .8;
-}
-.news-headline {
-  font-family: var(--ff-display);
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 10px;
-  line-height: 1.3;
-}
-.news-excerpt {
-  font-family: var(--ff-body);
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-/* ============================================================
-   PRODUCTS / COLLECTION
-   ============================================================ */
-#products {
-  padding: 100px 80px;
-  background: var(--bg);
-}
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 200px;
-  gap: 8px;
-}
-.product-cell {
-  overflow: hidden;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  transition: border-color .3s;
-}
-.product-cell:hover { border-color: var(--gold); }
-.product-cell img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .4s, opacity .3s;
-  opacity: .8;
-}
-.product-cell:hover img { transform: scale(1.06); opacity: 1; }
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-footer {
-  padding: 60px 80px 40px;
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-.footer-left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.footer-left img {
-  height: 48px;
-  width: auto;
-  object-fit: contain;
-  opacity: .7;
-}
-.footer-copy {
-  font-family: var(--ff-body);
-  font-size: 12px;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-.footer-copy a { color: var(--gold); }
-.footer-copy a:hover { color: var(--gold-light); }
-.footer-links {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-.footer-links a {
-  font-family: var(--ff-body);
-  font-size: 11px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  transition: color .2s;
-}
-.footer-links a:hover { color: var(--gold); }
-
-/* ============================================================
-   MOBILE MENU TOGGLE
-   ============================================================ */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  margin-left: auto;
-}
-.hamburger span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--gold);
-  transition: transform .25s, opacity .25s;
-}
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width: 900px) {
-  #nav { padding: 0 24px; }
-  .nav-links { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: rgba(6,8,13,.98); padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .nav-links.open { display: flex; }
-  .nav-item { position: static; }
-  .nav-dropdown { position: static; opacity: 1; pointer-events: auto; transform: none; border: none; background: rgba(255,255,255,.04); }
-  .hamburger { display: flex; }
-  .nav-cta { display: none; }
-  .hero-content { padding: 60px 28px 80px; }
-  .become-content,
-  .lightsaber-content { padding: 60px 28px; }
-  .lightsaber-right-img { opacity: .25; max-width: 100%; }
-  #cards, #details, #news, #products { padding: 60px 24px; }
-  .details-inner { grid-template-columns: 1fr; gap: 40px; }
-  .products-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
-  footer { padding: 40px 24px; flex-direction: column; text-align: center; }
-  .footer-left { flex-direction: column; }
-  .footer-links { justify-content: center; }
-  .platform-logos { padding: 16px 24px; }
-}
-@media (max-width: 540px) {
-  .hero-title { font-size: 36px; }
-  .products-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 120px; }
-  .cards-grid { grid-template-columns: 1fr; }
-}
-</style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="pages.css">
 </head>
 <body>
 
-<!-- ===================== TOPBAR ===================== -->
 <div id="topbar">
-  <a href="#">Support</a><span>|</span>
-  <a href="#">Forums</a><span>|</span>
-  <a href="#">EA Help</a>
+  <a href="support.html">Support</a><span>|</span>
+  <a href="forums.html">Forums</a><span>|</span>
+  <a href="ea-help.html">EA Help</a>
 </div>
 
-<!-- ===================== NAV ===================== -->
 <nav id="nav">
   <div class="nav-logo">
     <img src="img/01-jedi-fallen-order.jpg" alt="Star Wars Jedi: Fallen Order Logo" onerror="this.style.display='none'">
     <div class="nav-logo-line"></div>
     <div class="nav-logo-text">Official<br>Fan Site</div>
   </div>
-
   <ul class="nav-links" id="navLinks">
     <li class="nav-item">
-      <a href="#" class="nav-link">Jedi: Fallen Order
+      <a href="story.html" class="nav-link">Jedi: Fallen Order
         <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
       </a>
       <div class="nav-dropdown">
-        <a href="#">Story</a>
-        <a href="#">Gameplay</a>
-        <a href="#">Editions</a>
+        <a href="story.html">Story</a>
+        <a href="gameplay.html">Gameplay</a>
+        <a href="editions.html">Editions</a>
       </div>
     </li>
     <li class="nav-item">
-      <a href="#" class="nav-link">News
+      <a href="news.html" class="nav-link">News
         <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
       </a>
       <div class="nav-dropdown">
-        <a href="#">Latest Updates</a>
-        <a href="#">Patch Notes</a>
-        <a href="#">Community</a>
+        <a href="news.html">Latest Updates</a>
+        <a href="patch-notes.html">Patch Notes</a>
+        <a href="community.html">Community</a>
       </div>
     </li>
     <li class="nav-item">
-      <a href="#" class="nav-link">About
+      <a href="about.html" class="nav-link">About
         <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
       </a>
       <div class="nav-dropdown">
-        <a href="#">Respawn Entertainment</a>
-        <a href="#">The Universe</a>
-        <a href="#">Press Kit</a>
+        <a href="about.html">Respawn Entertainment</a>
+        <a href="universe.html">The Universe</a>
+        <a href="presskit.html">Press Kit</a>
       </div>
     </li>
   </ul>
-
   <button class="hamburger" id="hamburger" aria-label="Toggle menu">
     <span></span><span></span><span></span>
   </button>
-
   <div class="nav-cta">
-    <a href="#" class="btn-gold">Buy Now</a>
+    <a href="buy.html" class="btn-gold">Buy Now</a>
   </div>
 </nav>
 
-<!-- ===================== BANNER ===================== -->
 <div id="banner">
   <div class="banner-text">Holiday Deal — <em>Two copies for the price of one!</em></div>
-  <a href="#" class="btn-gold">Buy Now</a>
+  <a href="buy.html" class="btn-gold">Buy Now</a>
 </div>
 
-<!-- ===================== HERO ===================== -->
 <section id="hero">
   <div class="stars" id="stars"></div>
   <img class="hero-bg-img" src="img/1.jpg" alt="Hero background" onerror="this.src='img/2.jpg'">
@@ -905,27 +77,25 @@ footer {
     <h1 class="hero-title">Star Wars<span>Jedi: Fallen Order</span></h1>
     <p class="hero-sub">The finest Star Wars game ever made. Survive. Train. Rebuild the Order.</p>
     <div class="hero-btns">
-      <a href="#" class="btn-gold">Buy Now</a>
-      <a href="#" class="btn-outline">Watch Trailer</a>
+      <a href="buy.html" class="btn-gold">Buy Now</a>
+      <a href="trailer.html" class="btn-outline">Watch Trailer</a>
     </div>
   </div>
 </section>
 
 <div class="saber-divider"></div>
 
-<!-- ===================== BECOME A JEDI ===================== -->
 <section id="become">
   <img class="become-bg-img" src="img/3.jpg" alt="Jedi background" onerror="this.style.opacity='0'">
   <div class="become-content reveal">
     <h2>Become<br>a Jedi</h2>
     <p>Survive the dark times and rebuild what was lost. You are one of the last — and every choice matters.</p>
-    <a href="#" class="btn-outline">Learn More</a>
+    <a href="story.html" class="btn-outline">Learn More</a>
   </div>
 </section>
 
 <div class="saber-divider"></div>
 
-<!-- ===================== LIGHTSABER ===================== -->
 <div id="lightsaber-wrap">
   <section id="lightsaber">
     <img class="lightsaber-bg-img" src="img/4.jpg" alt="Lightsaber background" onerror="this.style.opacity='0'">
@@ -933,35 +103,34 @@ footer {
       <h2>Master the<br><span>Lightsaber</span></h2>
       <p>Fight, block, dodge, and overcome every enemy in your path. Wield the Force itself alongside a Jedi's most iconic weapon.</p>
       <div class="btns">
-        <a href="#" class="btn-gold">Buy Game</a>
-        <a href="#" class="btn-outline">View Screenshots</a>
+        <a href="buy.html" class="btn-gold">Buy Game</a>
+        <a href="screenshots.html" class="btn-outline">View Screenshots</a>
       </div>
     </div>
     <img class="lightsaber-right-img" src="img/6.jpg" alt="Cal Kestis" onerror="this.style.display='none'">
   </section>
   <div class="platform-logos">
-    <img src="https://roma770.github.io/Jedi-Fallen-odred/box4-logo1.png" alt="PlayStation" onerror="this.style.display='none'">
-    <img src="https://roma770.github.io/Jedi-Fallen-odred/box4-logo1.png" alt="Xbox" onerror="this.style.display='none'">
-    <img src="https://roma770.github.io/Jedi-Fallen-odred/box4-logo3.png" alt="PC" onerror="this.style.display='none'">
+    <img src="img/box4-logo1.png" alt="PlayStation" onerror="this.style.display='none'">
+    <img src="img/box4-logo2.png" alt="Xbox" onerror="this.style.display='none'">
+    <img src="img/box4-logo3.png" alt="PC" onerror="this.style.display='none'">
   </div>
 </div>
 
 <div class="saber-divider"></div>
 
-<!-- ===================== CARDS ===================== -->
 <section id="cards">
   <div class="section-eyebrow">Explore the Experience</div>
   <div class="section-title">A Galaxy in Chaos</div>
   <div class="cards-grid">
     <div class="card reveal">
-      <img src="img/7.avif" alt="A Galaxy in Ruins" onerror="this.src='img/7.jpg'">
+      <img src="img/7.jpg" alt="A Galaxy in Ruins">
       <div class="card-gradient"></div>
       <div class="card-body">
         <h3>A Galaxy in Ruins</h3>
         <p>Pick up Cal Kestis's story five years after the fall of the Jedi Order.</p>
         <div class="card-btns">
-          <a href="#" class="btn-gold">Buy Now</a>
-          <a href="#" class="btn-outline">Read Story</a>
+          <a href="buy.html" class="btn-gold">Buy Now</a>
+          <a href="story.html" class="btn-outline">Read Story</a>
         </div>
       </div>
     </div>
@@ -972,15 +141,14 @@ footer {
         <h3>Behind the Scenes</h3>
         <p>Go behind the curtain with the documentary on the making of the game.</p>
         <div class="card-btns">
-          <a href="#" class="btn-gold">Watch Now</a>
-          <a href="#" class="btn-outline">More Videos</a>
+          <a href="trailer.html" class="btn-gold">Watch Now</a>
+          <a href="screenshots.html" class="btn-outline">More Videos</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== DETAILS / TABS ===================== -->
 <section id="details">
   <div class="details-inner">
     <div class="reveal">
@@ -989,8 +157,7 @@ footer {
         <button class="tab-btn" data-tab="1">Buy DLC</button>
         <button class="tab-btn" data-tab="2">Origin Access</button>
       </div>
-
-      <div class="tab-panel active">
+      <div class="tab-panel active" data-tab-panel="0">
         <h3>Feel the Force</h3>
         <p>Master every nuance of lightsaber combat — strikes, blocks, and dodges — and overcome enemies far stronger than you. Wield a Jedi's weapon and the Force itself to survive every trial ahead.</p>
         <table class="info-table">
@@ -998,156 +165,95 @@ footer {
           <tr><td>Universe</td><td>Star Wars</td></tr>
         </table>
       </div>
-
-      <div class="tab-panel">
+      <div class="tab-panel" data-tab-panel="1">
         <h3>A New Story</h3>
         <p>You are one of the last surviving Jedi, and survival is the only option. Finish your training before the Empire's Inquisitors discover your plan to rebuild the Jedi Order.</p>
         <table class="info-table">
-          <tr><td>Creator of the Universe</td><td>George Lucas</td></tr>
+          <tr><td>Creator of the universe</td><td>George Lucas</td></tr>
           <tr><td>Publisher</td><td>Electronic Arts</td></tr>
         </table>
       </div>
-
-      <div class="tab-panel">
+      <div class="tab-panel" data-tab-panel="2">
         <h3>The Galaxy Awaits</h3>
         <p>Explore ancient forests, wind-scarred cliffs, and jungles full of secrets. Here, you decide where to go and when.</p>
         <table class="info-table">
           <tr><td>Developer</td><td>Respawn Entertainment</td></tr>
-          <tr><td>Game Director</td><td>Stig Asmussen</td></tr>
+          <tr><td>Game director</td><td>Stig Asmussen</td></tr>
         </table>
       </div>
     </div>
-
     <div class="gallery-panel reveal">
-      <img id="galleryMain" class="gallery-img" src="img/9.jpg" alt="Gallery screenshot">
+      <img class="gallery-img" src="img/9.jpg" alt="Gallery">
       <div class="gallery-thumbs">
-        <img src="img/9.jpg"    alt="Screenshot 1" class="active">
-        <img src="img/10.jpg"   alt="Screenshot 2">
-        <img src="img/11.webp"  alt="Screenshot 3">
+        <img src="img/9.jpg" alt="Screenshot 1" class="active">
+        <img src="img/10.jpg" alt="Screenshot 2">
+        <img src="img/11.webp" alt="Screenshot 3">
       </div>
     </div>
   </div>
 </section>
 
-<div class="saber-divider"></div>
-
-<!-- ===================== NEWS ===================== -->
 <section id="news">
   <div class="section-eyebrow">Latest Updates</div>
   <div class="section-title">Main News</div>
   <div class="news-grid">
-    <div class="news-card reveal">
+    <a class="news-card reveal" href="news.html">
       <img src="img/12.jpg" alt="Release Day">
       <div class="news-card-body">
-        <div class="news-date">November 15, 2019</div>
+        <div class="news-date">15.11.2019</div>
         <div class="news-headline">Release Day</div>
-        <div class="news-excerpt">The long-awaited Star Wars game has finally launched. Another misstep, or the franchise's first true triumph in years?</div>
+        <p class="news-excerpt">The long-awaited Star Wars game has finally launched. Another misstep, or the franchise's first true triumph in years?</p>
       </div>
-    </div>
-    <div class="news-card reveal">
+    </a>
+    <a class="news-card reveal" href="news.html">
       <img src="img/13.webp" alt="First Story-Driven Title">
       <div class="news-card-body">
-        <div class="news-date">October 29, 2019</div>
+        <div class="news-date">29.10.2019</div>
         <div class="news-headline">The First Story-Driven Title in a Decade</div>
-        <div class="news-excerpt">Jedi: Fallen Order is the first single-player, story-driven Star Wars game released in more than ten years.</div>
+        <p class="news-excerpt">Jedi: Fallen Order is the first single-player, story-driven Star Wars game released in more than ten years.</p>
       </div>
-    </div>
-    <div class="news-card reveal">
+    </a>
+    <a class="news-card reveal" href="news.html">
       <img src="img/14.webp" alt="First Announcement">
       <div class="news-card-body">
-        <div class="news-date">June 9, 2018</div>
+        <div class="news-date">9.06.2018</div>
         <div class="news-headline">First Announcement</div>
-        <div class="news-excerpt">EA and Respawn Entertainment officially announced the first new narrative Star Wars game since the Old Republic era.</div>
+        <p class="news-excerpt">EA and Respawn Entertainment officially announced the first new narrative Star Wars game since the Old Republic era.</p>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
-<!-- ===================== PRODUCTS ===================== -->
 <section id="products">
   <div class="section-eyebrow">Merchandise &amp; Media</div>
   <div class="section-title">The Collection</div>
   <div class="products-grid">
-    <div class="product-cell reveal"><img src="img/15.png"   alt="Collector's Edition" onerror="this.style.display='none'"></div>
-    <div class="product-cell reveal" style="grid-column:span 2;grid-row:span 2;">
-      <img src="img/16.avif" alt="Featured Product" onerror="this.style.display='none'">
-    </div>
-    <div class="product-cell reveal"><img src="img/17.jpg"   alt="Product" onerror="this.style.display='none'"></div>
-    <div class="product-cell reveal"><img src="img/18.jpg"   alt="Product" onerror="this.style.display='none'"></div>
-    <div class="product-cell reveal"><img src="img/19.avif"  alt="Product" onerror="this.src='img/20.jpg'"></div>
-    <div class="product-cell reveal"><img src="img/20.jpg"   alt="Product" onerror="this.style.display='none'"></div>
-    <div class="product-cell reveal"><img src="img/21.webp"  alt="Product" onerror="this.style.display='none'"></div>
+    <div class="product-cell"><span>Apparel</span></div>
+    <div class="product-cell"><span>Art Book</span></div>
+    <div class="product-cell"><span>Soundtrack</span></div>
+    <div class="product-cell"><span>Collector Statue</span></div>
+    <div class="product-cell"><span>Posters</span></div>
+    <div class="product-cell"><span>Pin Set</span></div>
+    <div class="product-cell"><span>BD-1 Replica</span></div>
+    <div class="product-cell"><span>Lightsaber Hilt</span></div>
   </div>
 </section>
 
-<!-- ===================== FOOTER ===================== -->
 <footer>
   <div class="footer-left">
     <img src="img/01-jedi-fallen-order.jpg" alt="Logo" onerror="this.style.display='none'">
     <div class="footer-copy">
-      Site created by <a href="https://roma770.github.io/">Dmitry</a><br>
+      Site created by <a href="https://roma770.github.io/" target="_blank" rel="noopener">Dmitry</a><br>
       Star Wars is a trademark of Lucasfilm Ltd. — Fan site, not official.
     </div>
   </div>
   <div class="footer-links">
-    <a href="#">Privacy Policy</a>
-    <a href="#">Cookie Policy</a>
-    <a href="#">Contacts</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="cookie-policy.html">Cookie Policy</a>
+    <a href="contacts.html">Contacts</a>
   </div>
 </footer>
 
-<!-- ===================== SCRIPTS ===================== -->
-<script>
-/* ---- Stars ---- */
-(function(){
-  const container = document.getElementById('stars');
-  for(let i=0;i<80;i++){
-    const s = document.createElement('div');
-    s.className = 'star';
-    const sz = Math.random()*1.8+.5;
-    s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${(Math.random()*3+2).toFixed(1)}s;--delay:${(Math.random()*4).toFixed(1)}s`;
-    container.appendChild(s);
-  }
-})();
-
-/* ---- Hamburger ---- */
-const ham = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-ham.addEventListener('click', function(){
-  this.classList.toggle('open');
-  navLinks.classList.toggle('open');
-});
-
-/* ---- Tabs ---- */
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', function(){
-    const idx = +this.dataset.tab;
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    this.classList.add('active');
-    document.querySelectorAll('.tab-panel')[idx].classList.add('active');
-  });
-});
-
-/* ---- Gallery ---- */
-const main = document.getElementById('galleryMain');
-document.querySelectorAll('.gallery-thumbs img').forEach(thumb => {
-  thumb.addEventListener('click', function(){
-    main.style.opacity = '0';
-    setTimeout(()=>{
-      main.src = this.src;
-      main.style.opacity = '1';
-    }, 200);
-    document.querySelectorAll('.gallery-thumbs img').forEach(t => t.classList.remove('active'));
-    this.classList.add('active');
-  });
-});
-
-/* ---- Scroll reveal ---- */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
-}, { threshold: .12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
+<script src="script.js"></script>
 </body>
 </html>

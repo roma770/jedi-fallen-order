@@ -1,63 +1,106 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Where Jedi: Fallen Order fits in the Star Wars universe.">
 <title>About — The Universe — Star Wars Jedi: Fallen Order</title>
-<meta name="description" content="Место Jedi: Fallen Order во вселенной Star Wars.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="pages.css">
 </head>
-<body class="subpage">
+<body>
 
-<div class="sp-topbar">
-  <a href="support.html">Support</a><a href="forums.html">Forums</a><a href="ea-help.html">EA Help</a>
+<div id="topbar">
+  <a href="support.html">Support</a><span>|</span>
+  <a href="forums.html">Forums</a><span>|</span>
+  <a href="ea-help.html">EA Help</a>
 </div>
 
-<nav class="sp-nav">
-  <a class="sp-nav-logo" href="index.html">
-    <img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo">
-    <span class="sp-nav-logo-text">Official<br>Fan Site</span>
-  </a>
-  <ul class="sp-nav-links">
-    <li><a href="story.html">Story</a></li>
-    <li><a href="gameplay.html">Gameplay</a></li>
-    <li><a href="editions.html">Editions</a></li>
-    <li><a href="news.html">News</a></li>
-    <li><a href="about.html" class="active">About</a></li>
+<nav id="nav">
+  <div class="nav-logo">
+    <img src="img/01-jedi-fallen-order.jpg" alt="Star Wars Jedi: Fallen Order Logo" onerror="this.style.display='none'">
+    <div class="nav-logo-line"></div>
+    <div class="nav-logo-text">Official<br>Fan Site</div>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li class="nav-item ">
+      <a href="story.html" class="nav-link">Jedi: Fallen Order
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="story.html">Story</a>
+        <a href="gameplay.html">Gameplay</a>
+        <a href="editions.html">Editions</a>
+      </div>
+    </li>
+    <li class="nav-item ">
+      <a href="news.html" class="nav-link">News
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="news.html">Latest Updates</a>
+        <a href="patch-notes.html">Patch Notes</a>
+        <a href="community.html">Community</a>
+      </div>
+    </li>
+    <li class="nav-item active">
+      <a href="about.html" class="nav-link">About
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="about.html">Respawn Entertainment</a>
+        <a href="universe.html">The Universe</a>
+        <a href="presskit.html">Press Kit</a>
+      </div>
+    </li>
   </ul>
-  <a href="buy.html" class="btn-gold">Buy Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-cta">
+    <a href="buy.html" class="btn-gold">Buy Now</a>
+  </div>
 </nav>
-<section class="sp-hero" style="background-image:linear-gradient(0deg,rgba(10,10,12,.4),rgba(10,10,12,.2)),url('https://roma770.github.io/Jedi-Fallen-odred/7.jpg');">
-  <div class="sp-hero-inner">
-    <div class="sp-eyebrow">About</div>
-    <h1>The Universe</h1>
-    <p>Где история Кэла Кестиса вписывается в канон Star Wars.</p>
-  </div>
-</section>
-<div class="sp-content"><a href="index.html" class="sp-back">&larr; Back to Home</a>
-  <h2>Хронология</h2>
-  <p>Действие Jedi: Fallen Order разворачивается через пять лет после Приказа 66 и падения
-  Республики — между Эпизодом III «Месть ситхов» и Эпизодом IV «Новая надежда». Это период,
-  когда Империя укрепляет власть, а выжившие джедаи вынуждены скрываться.</p>
 
-  <h2>Новые миры</h2>
-  <p>История ведёт игрока через ранее неисследованные в фильмах локации: разделочную станцию Бракка,
-  древние храмы Зеффо, леса Кашиика и джунгли Дафомира — каждая со своей историей, вплетённой
-  в более широкий канон.</p>
+<header class="page-hero">
+  <div class="page-hero-inner reveal">
+    <div class="section-eyebrow">About</div>
+    <h1 class="page-title">The Universe</h1>
+    <p class="page-sub">Where Cal Kestis's story fits in the Star Wars canon.</p>
+    <a href="index.html" class="btn-outline">&larr; Back to Home</a>
   </div>
-<footer class="sp-footer">
-  <div class="sp-footer-left">
-    <img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo">
-    <div class="sp-footer-copy">
-      Site created by <a href="https://roma770.github.io/">Dmitry</a><br>
-      Star Wars is a trademark of Lucasfilm Ltd. — Fan site, not official.
+</header>
+
+<main class="page-content">
+
+  <div class="content-block reveal">
+    <h2>Timeline</h2>
+    <p>Jedi: Fallen Order takes place five years after Order 66 and the fall of the Republic &mdash; between Episode III: Revenge of the Sith and Episode IV: A New Hope. This is a period when the Empire is consolidating power, and surviving Jedi are forced into hiding.</p>
+  </div>
+  <div class="content-block reveal">
+    <h2>New Worlds</h2>
+    <p>The story takes players through locations never explored in the films: the scrapping station of Bracca, the ancient temples of Zeffo, the forests of Kashyyyk, and the jungles of Dathomir &mdash; each with its own history woven into the wider canon.</p>
+  </div>
+  
+</main>
+
+<footer>
+  <div class="footer-left">
+    <img src="img/01-jedi-fallen-order.jpg" alt="Logo" onerror="this.style.display='none'">
+    <div class="footer-copy">
+      Site created by <a href="https://roma770.github.io/" target="_blank" rel="noopener">Dmitry</a><br>
+      Star Wars is a trademark of Lucasfilm Ltd. &mdash; Fan site, not official.
     </div>
   </div>
-  <div class="sp-footer-links">
+  <div class="footer-links">
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="cookie-policy.html">Cookie Policy</a>
     <a href="contacts.html">Contacts</a>
   </div>
 </footer>
+
+<script src="script.js"></script>
 </body>
 </html>

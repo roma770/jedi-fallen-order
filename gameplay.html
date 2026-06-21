@@ -1,76 +1,120 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Combat, exploration and progression in Star Wars Jedi: Fallen Order.">
 <title>Gameplay — Star Wars Jedi: Fallen Order</title>
-<meta name="description" content="Боевая система, исследование и прокачка в Jedi: Fallen Order.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="pages.css">
 </head>
-<body class="subpage">
+<body>
 
-<div class="sp-topbar">
-  <a href="support.html">Support</a><a href="forums.html">Forums</a><a href="ea-help.html">EA Help</a>
+<div id="topbar">
+  <a href="support.html">Support</a><span>|</span>
+  <a href="forums.html">Forums</a><span>|</span>
+  <a href="ea-help.html">EA Help</a>
 </div>
 
-<nav class="sp-nav">
-  <a class="sp-nav-logo" href="index.html">
-    <img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo">
-    <span class="sp-nav-logo-text">Official<br>Fan Site</span>
-  </a>
-  <ul class="sp-nav-links">
-    <li><a href="story.html">Story</a></li>
-    <li><a href="gameplay.html" class="active">Gameplay</a></li>
-    <li><a href="editions.html">Editions</a></li>
-    <li><a href="news.html">News</a></li>
-    <li><a href="about.html">About</a></li>
+<nav id="nav">
+  <div class="nav-logo">
+    <img src="img/01-jedi-fallen-order.jpg" alt="Star Wars Jedi: Fallen Order Logo" onerror="this.style.display='none'">
+    <div class="nav-logo-line"></div>
+    <div class="nav-logo-text">Official<br>Fan Site</div>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li class="nav-item active">
+      <a href="story.html" class="nav-link">Jedi: Fallen Order
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="story.html">Story</a>
+        <a href="gameplay.html">Gameplay</a>
+        <a href="editions.html">Editions</a>
+      </div>
+    </li>
+    <li class="nav-item ">
+      <a href="news.html" class="nav-link">News
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="news.html">Latest Updates</a>
+        <a href="patch-notes.html">Patch Notes</a>
+        <a href="community.html">Community</a>
+      </div>
+    </li>
+    <li class="nav-item ">
+      <a href="about.html" class="nav-link">About
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="about.html">Respawn Entertainment</a>
+        <a href="universe.html">The Universe</a>
+        <a href="presskit.html">Press Kit</a>
+      </div>
+    </li>
   </ul>
-  <a href="buy.html" class="btn-gold">Buy Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-cta">
+    <a href="buy.html" class="btn-gold">Buy Now</a>
+  </div>
 </nav>
-<section class="sp-hero" style="background-image:linear-gradient(0deg,rgba(10,10,12,.4),rgba(10,10,12,.2)),url('https://roma770.github.io/Jedi-Fallen-odred/6.jpg');">
-  <div class="sp-hero-inner">
-    <div class="sp-eyebrow">Master the Lightsaber</div>
-    <h1>Gameplay</h1>
-    <p>Сражения, исследование древних миров и развитие силы джедая.</p>
-  </div>
-</section>
-<div class="sp-content"><a href="index.html" class="sp-back">&larr; Back to Home</a>
-  <h2>Боевая система</h2>
-  <p>Бои построены вокруг светового меча: блоки, парирования, уклонения и точные удары. Противники
-  заставляют учиться тайминги и читать атаки, а навыки силы — толчок, притяжение, замедление —
-  открывают новые тактические возможности.</p>
 
-  <h2>Исследование</h2>
-  <p>Игра построена по принципу метроидвании: уровни взаимосвязаны, а новые способности открывают
-  путь назад к ранее недоступным зонам. Секреты, медитационные точки и скрытые сундуки поощряют
-  внимательное исследование каждой планеты.</p>
+<header class="page-hero">
+  <div class="page-hero-inner reveal">
+    <div class="section-eyebrow">Master the Lightsaber</div>
+    <h1 class="page-title">Gameplay</h1>
+    <p class="page-sub">Combat, ancient-world exploration, and growing into a true Jedi.</p>
+    <a href="index.html" class="btn-outline">&larr; Back to Home</a>
+  </div>
+</header>
 
-  <h2>Развитие персонажа</h2>
-  <table class="sp-table">
-    <tr><th>Система</th><th>Описание</th></tr>
-    <tr><td>Древо навыков</td><td>Очки опыта тратятся на новые приёмы фехтования и силы</td></tr>
-    <tr><td>Стойки меча</td><td>Одинарный клинок, двойной клинок и двусторонний меч</td></tr>
-    <tr><td>Кастомизация</td><td>Настройка цвета клинка и деталей рукояти меча</td></tr>
-    <tr><td>BD-1</td><td>Сканирование, лечение и взлом с помощью дроида-спутника</td></tr>
-  </table>
-  <div class="sp-cta-row">
-    <a href="buy.html" class="btn-gold">Buy Game</a>
-    <a href="screenshots.html" class="btn-outline">Скриншоты</a>
+<main class="page-content">
+
+  <div class="content-block reveal">
+    <h2>Combat System</h2>
+    <p>Combat is built around the lightsaber: blocks, parries, dodges, and precise strikes. Enemies push you to learn their timing and read their attacks, while Force powers &mdash; Push, Pull, and Slow &mdash; open up new tactical options.</p>
   </div>
+  <div class="content-block reveal">
+    <h2>Exploration</h2>
+    <p>The game is built like a metroidvania: levels are interconnected, and new abilities open paths back to areas you couldn't reach before. Secrets, meditation points, and hidden chests reward careful exploration of every planet.</p>
   </div>
-<footer class="sp-footer">
-  <div class="sp-footer-left">
-    <img src="https://roma770.github.io/Jedi-Fallen-odred/01-jedi-fallen-order.jpg" alt="Logo">
-    <div class="sp-footer-copy">
-      Site created by <a href="https://roma770.github.io/">Dmitry</a><br>
-      Star Wars is a trademark of Lucasfilm Ltd. — Fan site, not official.
+  <div class="content-block reveal">
+    <h2>Character Progression</h2>
+    <table class="data-table">
+      <thead><tr><th>System</th><th>Description</th></tr></thead>
+      <tr><td>Skill Tree</td><td>Spend experience points on new swordplay techniques and Force powers</td></tr>
+      <tr><td>Saber Stances</td><td>Single blade, double-bladed, and dual-wield configurations</td></tr>
+      <tr><td>Customization</td><td>Tune blade color and hilt components</td></tr>
+      <tr><td>BD-1</td><td>Scanning, healing, and hacking with your droid companion</td></tr>
+    </table>
+    <div class="page-btns">
+      <a href="buy.html" class="btn-gold">Buy Game</a>
+      <a href="screenshots.html" class="btn-outline">Screenshots</a>
     </div>
   </div>
-  <div class="sp-footer-links">
+  
+</main>
+
+<footer>
+  <div class="footer-left">
+    <img src="img/01-jedi-fallen-order.jpg" alt="Logo" onerror="this.style.display='none'">
+    <div class="footer-copy">
+      Site created by <a href="https://roma770.github.io/" target="_blank" rel="noopener">Dmitry</a><br>
+      Star Wars is a trademark of Lucasfilm Ltd. &mdash; Fan site, not official.
+    </div>
+  </div>
+  <div class="footer-links">
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="cookie-policy.html">Cookie Policy</a>
     <a href="contacts.html">Contacts</a>
   </div>
 </footer>
+
+<script src="script.js"></script>
 </body>
 </html>
