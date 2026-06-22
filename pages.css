@@ -65,6 +65,16 @@
 }
 .platform-logos img { height: 32px; width: auto; object-fit: contain; opacity: .7; filter: brightness(0) invert(1); transition: opacity .2s; }
 .platform-logos img:hover { opacity: 1; }
+.platform-logos span {
+  font-family: var(--ff-body); font-size: 12px; font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--text-muted);
+  position: relative; transition: color .2s;
+}
+.platform-logos span:not(:last-child)::after {
+  content: ''; position: absolute; right: -12px; top: 50%; transform: translateY(-50%);
+  width: 1px; height: 14px; background: var(--border);
+}
+.platform-logos span:hover { color: var(--gold); }
 
 /* ---------- CARDS (home) ---------- */
 #cards { padding: 100px 80px; background: var(--surface); }
@@ -120,12 +130,16 @@
 /* ---------- PRODUCTS / COLLECTION (home) ---------- */
 #products { padding: 100px 80px; background: var(--bg); }
 .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 200px; gap: 8px; }
-.product-cell { overflow: hidden; background: var(--surface2); border: 1px solid var(--border); transition: border-color .3s; display: flex; align-items: center; justify-content: center; text-align: center; }
+.product-cell { position: relative; overflow: hidden; background: var(--surface2); border: 1px solid var(--border); transition: border-color .3s; cursor: pointer; }
 .product-cell:hover { border-color: var(--gold); }
-.product-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s, opacity .3s; opacity: .8; }
-.product-cell:hover img { transform: scale(1.06); opacity: 1; }
+.product-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s, opacity .3s; opacity: .55; }
+.product-cell:hover img { transform: scale(1.06); opacity: .9; }
 .product-cell span {
-  font-family: var(--ff-body); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); padding: 10px;
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 16px 12px 12px;
+  background: linear-gradient(to top, rgba(6,8,13,.94), transparent);
+  font-family: var(--ff-body); font-size: 12px; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--white); text-align: center;
 }
 
 @media (max-width: 900px) {

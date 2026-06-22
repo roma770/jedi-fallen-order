@@ -1,417 +1,288 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap');
+/* ============================================================
+   Star Wars Jedi: Fallen Order — Fan Site
+   GLOBAL DESIGN SYSTEM  (tokens + shared chrome)
+   Loaded first; pages.css owns the per-section layouts.
+   ============================================================ */
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+/* ---------- DESIGN TOKENS ---------- */
 :root {
-  --gold: #c9932a;
-  --gold-light: #e8b84b;
-  --red: #b52020;
-  --bg: #050508;
-  --bg2: #0b0b10;
-  --bg3: #111118;
-  --text: #e8e6df;
-  --text-muted: rgba(232,230,223,0.55);
-  --border: rgba(255,255,255,0.07);
-  --saber: #4dd6f0;
+  /* gold accent family */
+  --gold:        #c9a84c;
+  --gold-light:  #e8c96a;
+  --gold-dark:   #8a6a1e;
+  /* signal colors */
+  --red:         #b22222;
+  --blue-saber:  #3ab4ff;
+  /* surfaces */
+  --bg:          #06080d;
+  --surface:     #0d1117;
+  --surface2:    #12181f;
+  /* text */
+  --text:        #d8cfc0;
+  --text-muted:  #7a8699;
+  --white:       #f5f0e8;
+  /* lines */
+  --border:      rgba(201,168,76,.18);
+  /* typography */
+  --ff-display:  'Cinzel', Georgia, serif;
+  --ff-body:     'Rajdhani', 'Segoe UI', sans-serif;
+  --ff-text:     'Open Sans', system-ui, sans-serif;
 }
 
+/* ---------- RESET & BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--ff-text);
+  font-size: 15px;
+  line-height: 1.7;
   overflow-x: hidden;
 }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
 
-a { text-decoration: none; color: inherit; }
+/* ---------- SCROLLBAR ---------- */
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 
-/* ── BUTTONS ── */
+/* ---------- BUTTONS ---------- */
+.btn-gold, .btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 26px;
+  font-family: var(--ff-body);
+  font-size: 12px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase;
+  border: 1px solid transparent; border-radius: 3px;
+  cursor: pointer; white-space: nowrap;
+  transition: background .22s, color .22s, box-shadow .22s, transform .15s, border-color .22s;
+}
 .btn-gold {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 13px 30px;
-  background: linear-gradient(135deg, #c9932a, #a5711a);
-  color: #fff;
-  font-family: 'Oswald', sans-serif;
-  font-size: 13px; font-weight: 500; letter-spacing: .14em;
-  text-transform: uppercase;
-  border: none; border-radius: 3px;
-  cursor: pointer;
-  transition: filter .2s, transform .15s;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+  color: #14110a;
 }
-.btn-gold:hover { filter: brightness(1.2); transform: translateY(-2px); }
-
+.btn-gold:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 0 22px rgba(201,168,76,.45);
+  transform: translateY(-2px);
+}
 .btn-outline {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 12px 30px;
-  background: transparent; color: #fff;
-  font-family: 'Oswald', sans-serif;
-  font-size: 13px; font-weight: 500; letter-spacing: .14em;
-  text-transform: uppercase;
-  border: 1px solid rgba(255,255,255,0.5);
-  border-radius: 3px; cursor: pointer;
-  transition: background .2s, border-color .2s, transform .15s;
+  background: transparent; color: var(--gold);
+  border-color: var(--gold);
 }
-.btn-outline:hover { background: rgba(255,255,255,.08); border-color: #fff; transform: translateY(-2px); }
+.btn-outline:hover {
+  background: rgba(201,168,76,.12);
+  box-shadow: 0 0 16px rgba(201,168,76,.25);
+  transform: translateY(-2px);
+}
 
-/* ── TOP BAR ── */
+/* ---------- TOP BAR ---------- */
 #topbar {
-  background: rgba(5,5,8,.95);
+  background: #000;
   border-bottom: 1px solid var(--border);
-  font-size: 11px; letter-spacing: .06em;
+  font-family: var(--ff-body);
+  font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
   color: var(--text-muted);
   text-align: right; padding: 7px 32px;
 }
-#topbar a { color: var(--text-muted); transition: color .15s; }
-#topbar a:hover { color: #fff; }
-#topbar span { margin: 0 5px; opacity: .3; }
+#topbar a { color: var(--gold); transition: color .15s; }
+#topbar a:hover { color: var(--gold-light); }
+#topbar span { margin: 0 6px; opacity: .35; }
 
-/* ── NAV ── */
+/* ---------- NAV ---------- */
 #nav {
   position: sticky; top: 0; z-index: 9999;
-  background: rgba(5,5,8,.97);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  height: 62px;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 32px;
+  gap: 24px; height: 64px; padding: 0 32px;
+  background: rgba(6,8,13,.92);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
 }
-
-.nav-logo { display: flex; align-items: center; gap: 14px; }
-.nav-logo img { height: 38px; width: auto; }
-.nav-logo-line { width: 1px; height: 28px; background: rgba(255,255,255,.15); }
+.nav-logo { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+.nav-logo img { height: 40px; width: auto; object-fit: contain; }
+.nav-logo-line { width: 1px; height: 30px; background: var(--border); }
 .nav-logo-text {
-  font-family: 'Oswald', sans-serif;
-  font-size: 11px; letter-spacing: .18em;
-  color: var(--gold); text-transform: uppercase; line-height: 1.3;
+  font-family: var(--ff-display);
+  font-size: 10px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--gold); line-height: 1.35;
 }
-
 .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
-
-/* nav-item: position relative, НЕТ overflow:hidden */
 .nav-item { position: relative; }
-
 .nav-link {
-  display: flex; align-items: center; gap: 5px;
-  padding: 0 18px; height: 62px;
-  font-size: 11px; font-weight: 600; letter-spacing: .12em;
-  text-transform: uppercase; color: rgba(255,255,255,.75);
+  display: flex; align-items: center; gap: 6px;
+  height: 64px; padding: 0 18px;
+  font-family: var(--ff-body);
+  font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--text-muted); white-space: nowrap;
   transition: color .15s, background .15s;
-  white-space: nowrap;
 }
+.nav-link svg { width: 9px; height: 9px; opacity: .55; transition: transform .2s; }
 .nav-link:hover,
-.nav-item.open .nav-link { color: #fff; background: rgba(255,255,255,.05); }
-.nav-link svg { width: 9px; height: 9px; opacity: .5; transition: transform .2s; }
+.nav-item.open .nav-link,
+.nav-item.active > .nav-link { color: var(--gold); }
+.nav-item.active > .nav-link { box-shadow: inset 0 -2px 0 var(--gold); }
 .nav-item.open .nav-link svg { transform: rotate(180deg); opacity: .9; }
 
-/* Dropdown — управляется через JS классом .open */
 .nav-dropdown {
-  position: absolute; top: 62px; left: 0;
-  background: rgba(8,8,12,.98);
-  border: 1px solid rgba(255,255,255,.1);
-  border-top: none;
+  position: absolute; top: 64px; left: 0; min-width: 210px;
+  background: rgba(8,10,16,.98);
+  border: 1px solid var(--border); border-top: none;
   border-radius: 0 0 6px 6px;
-  min-width: 200px;
-  opacity: 0; pointer-events: none;
-  transform: translateY(-4px);
+  opacity: 0; pointer-events: none; transform: translateY(-6px);
   transition: opacity .18s ease, transform .18s ease;
   z-index: 10000;
 }
-.nav-item.open .nav-dropdown {
-  opacity: 1; pointer-events: auto;
-  transform: translateY(0);
-}
+.nav-item.open .nav-dropdown { opacity: 1; pointer-events: auto; transform: translateY(0); }
 .nav-dropdown a {
   display: block; padding: 12px 18px;
-  font-size: 12px; letter-spacing: .06em; font-weight: 500;
-  color: rgba(255,255,255,.7);
+  font-family: var(--ff-body);
+  font-size: 12px; font-weight: 500; letter-spacing: .08em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
   transition: background .15s, color .15s;
 }
-.nav-dropdown a:hover { background: rgba(255,255,255,.07); color: #fff; }
+.nav-dropdown a:last-child { border-bottom: none; }
+.nav-dropdown a:hover { background: rgba(201,168,76,.08); color: var(--gold); }
 
-.nav-cta .btn-gold { padding: 9px 22px; font-size: 11px; }
+.nav-cta .btn-gold { padding: 9px 20px; font-size: 11px; }
 
-/* ── BANNER ── */
-#banner {
-  position: relative; height: 80px; overflow: hidden;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 60px;
-  background: url('https://roma770.github.io/Jedi-Fallen-odred/img2.jpg') center/cover no-repeat;
+/* ---------- HAMBURGER (mobile) ---------- */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 8px;
 }
-#banner::before {
-  content: ''; position: absolute; inset: 0;
-  background: rgba(5,5,8,.78);
+.hamburger span {
+  display: block; width: 24px; height: 2px; background: var(--gold);
+  transition: transform .25s, opacity .25s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---------- BANNER ---------- */
+#banner {
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; gap: 28px;
+  padding: 12px 40px; flex-wrap: wrap;
+  background:
+    linear-gradient(90deg, rgba(6,8,13,.88), rgba(138,106,30,.30) 50%, rgba(6,8,13,.88)),
+    url('img/4.jpg') center/cover no-repeat;
 }
 .banner-text {
-  position: relative; z-index: 1;
-  font-family: 'Oswald', sans-serif;
-  font-size: 16px; font-weight: 500; letter-spacing: .1em;
-  text-transform: uppercase; color: #fff;
+  font-family: var(--ff-body);
+  font-size: 15px; font-weight: 500; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--white); text-align: center;
 }
-.banner-text em { color: var(--gold-light); font-style: normal; }
-#banner .btn-gold { position: relative; z-index: 1; }
+.banner-text em { color: var(--gold-light); font-style: normal; font-weight: 700; }
+#banner .btn-gold { padding: 8px 18px; font-size: 11px; }
 
-/* ── DIVIDER ── */
+/* ---------- SABER DIVIDER ---------- */
 .saber-divider {
   height: 2px; width: 100%;
-  background: linear-gradient(to right, transparent, var(--red), transparent);
+  background: linear-gradient(90deg, transparent, var(--blue-saber) 18%, var(--gold) 50%, var(--blue-saber) 82%, transparent);
+  opacity: .45;
+  box-shadow: 0 0 12px rgba(58,180,255,.35);
 }
 
-/* ── HERO ── */
-#hero {
-  position: relative; height: 90vh; min-height: 560px;
-  background: url('https://roma770.github.io/Jedi-Fallen-odred/1.jpg') center/cover no-repeat;
-  display: flex; align-items: flex-end;
-}
-#hero::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(105deg, rgba(5,5,8,.92) 35%, rgba(5,5,8,.2) 70%, transparent);
-}
-.hero-content {
-  position: relative; z-index: 2;
-  padding: 0 7% 9%;
-  max-width: 580px;
-}
-.hero-eyebrow {
-  font-size: 11px; font-weight: 600; letter-spacing: .22em;
-  text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
-}
-.hero-title {
-  font-family: 'Oswald', sans-serif;
-  font-size: clamp(46px, 5.5vw, 80px);
-  font-weight: 700; line-height: 1.0;
-  letter-spacing: .02em; text-transform: uppercase; color: #fff;
-  margin-bottom: 18px;
-}
-.hero-title span { color: var(--gold-light); }
-.hero-sub {
-  font-size: 17px; font-weight: 300; line-height: 1.7;
-  color: rgba(255,255,255,.72); margin-bottom: 32px;
-}
-.hero-btns { display: flex; flex-wrap: wrap; gap: 12px; }
-
-/* ── BECOME A JEDI ── */
-#become {
-  position: relative; height: 70vh; min-height: 480px;
-  display: flex; align-items: center; justify-content: flex-end;
-}
-.become-bg {
-  position: absolute; inset: 0;
-  background: url('https://roma770.github.io/Jedi-Fallen-odred/4.jpg') center/cover no-repeat;
-}
-.become-bg::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to left, rgba(5,5,8,.92) 40%, rgba(5,5,8,.1) 80%);
-}
-.become-content {
-  position: relative; z-index: 2;
-  padding-right: 7%; max-width: 460px; text-align: center;
-}
-.become-content h2 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 48px; font-weight: 700; letter-spacing: .04em;
-  text-transform: uppercase; color: #fff; margin-bottom: 14px;
-}
-.become-content p {
-  font-size: 17px; color: rgba(255,255,255,.65); line-height: 1.7; margin-bottom: 28px;
-}
-
-/* ── LIGHTSABER WRAP ── */
-/* Обёртка relative, НЕТ overflow:hidden — логотипы не обрежутся */
-#lightsaber-wrap {
-  position: relative;
-}
-
-#lightsaber {
-  position: relative; min-height: 600px;
-  overflow: hidden; /* только у самой секции */
-  display: flex; align-items: center;
-}
-.lightsaber-bg {
-  position: absolute; inset: 0;
-  background: url('https://roma770.github.io/Jedi-Fallen-odred/5.webp') center/cover no-repeat;
-}
-.lightsaber-bg::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(5,5,8,.94) 45%, rgba(5,5,8,.1) 80%);
-}
-.lightsaber-content {
-  position: relative; z-index: 2;
-  padding: 80px 7%; max-width: 48%;
-}
-.lightsaber-content h2 {
-  font-family: 'Oswald', sans-serif;
-  font-size: clamp(36px, 4vw, 56px);
-  font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
-  color: #fff; margin-bottom: 16px; line-height: 1.05;
-}
-.lightsaber-content h2 span { color: var(--saber); }
-.lightsaber-content p {
-  font-size: 17px; color: rgba(255,255,255,.65); line-height: 1.75; margin-bottom: 32px;
-}
-.lightsaber-content .btns { display: flex; gap: 12px; flex-wrap: wrap; }
-
-.lightsaber-right-img {
-  position: absolute; z-index: 2;
-  right: 9%; top: 50%; transform: translateY(-50%);
-  width: 32%; max-width: 380px;
-  transition: transform .4s ease, filter .4s;
-}
-.lightsaber-right-img:hover {
-  transform: translateY(calc(-50% - 10px));
-  filter: drop-shadow(0 24px 40px rgba(0,0,0,.7));
-}
-
-/* Логотипы платформ — абсолютно внутри #lightsaber-wrap, НЕ внутри #lightsaber */
-.platform-logos {
-  position: absolute;
-  right: 2%; top: 50%; transform: translateY(-50%);
-  z-index: 10;
-  display: flex; flex-direction: column; gap: 12px; align-items: center;
-}
-.platform-logos img {
-  width: 40px; height: 40px; object-fit: contain;
-  opacity: .6; transition: opacity .2s;
-  filter: brightness(0) invert(1);
-}
-.platform-logos img:hover { opacity: 1; }
-
-/* ── CARDS ── */
-#cards { background: var(--bg2); padding: 80px 40px; }
-
+/* ---------- HOME SECTION HEADERS ---------- */
 .section-eyebrow {
-  text-align: center; font-size: 11px; font-weight: 600;
-  letter-spacing: .22em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 16px;
+  font-family: var(--ff-body);
+  font-size: 11px; letter-spacing: .24em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px; opacity: .85;
 }
 .section-title {
-  text-align: center;
-  font-family: 'Oswald', sans-serif;
-  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
-  letter-spacing: .04em; text-transform: uppercase;
-  color: #fff; margin-bottom: 48px;
+  font-family: var(--ff-display);
+  font-size: clamp(28px, 4vw, 52px); font-weight: 700;
+  color: var(--white); margin-bottom: 48px; line-height: 1.1;
 }
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 20px; max-width: 980px; margin: 0 auto;
-}
-.card {
-  position: relative; border-radius: 8px; overflow: hidden;
-  border: 1px solid rgba(255,255,255,.07);
-  transition: transform .3s, box-shadow .3s; cursor: pointer;
-}
-.card:hover { transform: translateY(-8px); box-shadow: 0 28px 60px rgba(0,0,0,.7); }
-.card img { width: 100%; height: 420px; display: block; object-fit: cover; }
-.card-gradient {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(5,5,8,.98) 40%, rgba(5,5,8,.55) 65%, transparent);
-}
-.card-body {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 28px 30px 30px; text-align: center;
-}
-.card-body h3 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 30px; font-weight: 700; letter-spacing: .04em;
-  text-transform: uppercase; color: #fff; margin-bottom: 10px;
-}
-.card-body p { font-size: 14px; color: rgba(255,255,255,.6); line-height: 1.65; margin-bottom: 20px; }
-.card-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-.card-btns a { font-size: 12px; padding: 10px 22px; }
+#cards .section-eyebrow, #cards .section-title,
+#news .section-eyebrow, #news .section-title,
+#products .section-eyebrow, #products .section-title { text-align: center; }
 
-/* ── DETAILS / TABS ── */
-#details { background: var(--bg); padding: 80px 40px; }
-.details-inner {
-  max-width: 1160px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: start;
-}
-.tabs-nav { display: flex; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
-.tab-btn {
-  padding: 12px 22px;
-  font-family: 'Oswald', sans-serif;
-  font-size: 12px; font-weight: 500; letter-spacing: .12em;
-  text-transform: uppercase; color: rgba(255,255,255,.4);
-  border: none; background: transparent; cursor: pointer;
-  border-bottom: 2px solid transparent; margin-bottom: -1px;
-  transition: color .2s, border-color .2s;
-}
-.tab-btn.active { color: #fff; border-bottom-color: var(--red); }
-.tab-btn:hover:not(.active) { color: rgba(255,255,255,.75); }
-.tab-panel { display: none; }
-.tab-panel.active { display: block; }
-.tab-panel h3 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 28px; font-weight: 700; letter-spacing: .04em;
-  text-transform: uppercase; color: #fff; margin-bottom: 14px; line-height: 1.1;
-}
-.tab-panel p { font-size: 15px; color: rgba(255,255,255,.6); line-height: 1.85; margin-bottom: 20px; }
-.info-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
-.info-table td { padding: 9px 0; font-size: 13px; border-bottom: 1px solid var(--border); }
-.info-table td:first-child {
-  color: rgba(255,255,255,.35); font-size: 11px; letter-spacing: .1em;
-  text-transform: uppercase; width: 48%;
-}
-.info-table td:last-child { color: rgba(255,255,255,.8); }
-
-.gallery-panel { position: sticky; top: 78px; }
-.gallery-img { width: 100%; height: 260px; border-radius: 6px; display: block; object-fit: cover; }
-.gallery-thumbs { display: flex; gap: 8px; margin-top: 8px; }
-.gallery-thumbs img {
-  flex: 1; height: 60px; object-fit: cover; border-radius: 4px; cursor: pointer;
-  border: 2px solid transparent; opacity: .6; transition: opacity .2s, border-color .2s;
-}
-.gallery-thumbs img.active,
-.gallery-thumbs img:hover { opacity: 1; border-color: var(--gold); }
-
-/* ── NEWS ── */
-#news { background: var(--bg3); padding: 80px 40px; }
-.news-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px; max-width: 1100px; margin: 0 auto;
-}
-.news-card {
-  background: #0f0f18; border: 1px solid var(--border);
-  border-radius: 8px; overflow: hidden;
-  transition: transform .3s, box-shadow .3s; cursor: pointer;
-}
-.news-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,.65); }
-.news-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
-.news-card-body { padding: 20px 22px 24px; }
-.news-date { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-.news-headline { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: #fff; margin-bottom: 10px; line-height: 1.25; }
-.news-excerpt { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.75; }
-
-/* ── PRODUCTS ── */
-#products { background: var(--bg); padding: 60px 40px 80px; text-align: center; }
-.products-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 10px; max-width: 960px; margin: 0 auto;
-}
-.product-cell {
-  aspect-ratio: 1; background: #111;
-  border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
-  transition: transform .25s, border-color .25s; cursor: pointer;
-}
-.product-cell:hover { transform: scale(1.04); border-color: rgba(201,147,42,.4); }
-.product-cell img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .8; transition: opacity .25s; }
-.product-cell:hover img { opacity: 1; }
-
-/* ── FOOTER ── */
-footer {
-  background: #030306; border-top: 1px solid var(--border);
-  padding: 50px 40px; display: flex; flex-wrap: wrap; gap: 16px;
-  justify-content: space-between; align-items: center;
-}
-.footer-left { display: flex; align-items: center; gap: 16px; }
-.footer-left img { height: 32px; opacity: .6; }
-.footer-copy { font-size: 12px; color: rgba(255,255,255,.3); line-height: 1.8; }
-.footer-copy a { color: rgba(255,255,255,.5); }
-.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
-.footer-links a { font-size: 12px; color: rgba(255,255,255,.3); transition: color .15s; }
-.footer-links a:hover { color: rgba(255,255,255,.8); }
-
-/* ── SCROLL REVEAL ── */
+/* ---------- SCROLL REVEAL ---------- */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+/* Safety net: if scripting is unavailable, never hide content */
+@media (scripting: none) {
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  background: #030306; border-top: 1px solid var(--border);
+  padding: 54px 40px 44px;
+  display: flex; flex-wrap: wrap; gap: 24px;
+  justify-content: space-between; align-items: center;
+}
+.footer-left { display: flex; align-items: center; gap: 18px; }
+.footer-left img { height: 44px; width: auto; object-fit: contain; opacity: .65; }
+.footer-copy { font-family: var(--ff-body); font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+.footer-copy a { color: var(--gold); }
+.footer-copy a:hover { color: var(--gold-light); }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a {
+  font-family: var(--ff-body); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text-muted); transition: color .15s;
+}
+.footer-links a:hover { color: var(--gold); }
+
+/* ---------- SCREENSHOT LIGHTBOX ---------- */
+#lightbox {
+  position: fixed; inset: 0; z-index: 99999;
+  display: none; align-items: center; justify-content: center;
+  background: rgba(3,4,8,.92);
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  padding: 40px; cursor: zoom-out;
+}
+#lightbox.open { display: flex; }
+#lightbox img {
+  max-width: 92%; max-height: 88%;
+  border: 1px solid var(--border);
+  box-shadow: 0 30px 80px rgba(0,0,0,.7);
+}
+#lightbox .lb-close {
+  position: absolute; top: 22px; right: 30px;
+  font-family: var(--ff-body); font-size: 34px; line-height: 1;
+  color: var(--gold); cursor: pointer; background: none; border: none;
+}
+
+/* ============================================================
+   RESPONSIVE — NAV / FOOTER
+   (page-section breakpoints live in pages.css)
+   ============================================================ */
+@media (max-width: 900px) {
+  #nav { padding: 0 20px; }
+  .hamburger { display: flex; }
+  .nav-cta { display: none; }
+
+  .nav-links {
+    display: none; flex-direction: column; align-items: stretch; gap: 0;
+    position: absolute; top: 64px; left: 0; right: 0;
+    background: rgba(6,8,13,.98);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 0; max-height: calc(100vh - 64px); overflow-y: auto;
+  }
+  .nav-links.open { display: flex; }
+  .nav-item { position: static; }
+  .nav-link { height: 48px; padding: 0 24px; }
+  .nav-link svg { display: none; }
+  /* expand dropdowns inline inside the mobile menu */
+  .nav-dropdown {
+    position: static; opacity: 1; pointer-events: auto; transform: none;
+    border: none; border-radius: 0; min-width: 0;
+    background: rgba(255,255,255,.03);
+  }
+  .nav-dropdown a { padding-left: 44px; }
+
+  footer { padding: 40px 24px; flex-direction: column; text-align: center; }
+  .footer-left { flex-direction: column; }
+  .footer-links { justify-content: center; }
+  #topbar { text-align: center; }
+}

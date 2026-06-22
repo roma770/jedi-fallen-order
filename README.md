@@ -1,49 +1,52 @@
-# Star Wars Jedi: Fallen Order — Fan Site (rebuilt)
+# Star Wars Jedi: Fallen Order — Fan Site (исправленная версия)
 
-This package contains a fully rebuilt version of your site:
+Что было сделано в этой версии: найдены и устранены ошибки, из-за которых
+страницы выглядели «сломанными», и весь сайт приведён к единому стилю.
 
-- **19 separate HTML pages** (index, story, gameplay, editions, news,
-  patch-notes, community, about, universe, presskit, buy, support,
-  forums, ea-help, trailer, screenshots, contacts, privacy-policy,
-  cookie-policy) — all in English, all linked to each other.
-- **style.css** — shared design system (colors, fonts, nav, footer, buttons).
-- **pages.css** — homepage sections + the shared inner-page template used
-  by every sub-page (page header, content blocks, tables, cards, FAQ, etc).
-- **script.js** — mobile menu, scroll reveal animations, homepage tabs/gallery,
-  starfield, screenshot click-to-enlarge.
+## Исправленные ошибки
 
-## IMPORTANT — about the images
+1. **Неопределённые CSS-переменные (главная причина).** `pages.css` был написан
+   под переменные `--ff-display`, `--ff-body`, `--gold-dark`, `--surface`,
+   `--surface2`, `--white`, но в `:root` файла `style.css` их не было. Из-за
+   этого на всех страницах слетали шрифты, фоны секций и часть цветов.
+   Теперь все токены объявлены в `style.css`.
 
-I could not download the binary image files themselves through this chat
-(no direct file transfer of binary assets is possible here), so this zip
-does **not** include an `img/` folder.
+2. **Два конфликтующих набора стилей.** `style.css` (шрифты Oswald/Inter) и
+   `pages.css` (Cinzel/Rajdhani) описывали одни и те же секции по-разному.
+   `style.css` переписан как единая система: токены + общая «обвязка»
+   (топбар, навигация, кнопки, баннер, футер, разделители), а раскладку
+   секций целиком отдали `pages.css`.
 
-All `<img>` tags use **relative paths** like `img/6.jpg`, exactly like your
-original `index.html` already did correctly. Your repository **already has**
-a working `img/` folder with these files (1.jpg–14.webp, 15.png, 17.jpg,
-01-jedi-fallen-order.jpg, box4-logo1/2/3.png) — that folder was correct;
-the bug was only in the sub-pages, which pointed to a different, broken
-repository name (`Jedi-Fallen-odred`) instead of your real `img/` folder.
+3. **Битые внешние ссылки.** Фоны баннера/hero/become/lightsaber вели на
+   несуществующий репозиторий `Jedi-Fallen-odred` (опечатка). Убраны;
+   используются локальные картинки из `img/`.
 
-**To deploy:**
-1. Copy all files from this zip into your repository, replacing the old
-   `.html`, `.css`, and `.js` files.
-2. Keep your existing `img/` folder exactly as it is (don't delete it).
-3. Commit and push — GitHub Pages will rebuild automatically.
+4. **Отсутствующие картинки логотипов платформ** (`box4-logo1/2/3.png` в
+   `img/` нет). Заменены на аккуратные текстовые подписи PlayStation · Xbox · PC.
 
-If any specific filename in `img/` doesn't exist (e.g. `15.png` for the
-Editions page), just swap in any image you have, or tell me the exact
-filenames in your `img/` folder and I'll match them up precisely.
+5. **Галерея на главной не работала.** Скрипт обращался к `#gallery-main`,
+   которого не было в разметке. Добавлен `id`, клик по миниатюрам теперь
+   меняет крупное изображение.
 
-## What was fixed
+6. **Мобильное меню не работало.** В скрипте не было обработчика «гамбургера»,
+   а в CSS — стилей мобильной навигации. Добавлено: бургер открывает/закрывает
+   меню, выпадающие списки разворачиваются внутри него.
 
-- All sub-pages were in Russian — now fully translated to English.
-- All sub-pages pointed to a broken/typo'd external image repo
-  (`Jedi-Fallen-odred`) — now point to your real `img/` folder.
-- Every page now shares one consistent design system instead of being
-  inconsistent or unstyled.
-- Added a proper shared navigation, footer, and "Back to Home" link on
-  every page so the whole site is fully click-through.
-- Removed the random third-party merchandise image links (Google,
-  Ukrainian shop CDNs, etc.) that were unreliable and replaced them with
-  clean placeholder tiles you can swap for real product photos later.
+7. **Пустые плитки «Коллекции»** заполнены реальными изображениями из `img/`
+   с подписью-оверлеем.
+
+8. **Доработки/полировка:** звёздное небо в hero, лайтбокс на странице
+   Screenshots (клик увеличивает кадр), плавные появления секций при скролле,
+   поддержка `prefers-reduced-motion` и подстраховка на случай отключённого JS,
+   аккуратный скроллбар и подсветка активного пункта меню.
+   Неиспользуемый `jquery-3.4.1.min.js` удалён (на него не было ни одной ссылки).
+
+## Как выложить на GitHub Pages
+
+1. Скопируйте все файлы из этого архива в репозиторий, заменив старые
+   `.html`, `.css`, `.js`.
+2. Папку `img/` оставьте как есть (она здесь уже включена и совпадает с вашей).
+3. Сделайте commit и push — GitHub Pages пересоберётся автоматически.
+
+Все пути к картинкам — относительные (`img/...`), как и было правильно
+в исходном `index.html`, так что после заливки всё подхватится само.
