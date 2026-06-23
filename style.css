@@ -1,35 +1,22 @@
-/* ============================================================
-   Star Wars Jedi: Fallen Order — Fan Site
-   GLOBAL DESIGN SYSTEM  (tokens + shared chrome)
-   Loaded first; pages.css owns the per-section layouts.
-   ============================================================ */
 
-/* ---------- DESIGN TOKENS ---------- */
 :root {
-  /* gold accent family */
   --gold:        #c9a84c;
   --gold-light:  #e8c96a;
   --gold-dark:   #8a6a1e;
-  /* signal colors */
   --red:         #b22222;
   --blue-saber:  #3ab4ff;
-  /* surfaces */
   --bg:          #06080d;
   --surface:     #0d1117;
   --surface2:    #12181f;
-  /* text */
   --text:        #d8cfc0;
   --text-muted:  #7a8699;
   --white:       #f5f0e8;
-  /* lines */
   --border:      rgba(201,168,76,.18);
-  /* typography */
   --ff-display:  'Cinzel', Georgia, serif;
   --ff-body:     'Rajdhani', 'Segoe UI', sans-serif;
   --ff-text:     'Open Sans', system-ui, sans-serif;
 }
 
-/* ---------- RESET & BASE ---------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -43,13 +30,11 @@ body {
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 
-/* ---------- SCROLLBAR ---------- */
 ::-webkit-scrollbar { width: 7px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 
-/* ---------- BUTTONS ---------- */
 .btn-gold, .btn-outline {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 12px 26px;
@@ -79,7 +64,6 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(-2px);
 }
 
-/* ---------- TOP BAR ---------- */
 #topbar {
   background: #000;
   border-bottom: 1px solid var(--border);
@@ -92,7 +76,6 @@ a { color: inherit; text-decoration: none; }
 #topbar a:hover { color: var(--gold-light); }
 #topbar span { margin: 0 6px; opacity: .35; }
 
-/* ---------- NAV ---------- */
 #nav {
   position: sticky; top: 0; z-index: 9999;
   display: flex; align-items: center; justify-content: space-between;
@@ -149,7 +132,6 @@ a { color: inherit; text-decoration: none; }
 
 .nav-cta .btn-gold { padding: 9px 20px; font-size: 11px; }
 
-/* ---------- HAMBURGER (mobile) ---------- */
 .hamburger {
   display: none; flex-direction: column; gap: 5px;
   background: none; border: none; cursor: pointer; padding: 8px;
@@ -162,7 +144,6 @@ a { color: inherit; text-decoration: none; }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ---------- BANNER ---------- */
 #banner {
   position: relative; overflow: hidden;
   display: flex; align-items: center; justify-content: center; gap: 28px;
@@ -179,7 +160,6 @@ a { color: inherit; text-decoration: none; }
 .banner-text em { color: var(--gold-light); font-style: normal; font-weight: 700; }
 #banner .btn-gold { padding: 8px 18px; font-size: 11px; }
 
-/* ---------- SABER DIVIDER ---------- */
 .saber-divider {
   height: 2px; width: 100%;
   background: linear-gradient(90deg, transparent, var(--blue-saber) 18%, var(--gold) 50%, var(--blue-saber) 82%, transparent);
@@ -187,7 +167,6 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 0 12px rgba(58,180,255,.35);
 }
 
-/* ---------- HOME SECTION HEADERS ---------- */
 .section-eyebrow {
   font-family: var(--ff-body);
   font-size: 11px; letter-spacing: .24em; text-transform: uppercase;
@@ -202,19 +181,16 @@ a { color: inherit; text-decoration: none; }
 #news .section-eyebrow, #news .section-title,
 #products .section-eyebrow, #products .section-title { text-align: center; }
 
-/* ---------- SCROLL REVEAL ---------- */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
 }
-/* Safety net: if scripting is unavailable, never hide content */
 @media (scripting: none) {
   .reveal { opacity: 1 !important; transform: none !important; }
 }
 
-/* ---------- FOOTER ---------- */
 footer {
   background: #030306; border-top: 1px solid var(--border);
   padding: 54px 40px 44px;
@@ -233,7 +209,6 @@ footer {
 }
 .footer-links a:hover { color: var(--gold); }
 
-/* ---------- SCREENSHOT LIGHTBOX ---------- */
 #lightbox {
   position: fixed; inset: 0; z-index: 99999;
   display: none; align-items: center; justify-content: center;
@@ -253,10 +228,6 @@ footer {
   color: var(--gold); cursor: pointer; background: none; border: none;
 }
 
-/* ============================================================
-   RESPONSIVE — NAV / FOOTER
-   (page-section breakpoints live in pages.css)
-   ============================================================ */
 @media (max-width: 900px) {
   #nav { padding: 0 20px; }
   .hamburger { display: flex; }
@@ -273,7 +244,6 @@ footer {
   .nav-item { position: static; }
   .nav-link { height: 48px; padding: 0 24px; }
   .nav-link svg { display: none; }
-  /* expand dropdowns inline inside the mobile menu */
   .nav-dropdown {
     position: static; opacity: 1; pointer-events: auto; transform: none;
     border: none; border-radius: 0; min-width: 0;

@@ -1,9 +1,3 @@
-/* ============================================================
-   Star Wars Jedi: Fallen Order — Official Fan Site
-   Page-level layout: homepage sections + shared sub-page template
-   ============================================================ */
-
-/* ---------- HERO (home) ---------- */
 #hero {
   position: relative; min-height: 100vh;
   display: flex; align-items: center; overflow: hidden; background: var(--bg);

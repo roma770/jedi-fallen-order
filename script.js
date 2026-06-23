@@ -1,8 +1,4 @@
-/* ============================================================
-   Star Wars Jedi: Fallen Order — site behaviour
-   ============================================================ */
 
-/* ---------- Mobile menu (hamburger) ---------- */
 (function () {
   var hamburger = document.getElementById('hamburger');
   var navLinks = document.getElementById('navLinks');
@@ -14,14 +10,13 @@
   }
 })();
 
-/* ---------- Dropdown nav (hover, JS-driven so it doesn't flicker) ---------- */
 (function () {
   var navItems = document.querySelectorAll('.nav-item');
   var closeTimer = null;
 
   navItems.forEach(function (item) {
     item.addEventListener('mouseenter', function () {
-      if (window.innerWidth <= 900) return; // hover disabled on mobile
+      if (window.innerWidth <= 900) return; 
       clearTimeout(closeTimer);
       navItems.forEach(function (i) { if (i !== item) i.classList.remove('open'); });
       item.classList.add('open');
@@ -48,7 +43,6 @@
   });
 })();
 
-/* ---------- Homepage tabs ---------- */
 (function () {
   var btns = document.querySelectorAll('.tab-btn');
   var panels = document.querySelectorAll('.tab-panel');
@@ -64,7 +58,6 @@
   });
 })();
 
-/* ---------- Homepage gallery thumbnails ---------- */
 (function () {
   var main = document.getElementById('gallery-main');
   var thumbs = document.querySelectorAll('.gallery-thumbs img');
@@ -78,7 +71,6 @@
   });
 })();
 
-/* ---------- Hero starfield ---------- */
 (function () {
   var field = document.getElementById('stars');
   if (!field) return;
@@ -100,7 +92,6 @@
   field.appendChild(frag);
 })();
 
-/* ---------- Scroll-reveal animations ---------- */
 (function () {
   var els = document.querySelectorAll('.reveal');
   if (!els.length) return;
@@ -119,7 +110,6 @@
   els.forEach(function (el) { observer.observe(el); });
 })();
 
-/* ---------- Screenshot lightbox ---------- */
 (function () {
   var shots = document.querySelectorAll('.shot-grid img');
   if (!shots.length) return;
